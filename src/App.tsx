@@ -269,7 +269,7 @@ function AppContent() {
               }}
             >
               We believe that sustainable wealth isn't in fast profits — it's in
-              ownership.{" "}
+              {" "}<strong>ownership</strong>.{" "}
               <Box
                 component="br"
                 sx={{ display: { xs: "none", md: "block" } }}
@@ -367,9 +367,9 @@ function AppContent() {
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
-              Our aim is not to design a system that ties contribution to
+              Our aim is <strong>not</strong> to design a system that ties contribution to
               personal financial reward. We believe that true prosperity exists
-              only at the collective level — and we are committed to preserving
+              only at the <strong>collective level</strong> — and we are committed to preserving
               that principle. For us and for you. This doesn't mean there's no
               hierarchy at all. For now, we — the founders — act as
               administrators of the platform, servers, and repositories, serving
@@ -450,9 +450,9 @@ function AppContent() {
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
-              So in case you do want to help to get our business started, we
+              If you are looking to help get our business running, we
               have a few ideas we would like to discuss with you. But for
-              starters, we have thought of a simple 3 step plan, on how to
+              starters, we have thought of a simple <strong>3-Step-Plan</strong>, on how to
               proceed from here:
             </Typography>
           </motion.div>
@@ -815,7 +815,7 @@ function AppContent() {
                 component="br"
                 sx={{ display: { xs: "none", md: "block" } }}
               />{" "}
-              Our choice.
+              <strong>Our choice.</strong>
             </Typography>
             <Box
               sx={{
