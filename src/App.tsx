@@ -73,20 +73,24 @@ function AppContent() {
   // Scroll-based light animation
   useEffect(() => {
     const handleScroll = () => {
-      const scrollContainer = document.querySelector('[data-scroll-container]');
+      const scrollContainer = document.querySelector("[data-scroll-container]");
       if (!scrollContainer) return;
-      
+
       const scrollTop = scrollContainer.scrollTop;
-      const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+      const scrollHeight =
+        scrollContainer.scrollHeight - scrollContainer.clientHeight;
       const scrollProgress = Math.min(scrollTop / scrollHeight, 1);
-      
-      document.documentElement.style.setProperty('--scroll-progress', scrollProgress.toString());
+
+      document.documentElement.style.setProperty(
+        "--scroll-progress",
+        scrollProgress.toString()
+      );
     };
 
-    const scrollContainer = document.querySelector('[data-scroll-container]');
+    const scrollContainer = document.querySelector("[data-scroll-container]");
     if (scrollContainer) {
-      scrollContainer.addEventListener('scroll', handleScroll);
-      return () => scrollContainer.removeEventListener('scroll', handleScroll);
+      scrollContainer.addEventListener("scroll", handleScroll);
+      return () => scrollContainer.removeEventListener("scroll", handleScroll);
     }
   }, []);
 
@@ -687,7 +691,15 @@ function AppContent() {
                   sx={{
                     p: { xs: 2, md: 3 },
                     textAlign: "center",
-                    background: `linear-gradient(135deg, ${colors.background.dark} 0%, ${colors.light} 100%)`,
+                    background: `linear-gradient(135deg, ${
+                      currentTheme === "darknight"
+                        ? colors.background.light
+                        : colors.background.dark
+                    } 0%, ${
+                      currentTheme === "darknight"
+                        ? colors.light
+                        : colors.secondary
+                    } 100%)`,
                     color: "white",
                   }}
                 >
@@ -718,8 +730,8 @@ function AppContent() {
         </Container>
       </Box>
 
-            {/* About Section 2 */}
-            <Box
+      {/* About Section 2 */}
+      <Box
         sx={{
           height: { xs: "100dvh", md: "100vh" },
           display: "flex",
