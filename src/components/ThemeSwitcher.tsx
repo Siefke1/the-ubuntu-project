@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IconButton, Tooltip, Box } from '@mui/material';
 import { DarkMode, LightMode } from '@mui/icons-material';
 import { colorPalettes } from '../theme/colors';
@@ -10,6 +10,43 @@ interface ThemeSwitcherProps {
 
 const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ currentTheme, onThemeChange }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Try to get scroll from the main container instead of window
+      const mainContainer = document.querySelector('[data-scroll-container]') || document.documentElement;
+      const scrollPosition = mainContainer.scrollTop || window.scrollY;
+      const windowHeight = window.innerHeight;
+      const threshold = windowHeight * 0.3;
+      
+      // Show when at the top (first 30% of viewport), hide when scrolled down
+      const shouldShow = scrollPosition < threshold;
+      
+      setIsVisible(shouldShow);
+    };
+
+    // Initial check
+    handleScroll();
+
+    // Try multiple scroll listeners
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    document.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Also try on the main container if it exists
+    const mainContainer = document.querySelector('[data-scroll-container]');
+    if (mainContainer) {
+      mainContainer.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('scroll', handleScroll);
+      if (mainContainer) {
+        mainContainer.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, [isVisible]);
 
   const toggleTheme = () => {
     const newTheme = currentTheme === 'darknight' ? 'light' : 'darknight';
@@ -25,6 +62,10 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ currentTheme, onThemeChan
         top: 20,
         right: 20,
         zIndex: 1000,
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(-10px)',
+        transition: 'opacity 0.3s ease-in-out, transform 0.3s ease-in-out',
+        pointerEvents: isVisible ? 'auto' : 'none',
       }}
     >
       <Tooltip 

@@ -17,8 +17,12 @@ import {
   Diversity1,
 } from "@mui/icons-material";
 import { ThemeProvider } from "./context/ThemeProvider";
+import { LanguageProvider } from "./context/LanguageProvider";
 import { useTheme } from "./hooks/useTheme";
+import { useLanguage } from "./hooks/useLanguage";
+import { getTranslations } from "./texts/translations";
 import ThemeSwitcher from "./components/ThemeSwitcher";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 
 // Error Boundary Component
 class ErrorBoundary extends React.Component<
@@ -63,9 +67,12 @@ class ErrorBoundary extends React.Component<
 
 function AppContent() {
   const { currentTheme, setTheme, colors } = useTheme();
+  const { language } = useLanguage();
+  const t = getTranslations(language);
 
   return (
     <Box
+      data-scroll-container
       sx={{
         height: { xs: "100dvh", md: "100vh" },
         overflowY: "auto",
@@ -74,6 +81,7 @@ function AppContent() {
       }}
     >
       <ThemeSwitcher currentTheme={currentTheme} onThemeChange={setTheme} />
+      <LanguageSwitcher />
       {/* Hero Section */}
       <Box
         sx={{
@@ -107,7 +115,7 @@ function AppContent() {
             }}
             style={{ marginBottom: 0, lineHeight: 0.3 }}
           >
-            Welcome to the
+            {t.hero.welcome}
           </Typography>
           <Typography
             variant="h1"
@@ -122,7 +130,7 @@ function AppContent() {
                   : colors.textColorDark,
             }}
           >
-            Ubuntu-Project
+            {t.hero.title}
           </Typography>
         </motion.div>
 
@@ -144,12 +152,7 @@ function AppContent() {
               lineHeight: { xs: 1.4, md: 1 },
             }}
           >
-            Ever wanted to own a company? Our idea is simple.{" "}
-            <Box component="br" sx={{ display: { xs: "none", md: "block" } }} />{" "}
-            We founded an online company and for now we provide this platform.
-            By signing up, you become an equal shareholder — meaning every bit
-            of revenue our little business generates is split equally among all
-            of us. Simple as that. No fine print, no tricks.
+            {t.hero.description}
           </Typography>
         </motion.div>
 
@@ -194,7 +197,7 @@ function AppContent() {
               },
             }}
           >
-            Got your curiosity?
+            {t.hero.button}
           </Button>
         </motion.div>
 
@@ -251,7 +254,7 @@ function AppContent() {
                     : colors.textColorDark,
               }}
             >
-              Here's the plan...
+              {t.about.title}
             </Typography>
             <Typography
               variant="h6"
@@ -268,14 +271,7 @@ function AppContent() {
                 px: { xs: 2, md: 0 },
               }}
             >
-              We believe sustainable wealth isn't about fast profits — it's about
-              {" "}<strong>ownership</strong>.{" "}
-              <Box
-                component="br"
-                sx={{ display: { xs: "none", md: "block" } }}
-              />{" "}
-              Online, that means owning our data and the spaces we build
-              together.
+              {t.about.paragraph1}
             </Typography>
             <Typography
               variant="h6"
@@ -292,14 +288,7 @@ function AppContent() {
                 px: { xs: 2, md: 0 },
               }}
             >
-              The trade of data for "free" access to services might seem fair,
-              <Box
-                component="br"
-                sx={{ display: { xs: "none", md: "block" } }}
-              />{" "}
-              but we imagine a space used by everyone, where we actually own the
-              data we create — and have the freedom to decide what happens to
-              it.
+              {t.about.paragraph2}
             </Typography>
             <Typography
               variant="h6"
@@ -316,10 +305,7 @@ function AppContent() {
                 px: { xs: 2, md: 0 },
               }}
             >
-              We've started by creating a Forum, a Discord Server, and a GitHub
-              Repository — open spaces that allow us to exchange ideas and
-              collaborate. Join if you wish. Every voice helps build what comes
-              next.
+              {t.about.paragraph3}
             </Typography>
           </motion.div>
         </Container>
@@ -354,7 +340,7 @@ function AppContent() {
                     : colors.textColorDark,
               }}
             >
-              What can you do?
+              {t.features.title}
             </Typography>
             <Typography
               variant="h6"
@@ -373,10 +359,7 @@ function AppContent() {
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
-              If you are looking to help get our business running, we
-              have a few ideas we would like to discuss with you. But for
-              starters, we have thought of a simple <strong>3-Step-Plan</strong>, on how to
-              proceed from here:
+              {t.features.description}
             </Typography>
           </motion.div>
 
@@ -396,9 +379,8 @@ function AppContent() {
                 icon: (
                   <People sx={{ fontSize: "2rem", color: colors.secondary }} />
                 ),
-                title: "Sign up",
-                description:
-                  "Our first goal is to achieve a certain amount of registrated users. Our strength will come from numbers. And our resource will be ourselves.",
+                title: t.features.cards.signup.title,
+                description: t.features.cards.signup.description,
               },
               {
                 icon: (
@@ -406,17 +388,15 @@ function AppContent() {
                     sx={{ fontSize: "2rem", color: colors.secondary }}
                   />
                 ),
-                title: "Tell your Friends",
-                description:
-                  "Tell people about us. There is literally no downside to signing up, there is no mandatory tasks anyone must do. But this is your company now too.",
+                title: t.features.cards.friends.title,
+                description: t.features.cards.friends.description,
               },
               {
                 icon: (
                   <FlashOn sx={{ fontSize: "2rem", color: colors.secondary }} />
                 ),
-                title: "Generate traffic",
-                description:
-                  "One daily visit would already help. You could save us as your browser's homepage. If we have traffic, we have attention and if we have attention we will be able to decide what to do with it.",
+                title: t.features.cards.traffic.title,
+                description: t.features.cards.traffic.description,
               },
             ].map((feature, index) => (
               <motion.div
@@ -500,9 +480,8 @@ function AppContent() {
                 icon: (
                   <People sx={{ fontSize: "2rem", color: colors.secondary }} />
                 ),
-                title: "Sign up",
-                description:
-                  "Our first goal is to achieve a certain amount of registrated users. Our strength will come from numbers. And our resource will be ourselves.",
+                title: t.features.cards.signup.title,
+                description: t.features.cards.signup.description,
               },
               {
                 icon: (
@@ -510,17 +489,15 @@ function AppContent() {
                     sx={{ fontSize: "2rem", color: colors.secondary }}
                   />
                 ),
-                title: "Tell your Friends",
-                description:
-                  "Tell people about us. There is literally no downside to signing up, there is no mandatory tasks anyone must do. But this is your company now too.",
+                title: t.features.cards.friends.title,
+                description: t.features.cards.friends.description,
               },
               {
                 icon: (
                   <FlashOn sx={{ fontSize: "2rem", color: colors.secondary }} />
                 ),
-                title: "Generate traffic",
-                description:
-                  "One daily visit would already help. You could save us as your browser's homepage. If we have traffic, we have attention and if we have attention we will be able to decide what to do with it.",
+                title: t.features.cards.traffic.title,
+                description: t.features.cards.traffic.description,
               },
             ].map((feature, index) => (
               <motion.div
@@ -610,7 +587,7 @@ function AppContent() {
                     : colors.textColorDark,
               }}
             >
-              How it's going so far?
+              {t.stats.title}
             </Typography>
             <Typography
               variant="h6"
@@ -622,8 +599,7 @@ function AppContent() {
                 px: { xs: 2, md: 0 },
               }}
             >
-              We have launched in October 2025 and these are our current
-              numbers.
+              {t.stats.description}
             </Typography>
           </motion.div>
 
@@ -640,10 +616,10 @@ function AppContent() {
             }}
           >
             {[
-              { number: "1337", label: "Registered Users" },
-              { number: "24887", label: "Daily Visits" },
-              { number: "47.9%", label: "User contribution" },
-              { number: "0$", label: "Income generated" },
+              { number: "1337", label: t.stats.users },
+              { number: "24887", label: t.stats.visits },
+              { number: "47.9%", label: t.stats.contribution },
+              { number: "0$", label: t.stats.income },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -716,7 +692,7 @@ function AppContent() {
                 color: colors.textColorLight,
               }}
             >
-              Something important to us:
+              {t.about2.title}
             </Typography>
             <Typography
               variant="h6"
@@ -731,10 +707,7 @@ function AppContent() {
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
-              Our aim is <strong>not</strong> to design a system that ties contribution to
-              personal financial reward. We believe that true prosperity exists
-              only at the <strong>collective level</strong> — and we are committed to preserving
-              that principle. 
+              <span dangerouslySetInnerHTML={{ __html: t.about2.paragraph1 }} />
             </Typography>
             <Typography
               variant="h6"
@@ -749,11 +722,7 @@ function AppContent() {
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
-              Also, this doesn't mean there's no hierarchy at all. For now, we — the founders — act as
-              administrators of the platform, servers, and repositories, serving
-              as the company's functional leadership. In the long run, we aim to
-              establish a more distributed model — electing spokespersons by
-              area of expertise and making key decisions collectively.
+              {t.about2.paragraph2}
             </Typography>
             <Typography
               variant="h6"
@@ -769,12 +738,7 @@ function AppContent() {
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
-              Working with us is not mandatory and will never be.{" "}
-              <Box
-                component="br"
-                sx={{ display: { xs: "none", md: "block" } }}
-              />{" "}
-              But we want you to see this as your company as well.
+              {t.about2.paragraph3}
             </Typography>
           </motion.div>
         </Container>
@@ -807,7 +771,7 @@ function AppContent() {
                 color: colors.textColorLight,
               }}
             >
-              Care to join us?
+              {t.cta.title}
             </Typography>
             <Typography
               variant="h6"
@@ -820,17 +784,7 @@ function AppContent() {
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
-              Worst case this will have zero impact on your life.{" "}
-              <Box
-                component="br"
-                sx={{ display: { xs: "none", md: "block" } }}
-              />{" "}
-              Best case, we will build something unprecedented.{" "}
-              <Box
-                component="br"
-                sx={{ display: { xs: "none", md: "block" } }}
-              />{" "}
-              <strong>Our choice.</strong>
+              {t.cta.description}
             </Typography>
             <Box
               sx={{
@@ -869,7 +823,7 @@ function AppContent() {
                   },
                 }}
               >
-                Sign up
+                {t.cta.signup}
               </Button>
               <Button
                 variant="outlined"
@@ -900,7 +854,7 @@ function AppContent() {
                   },
                 }}
               >
-                About Us
+                {t.cta.about}
               </Button>
             </Box>
           </motion.div>
@@ -925,8 +879,7 @@ function AppContent() {
                 color: "#999",
               }}
             >
-              © 2024 Your Company. All rights reserved. Built with ❤️ and modern
-              web technologies.
+              {t.footer.copyright}
             </Typography>
           </motion.div>
         </Container>
@@ -938,9 +891,11 @@ function AppContent() {
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider>
-        <AppContent />
-      </ThemeProvider>
+      <LanguageProvider>
+        <ThemeProvider>
+          <AppContent />
+        </ThemeProvider>
+      </LanguageProvider>
     </ErrorBoundary>
   );
 }
