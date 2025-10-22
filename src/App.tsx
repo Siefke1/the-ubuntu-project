@@ -769,7 +769,7 @@ function AppContent() {
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
-              Working for us is not mandatory and will never be.{" "}
+              Working with us is not mandatory and will never be.{" "}
               <Box
                 component="br"
                 sx={{ display: { xs: "none", md: "block" } }}
