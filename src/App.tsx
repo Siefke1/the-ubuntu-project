@@ -485,14 +485,14 @@ function AppContent() {
                     },
                   }}
                 >
-                  <CardContent sx={{ p: { xs: 2, md: 3 } }}>
-                    <Box sx={{ mb: { xs: 1.5, md: 2 } }}>{feature.icon}</Box>
+                  <CardContent sx={{ p: { xs: 1.2, md: 3 } }}>
+                    <Box sx={{ mb: { xs: 0.8, md: 2 } }}>{feature.icon}</Box>
                     <Typography
                       variant="h5"
                       sx={{
-                        mb: { xs: 1.5, md: 2 },
+                        mb: { xs: 0.8, md: 2 },
                         fontWeight: "bold",
-                        fontSize: { xs: "1.2rem", md: "1.5rem" },
+                        fontSize: { xs: "1rem", md: "1.5rem" },
                         color:
                           currentTheme === "darknight"
                             ? colors.textColorLight
@@ -505,8 +505,8 @@ function AppContent() {
                       variant="body1"
                       sx={{
                         color: colors.secondary,
-                        fontSize: { xs: "0.9rem", md: "1rem" },
-                        lineHeight: { xs: 1.4, md: 1.6 },
+                        fontSize: { xs: "0.8rem", md: "1rem" },
+                        lineHeight: { xs: 1.2, md: 1.6 },
                       }}
                     >
                       {feature.description}
@@ -522,11 +522,11 @@ function AppContent() {
       {/* Mobile: Cards Section */}
       <Box
         sx={{
-          height: { xs: "100dvh", md: "100vh" },
+          height: { xs: "90dvh", md: "100vh" },
           display: { xs: "flex", md: "none" },
           alignItems: "center",
           scrollSnapAlign: "start",
-          py: { xs: 1, md: 0 },
+          py: { xs: 0.5, md: 0 },
         }}
       >
         <Container maxWidth="lg" sx={{ width: "100%" }}>
@@ -534,7 +534,7 @@ function AppContent() {
             sx={{
               display: "grid",
               gridTemplateColumns: "1fr",
-              gap: { xs: 1, md: 3 },
+              gap: { xs: 0.8, md: 3 },
               px: 2,
             }}
           >
@@ -587,14 +587,14 @@ function AppContent() {
                     },
                   }}
                 >
-                  <CardContent sx={{ p: { xs: 2, md: 3 } }}>
-                    <Box sx={{ mb: { xs: 1.5, md: 2 } }}>{feature.icon}</Box>
+                  <CardContent sx={{ p: { xs: 1.2, md: 3 } }}>
+                    <Box sx={{ mb: { xs: 0.8, md: 2 } }}>{feature.icon}</Box>
                     <Typography
                       variant="h5"
                       sx={{
-                        mb: { xs: 1.5, md: 2 },
+                        mb: { xs: 0.8, md: 2 },
                         fontWeight: "bold",
-                        fontSize: { xs: "1.2rem", md: "1.5rem" },
+                        fontSize: { xs: "1rem", md: "1.5rem" },
                         color:
                           currentTheme === "darknight"
                             ? colors.textColorLight
@@ -607,8 +607,8 @@ function AppContent() {
                       variant="body1"
                       sx={{
                         color: colors.secondary,
-                        fontSize: { xs: "0.9rem", md: "1rem" },
-                        lineHeight: { xs: 1.4, md: 1.6 },
+                        fontSize: { xs: "0.8rem", md: "1rem" },
+                        lineHeight: { xs: 1.2, md: 1.6 },
                       }}
                     >
                       {feature.description}
