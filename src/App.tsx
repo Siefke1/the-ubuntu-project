@@ -526,6 +526,7 @@ function AppContent() {
           display: { xs: "flex", md: "none" },
           alignItems: "center",
           scrollSnapAlign: "start",
+          py: { xs: 1, md: 0 },
         }}
       >
         <Container maxWidth="lg" sx={{ width: "100%" }}>
@@ -533,7 +534,7 @@ function AppContent() {
             sx={{
               display: "grid",
               gridTemplateColumns: "1fr",
-              gap: 3,
+              gap: { xs: 1, md: 3 },
               px: 2,
             }}
           >
