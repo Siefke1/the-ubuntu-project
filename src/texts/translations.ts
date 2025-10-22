@@ -145,7 +145,7 @@ export const translations: Record<string, Translations> = {
       paragraph1:
         "Unser Ziel ist es nicht, ein System zu entwerfen, das Leistung mit persönlicher finanzieller Belohnung verknüpft. Wir glauben, dass wahrer Wohlstand nur auf kollektiver Ebene existiert — und wir sind entschlossen, dieses Prinzip zu bewahren.",
       paragraph2:
-        "Das bedeutet allerdings nicht, dass es keinerlei Hierarchien gibt. Vorerst fungieren wir — die Gründer — als Administratoren der Plattform, Server und Code-Base und dienen als funktionale Führung des Unternehmens. Langfristig streben wir ein verteilteres Modell an — die Wahl von Sprecherinnen und Sprechern nach Fachgebiet und kollektive Entscheidungsfindung.",
+        "Das bedeutet allerdings <strong>nicht</strong>, dass es keinerlei Hierarchien gibt. Vorerst fungieren wir — die Gründer — als Administratoren der Plattform, Server und Code-Base und dienen als funktionale Führung des Unternehmens. Langfristig streben wir ein verteilteres Modell an — die Wahl von Sprecherinnen und Sprechern nach Fachgebiet und kollektive Entscheidungsfindung.",
       paragraph3:
         "Die Arbeit mit uns ist nicht verpflichtend und wird es nie sein. Aber wir möchten, dass du das auch als dein Unternehmen betrachtest.",
     },
