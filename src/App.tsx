@@ -324,83 +324,6 @@ function AppContent() {
           </motion.div>
         </Container>
       </Box>
-      {/* About Section 2 */}
-      <Box
-        sx={{
-          height: { xs: "100dvh", md: "100vh" },
-          display: "flex",
-          alignItems: "center",
-          backgroundColor:
-            currentTheme === "darknight" ? "#999" : colors.background.dark,
-          color: "white",
-          scrollSnapAlign: "start",
-        }}
-      >
-        <Container maxWidth="md">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <Typography
-              variant="h2"
-              sx={{
-                textAlign: "center",
-                mb: { xs: 2, md: 3 },
-                fontWeight: "bold",
-                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
-                color: colors.textColorLight,
-              }}
-            >
-              Something important to us:
-            </Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                textAlign: "center",
-                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
-                mb: { xs: 3, md: 4 },
-                opacity: 0.6,
-                color:
-                  currentTheme === "darknight" ? colors.textColorDark : "#ccc",
-                px: { xs: 2, md: 0 },
-                lineHeight: { xs: 1.4, md: 1.2 },
-              }}
-            >
-              Our aim is <strong>not</strong> to design a system that ties contribution to
-              personal financial reward. We believe that true prosperity exists
-              only at the <strong>collective level</strong> — and we are committed to preserving
-              that principle. For us and for you. This doesn't mean there's no
-              hierarchy at all. For now, we — the founders — act as
-              administrators of the platform, servers, and repositories, serving
-              as the company's functional leadership. In the long run, we aim to
-              establish a more distributed model — electing spokespersons by
-              area of expertise and making key decisions collectively.
-            </Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                textAlign: "center",
-                mb: { xs: 3, md: 4 },
-                opacity: 0.6,
-                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
-                fontWeight: "bold",
-                color:
-                  currentTheme === "darknight" ? colors.textColorDark : "#ccc",
-                px: { xs: 2, md: 0 },
-                lineHeight: { xs: 1.4, md: 1.2 },
-              }}
-            >
-              Working for us is not mandatory and will never be.{" "}
-              <Box
-                component="br"
-                sx={{ display: { xs: "none", md: "block" } }}
-              />{" "}
-              But we want you to see this as your company as well.
-            </Typography>
-          </motion.div>
-        </Container>
-      </Box>
 
       {/* Features Section */}
       <Box
@@ -762,6 +685,98 @@ function AppContent() {
               </motion.div>
             ))}
           </Box>
+        </Container>
+      </Box>
+
+            {/* About Section 2 */}
+            <Box
+        sx={{
+          height: { xs: "100dvh", md: "100vh" },
+          display: "flex",
+          alignItems: "center",
+          backgroundColor:
+            currentTheme === "darknight" ? "#999" : colors.background.dark,
+          color: "white",
+          scrollSnapAlign: "start",
+        }}
+      >
+        <Container maxWidth="md">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Typography
+              variant="h2"
+              sx={{
+                textAlign: "center",
+                mb: { xs: 2, md: 3 },
+                fontWeight: "bold",
+                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
+                color: colors.textColorLight,
+              }}
+            >
+              Something important to us:
+            </Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                textAlign: "center",
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                mb: { xs: 3, md: 4 },
+                opacity: 0.6,
+                color:
+                  currentTheme === "darknight" ? colors.textColorDark : "#ccc",
+                px: { xs: 2, md: 0 },
+                lineHeight: { xs: 1.4, md: 1.2 },
+              }}
+            >
+              Our aim is <strong>not</strong> to design a system that ties contribution to
+              personal financial reward. We believe that true prosperity exists
+              only at the <strong>collective level</strong> — and we are committed to preserving
+              that principle. 
+            </Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                textAlign: "center",
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                mb: { xs: 3, md: 4 },
+                opacity: 0.6,
+                color:
+                  currentTheme === "darknight" ? colors.textColorDark : "#ccc",
+                px: { xs: 2, md: 0 },
+                lineHeight: { xs: 1.4, md: 1.2 },
+              }}
+            >
+              Also, this doesn't mean there's no hierarchy at all. For now, we — the founders — act as
+              administrators of the platform, servers, and repositories, serving
+              as the company's functional leadership. In the long run, we aim to
+              establish a more distributed model — electing spokespersons by
+              area of expertise and making key decisions collectively.
+            </Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                textAlign: "center",
+                mb: { xs: 3, md: 4 },
+                opacity: 0.6,
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                fontWeight: "bold",
+                color:
+                  currentTheme === "darknight" ? colors.textColorDark : "#ccc",
+                px: { xs: 2, md: 0 },
+                lineHeight: { xs: 1.4, md: 1.2 },
+              }}
+            >
+              Working for us is not mandatory and will never be.{" "}
+              <Box
+                component="br"
+                sx={{ display: { xs: "none", md: "block" } }}
+              />{" "}
+              But we want you to see this as your company as well.
+            </Typography>
+          </motion.div>
         </Container>
       </Box>
 
