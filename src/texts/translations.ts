@@ -61,7 +61,7 @@ export const translations: Record<string, Translations> = {
       title: "Ubuntu-Project",
       description:
         "Ever wanted to own a company? Our idea is simple. We founded an online company and for now we provide this platform. By signing up, you become an equal shareholder — meaning every bit of revenue our little business generates is split equally among all of us. Simple as that. No fine print, no tricks.",
-      button: "Got curious?",
+      button: "Curious?",
     },
     about: {
       title: "Here's the plan...",
@@ -128,7 +128,7 @@ export const translations: Record<string, Translations> = {
       welcome: "Willkommen beim",
       title: "Ubuntu-Projekt",
       description:
-        "Hast Du mal davon geträumt, dein eigenes Unternehmen zu haben? Unsere Idee ist simpel. Wir haben ein Online-Unternehmen gegründet und stellen momentan diese Plattform zur Verfügung. Durch die Anmeldung bei uns, wirst du zum gleichberechtigten Aktionär — das bedeutet, jeder Cent Umsatz, den unser kleines Unternehmen generiert, wird gleichmäßig unter uns allen aufgeteilt. Keine versteckten Kosten, keine Tricks.",
+        "Unsere Idee ist simpel. Wir haben ein Online-Unternehmen gegründet und stellen momentan diese Plattform zur Verfügung. Durch die Anmeldung bei uns, wirst du zum gleichberechtigten Aktionär — das bedeutet, jeder Cent Umsatz, den unser kleines Unternehmen generiert, wird gleichmäßig unter uns allen aufgeteilt. Keine versteckten Kosten, keine Tricks.",
       button: "Neugierig geworden?",
     },
     about: {
