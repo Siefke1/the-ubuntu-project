@@ -100,8 +100,12 @@ function AppContent() {
       sx={{
         height: { xs: "100dvh", md: "100vh" },
         overflowY: "auto",
+        overflowX: "hidden",
         scrollSnapType: "y mandatory",
         background: `linear-gradient(135deg, ${colors.background.light} 0%, ${colors.background.medium} 100%)`,
+        width: "100vw",
+        maxWidth: "100vw",
+        position: "relative",
       }}
     >
       <ThemeSwitcher currentTheme={currentTheme} onThemeChange={setTheme} />
