@@ -17,7 +17,7 @@ export interface Translations {
     paragraph2: string;
     paragraph3: string;
   };
-  features: {
+  howTo: {
     title: string;
     description: string;
     cards: {
@@ -66,7 +66,7 @@ export const translations: Record<string, Translations> = {
     about: {
       title: "Here's the plan...",
       paragraph1:
-        "We believe sustainable wealth isn't about fast profits — it's about ownership. Online, that means owning our data and the spaces we build together.",
+        "We believe sustainable wealth isn't about fast profits — it's about <strong>ownership</strong> . Online, that means owning our data and the spaces we build together.",
       paragraph2:
         'The trade of data for "free" access to services might seem fair, but we imagine a space used by everyone, where we actually own the data we create — and have the freedom to decide what happens to it.',
       paragraph3:
@@ -81,10 +81,10 @@ export const translations: Record<string, Translations> = {
       paragraph3:
         "Working with us is not mandatory and will never be. But we want you to see this as your company as well.",
     },
-    features: {
+    howTo: {
       title: "What can you do?",
       description:
-        "If you are looking to help get our business running, we have a few ideas we would like to discuss with you. But for starters, we have thought of a simple 3-Step-Plan, on how to proceed from here:",
+        "If you are looking to help get our business running, we have a few ideas we would like to discuss with you. But for starters, we have thought of a simple <strong>3-Step-Plan</strong>, on how to proceed from here:",
       cards: {
         signup: {
           title: "Sign up",
@@ -134,9 +134,9 @@ export const translations: Record<string, Translations> = {
     about: {
       title: "Hier ist der Plan...",
       paragraph1:
-        "Wir glauben, dass nachhaltiger Wohlstand nicht in schnellen Gewinnen liegt — sondern in Beteiligung. Online bedeutet das, ein Besitzrecht geltend machen zu können, für unsere Daten und die Räume die wir gemeinsam aufbauen.",
+        "Wir glauben, dass nachhaltiger Wohlstand nicht in schnellen Gewinnen liegt — sondern in <strong>Beteiligung</strong>. Online bedeutet das, ein Besitzrecht geltend machen zu können, für unsere Daten und die Räume die wir gemeinsam aufbauen.",
       paragraph2:
-        'Der Deal persönliche Daten gegen "kostenlosen" Zugang zu Webservices mag fair erscheinen, aber wir stellen uns einen Raum vor, in dem wir nicht nur entscheiden können wem wir unsere Daten geben, sondern auch am damit generierten Umsatz beteiligt sein können.',
+        'Der Deal persönliche Daten gegen "kostenlosen" Zugang zu Webservices mag fair erscheinen, aber wir stellen uns einen Raum vor, in dem wir nicht nur entscheiden können wem wir unsere Daten geben, sondern auch am damit generierten Umsatz beteiligt sind.',
       paragraph3:
         "Wir haben mit der Erstellung eines Forums, eines Discord-Servers und eines GitHub-Repositories begonnen — offene Räume, die es uns ermöglichen, Ideen auszutauschen und zusammenzuarbeiten. Mach mit, wenn du möchtest. Jede Stimme hilft dabei, das nächste zu bauen.",
     },
@@ -149,10 +149,10 @@ export const translations: Record<string, Translations> = {
       paragraph3:
         "Die Arbeit mit uns ist nicht verpflichtend und wird es nie sein. Aber wir möchten, dass du das auch als dein Unternehmen betrachtest.",
     },
-    features: {
+    howTo: {
       title: "Was kannst du tun?",
       description:
-        "Falls du helfen möchtest, unser Unternehmen zum Laufen zu bringen, haben wir einige Ideen, die wir mit dir besprechen möchten. Aber für den Anfang haben wir uns einen einfachen 3-Schritte-Plan überlegt, wie wir vorgehen können:",
+        "Falls du helfen möchtest, unser Unternehmen zum Laufen zu bringen, haben wir einige Ideen, die wir mit dir besprechen möchten. Aber für den Anfang haben wir uns einen einfachen <strong>3-Schritte-Plan</strong> überlegt, wie wir vorgehen können:",
       cards: {
         signup: {
           title: "Melde Dich an",

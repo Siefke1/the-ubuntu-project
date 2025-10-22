@@ -271,7 +271,7 @@ function AppContent() {
                 px: { xs: 2, md: 0 },
               }}
             >
-              {t.about.paragraph1}
+              <span dangerouslySetInnerHTML={{ __html: t.about.paragraph1 }} />
             </Typography>
             <Typography
               variant="h6"
@@ -340,7 +340,7 @@ function AppContent() {
                     : colors.textColorDark,
               }}
             >
-              {t.features.title}
+              {t.howTo.title}
             </Typography>
             <Typography
               variant="h6"
@@ -359,7 +359,7 @@ function AppContent() {
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
-              {t.features.description}
+              <span dangerouslySetInnerHTML={{ __html: t.howTo.description }} />
             </Typography>
           </motion.div>
 
@@ -379,8 +379,8 @@ function AppContent() {
                 icon: (
                   <People sx={{ fontSize: "2rem", color: colors.secondary }} />
                 ),
-                title: t.features.cards.signup.title,
-                description: t.features.cards.signup.description,
+                title: t.howTo.cards.signup.title,
+                description: t.howTo.cards.signup.description,
               },
               {
                 icon: (
@@ -388,15 +388,15 @@ function AppContent() {
                     sx={{ fontSize: "2rem", color: colors.secondary }}
                   />
                 ),
-                title: t.features.cards.friends.title,
-                description: t.features.cards.friends.description,
+                title: t.howTo.cards.friends.title,
+                description: t.howTo.cards.friends.description,
               },
               {
                 icon: (
                   <FlashOn sx={{ fontSize: "2rem", color: colors.secondary }} />
                 ),
-                title: t.features.cards.traffic.title,
-                description: t.features.cards.traffic.description,
+                title: t.howTo.cards.traffic.title,
+                description: t.howTo.cards.traffic.description,
               },
             ].map((feature, index) => (
               <motion.div
@@ -480,8 +480,8 @@ function AppContent() {
                 icon: (
                   <People sx={{ fontSize: "2rem", color: colors.secondary }} />
                 ),
-                title: t.features.cards.signup.title,
-                description: t.features.cards.signup.description,
+                title: t.howTo.cards.signup.title,
+                description: t.howTo.cards.signup.description,
               },
               {
                 icon: (
@@ -489,15 +489,15 @@ function AppContent() {
                     sx={{ fontSize: "2rem", color: colors.secondary }}
                   />
                 ),
-                title: t.features.cards.friends.title,
-                description: t.features.cards.friends.description,
+                title: t.howTo.cards.friends.title,
+                description: t.howTo.cards.friends.description,
               },
               {
                 icon: (
                   <FlashOn sx={{ fontSize: "2rem", color: colors.secondary }} />
                 ),
-                title: t.features.cards.traffic.title,
-                description: t.features.cards.traffic.description,
+                title: t.howTo.cards.traffic.title,
+                description: t.howTo.cards.traffic.description,
               },
             ].map((feature, index) => (
               <motion.div
