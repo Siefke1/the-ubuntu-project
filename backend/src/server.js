@@ -3,6 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
+const passport = require('./middleware/auth');
 require('dotenv').config();
 
 const app = express();
@@ -28,6 +29,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Logging
 app.use(morgan('combined'));
+
+// Initialize Passport
+app.use(passport.initialize());
 
 // Routes
 app.get('/api/health', (req, res) => {

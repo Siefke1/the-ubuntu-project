@@ -52,6 +52,37 @@ export interface Translations {
   footer: {
     copyright: string;
   };
+  signup: {
+    title: string;
+    subtitle: string;
+    form: {
+      email: string;
+      username: string;
+      password: string;
+      confirmPassword: string;
+      firstName: string;
+      lastName: string;
+      submit: string;
+      loginLink: string;
+      loginText: string;
+    };
+    validation: {
+      required: string;
+      emailInvalid: string;
+      passwordMismatch: string;
+      passwordMinLength: string;
+      usernameMinLength: string;
+    };
+    success: {
+      title: string;
+      message: string;
+    };
+    error: {
+      title: string;
+      userExists: string;
+      serverError: string;
+    };
+  };
 }
 
 export const translations: Record<string, Translations> = {
@@ -122,6 +153,37 @@ export const translations: Record<string, Translations> = {
     footer: {
       copyright: "© 2025 siefke1. All rights reserved. Built with ❤️",
     },
+    signup: {
+      title: "Join the Ubuntu-Project",
+      subtitle: "Yes, we like old-school registration forms.",
+      form: {
+        email: "Email",
+        username: "Username",
+        password: "Password",
+        confirmPassword: "Confirm Password",
+        firstName: "First Name",
+        lastName: "Last Name",
+        submit: "Sign Up",
+        loginLink: "Already have an account?",
+        loginText: "Sign in here",
+      },
+      validation: {
+        required: "This field is required",
+        emailInvalid: "Please enter a valid email address",
+        passwordMismatch: "Passwords do not match",
+        passwordMinLength: "Password must be at least 6 characters",
+        usernameMinLength: "Username must be at least 3 characters",
+      },
+      success: {
+        title: "Welcome aboard!",
+        message: "Your account has been created successfully. You are now an equal shareholder in our collective venture.",
+      },
+      error: {
+        title: "Sign up failed",
+        userExists: "A user with this email or username already exists",
+        serverError: "Something went wrong. Please try again.",
+      },
+    },
   },
   de: {
     welcome: {
@@ -189,6 +251,37 @@ export const translations: Record<string, Translations> = {
     },
     footer: {
       copyright: "©2025 siefke1. All rights reserved. Built with ❤️",
+    },
+    signup: {
+      title: "Dem Ubuntu-Projekt beitreten",
+      subtitle: "Ja, wir mögen old-school Anmelde-Formulare.",
+      form: {
+        email: "E-Mail",
+        username: "Benutzername",
+        password: "Passwort",
+        confirmPassword: "Passwort bestätigen",
+        firstName: "Vorname",
+        lastName: "Nachname",
+        submit: "Anmelden",
+        loginLink: "Bereits ein Konto?",
+        loginText: "Hier anmelden",
+      },
+      validation: {
+        required: "Dieses Feld ist erforderlich",
+        emailInvalid: "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+        passwordMismatch: "Passwörter stimmen nicht überein",
+        passwordMinLength: "Passwort muss mindestens 6 Zeichen lang sein",
+        usernameMinLength: "Benutzername muss mindestens 3 Zeichen lang sein",
+      },
+      success: {
+        title: "Willkommen an Bord!",
+        message: "Ihr Konto wurde erfolgreich erstellt. Sie sind jetzt ein gleichberechtigter Aktionär in unserem kollektiven Unternehmen.",
+      },
+      error: {
+        title: "Anmeldung fehlgeschlagen",
+        userExists: "Ein Benutzer mit dieser E-Mail oder diesem Benutzernamen existiert bereits",
+        serverError: "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
+      },
     },
   },
 };

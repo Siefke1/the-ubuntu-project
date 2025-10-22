@@ -16,6 +16,7 @@ import {
   FlashOn,
   Diversity1,
 } from "@mui/icons-material";
+import { HashRouter as Router, Link, useLocation } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeProvider";
 import { LanguageProvider } from "./context/LanguageProvider";
 import { useTheme } from "./hooks/useTheme";
@@ -23,6 +24,7 @@ import { useLanguage } from "./hooks/useLanguage";
 import { getTranslations } from "./texts/translations";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import LanguageSwitcher from "./components/LanguageSwitcher";
+import SignUp from "./components/SignUp";
 
 // Error Boundary Component
 class ErrorBoundary extends React.Component<
@@ -869,6 +871,8 @@ function AppContent() {
               }}
             >
               <Button
+                component={Link}
+                to="/signup"
                 variant="contained"
                 size="large"
                 sx={{
@@ -880,6 +884,7 @@ function AppContent() {
                   py: { xs: 1.5, md: 2 },
                   width: { xs: "100%", sm: "auto" },
                   maxWidth: { xs: "300px", sm: "none" },
+                  textDecoration: "none",
                   "&:hover": {
                     backgroundColor: colors.background.medium,
                     color: colors.accent,
@@ -964,11 +969,23 @@ function App() {
     <ErrorBoundary>
       <LanguageProvider>
         <ThemeProvider>
-          <AppContent />
+          <Router>
+            <AppWithRouting />
+          </Router>
         </ThemeProvider>
       </LanguageProvider>
     </ErrorBoundary>
   );
+}
+
+function AppWithRouting() {
+  const location = useLocation();
+  
+  if (location.pathname === '/signup' || location.hash === '#/signup') {
+    return <SignUp />;
+  }
+  
+  return <AppContent />;
 }
 
 export default App;

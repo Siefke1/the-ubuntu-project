@@ -5,7 +5,7 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/the-ubuntu-project/', // Updated to match actual repository name
+  base: '/the-ubuntu-project/', // GitHub Pages base path
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
