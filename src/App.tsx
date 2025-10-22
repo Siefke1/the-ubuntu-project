@@ -67,7 +67,7 @@ function AppContent() {
   return (
     <Box
       sx={{
-        height: "100vh",
+        height: { xs: "100dvh", md: "100vh" },
         overflowY: "auto",
         scrollSnapType: "y mandatory",
         background: `linear-gradient(135deg, ${colors.background.light} 0%, ${colors.background.medium} 100%)`,
@@ -77,7 +77,7 @@ function AppContent() {
       {/* Hero Section */}
       <Box
         sx={{
-          height: "100vh",
+          height: { xs: "100dvh", md: "100vh" },
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -141,7 +141,7 @@ function AppContent() {
               mx: "auto",
               fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
               px: { xs: 2, md: 0 },
-              lineHeight: { xs: 1.4, md: 1.6 },
+              lineHeight: { xs: 1.4, md: 1 },
             }}
           >
             Ever wanted to own a company? Our idea is simple. <Box component="br" sx={{ display: { xs: "none", md: "block" } }} /> We founded
@@ -215,7 +215,7 @@ function AppContent() {
       {/* About Section */}
       <Box
         sx={{
-          height: "100vh",
+          height: { xs: "100dvh", md: "100vh" },
           display: "flex",
           alignItems: "center",
           color: "white",
@@ -308,7 +308,7 @@ function AppContent() {
       {/* About Section 2 */}
       <Box
         sx={{
-          height: "100vh",
+          height: { xs: "100dvh", md: "100vh" },
           display: "flex",
           alignItems: "center",
           backgroundColor:
@@ -382,7 +382,7 @@ function AppContent() {
       {/* Features Section */}
       <Box
         sx={{
-          height: "100vh",
+          height: { xs: "100dvh", md: "100vh" },
           display: "flex",
           alignItems: "center",
           scrollSnapAlign: "start",
@@ -534,7 +534,7 @@ function AppContent() {
       {/* Mobile: Cards Section */}
       <Box
         sx={{
-          height: "100vh",
+          height: { xs: "100dvh", md: "100vh" },
           display: { xs: "flex", md: "none" },
           alignItems: "center",
           scrollSnapAlign: "start",
@@ -638,7 +638,7 @@ function AppContent() {
       {/* Stats Section */}
       <Box
         sx={{
-          height: "100vh",
+          height: { xs: "100dvh", md: "100vh" },
           display: "flex",
           alignItems: "center",
           scrollSnapAlign: "start",
@@ -745,7 +745,7 @@ function AppContent() {
       {/* CTA Section */}
       <Box
         sx={{
-          height: "100vh",
+          height: { xs: "100dvh", md: "100vh" },
           display: "flex",
           alignItems: "center",
           background: `linear-gradient(135deg, ${colors.background.dark} 0%, ${colors.light} 100%)`,
