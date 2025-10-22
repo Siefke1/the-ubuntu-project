@@ -138,7 +138,7 @@ export const translations: Record<string, Translations> = {
       paragraph2:
         'Der Deal persönliche Daten gegen "kostenlosen" Zugang zu Webservices mag fair erscheinen, aber wir stellen uns einen Raum vor, in dem wir nicht nur entscheiden können wem wir unsere Daten geben, sondern auch am damit generierten Umsatz beteiligt sind.',
       paragraph3:
-        "Wir haben mit der Erstellung eines Forums, eines Discord-Servers und eines GitHub-Repositories begonnen — offene Räume, die es uns ermöglichen, Ideen auszutauschen und zusammenzuarbeiten. Mach mit, wenn du möchtest. Jede Stimme hilft dabei, das nächste zu bauen.",
+        "Wir haben mit der Erstellung eines Forums, eines Discord-Servers und eines GitHub-Repositories begonnen — offene Räume, die es uns ermöglichen, Ideen auszutauschen und zusammenzuarbeiten. Melde Dich dort wenn Du möchtest. Jede Idee hilft.",
     },
     about2: {
       title: "Etwas das uns wichtig ist:",
