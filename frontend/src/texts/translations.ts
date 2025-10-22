@@ -66,7 +66,7 @@ export const translations: Record<string, Translations> = {
     about: {
       title: "Here's the plan...",
       paragraph1:
-        "We believe sustainable wealth isn't about fast profits — it's about <strong>ownership</strong> . Online, that means owning our data and the spaces we build together.",
+        "We believe sustainable wealth isn't about fast profits — it's about <strong>ownership</strong>. Online, that means owning our data and the spaces we build together.",
       paragraph2:
         'The trade of data for "free" access to services might seem fair, but we imagine a space where we not only get to decide what happens to our data, but also profit from any revenue generated from it. All of us.',
       paragraph3:

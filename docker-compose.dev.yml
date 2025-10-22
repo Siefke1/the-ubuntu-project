@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: ubuntu-project-db-dev
+    environment:
+      POSTGRES_DB: ubuntu_project_dev
+      POSTGRES_USER: ubuntu_user
+      POSTGRES_PASSWORD: ubuntu_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ubuntu_user -d ubuntu_project_dev"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend API (Development with hot reload)
+  backend:
+    image: node:20-alpine
+    container_name: ubuntu-project-backend-dev
+    working_dir: /app
+    environment:
+      NODE_ENV: development
+      PORT: 3001
+      DATABASE_URL: postgresql://ubuntu_user:ubuntu_password@postgres:5432/ubuntu_project_dev
+      FRONTEND_URL: http://localhost:5173
+      JWT_SECRET: your-super-secret-jwt-key-for-development
+    ports:
+      - "3001:3001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    command: sh -c "npm install && npm run dev"
+
+  # Frontend (Development with hot reload)
+  frontend:
+    image: node:20-alpine
+    container_name: ubuntu-project-frontend-dev
+    working_dir: /app
+    environment:
+      VITE_API_URL: http://localhost:3001
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    stdin_open: true
+    tty: true
+
+volumes:
+  postgres_dev_data:
