@@ -87,17 +87,17 @@ export const translations: Record<string, Translations> = {
         "If you are looking to help get our business running, we have a few ideas we would like to discuss with you. But for starters, we have thought of a simple <strong>3-Step-Plan</strong>, on how to proceed from here:",
       cards: {
         signup: {
-          title: "Sign up",
+          title: "1. Sign up",
           description:
             "Our first goal is to achieve a certain amount of registrated users. Our strength will come from numbers. And our resource will be ourselves.",
         },
         friends: {
-          title: "Tell your Friends",
+          title: "2. Tell your Friends",
           description:
             "Tell people about us. There is literally no downside to signing up, there is no mandatory tasks anyone must do. But this is your company now too.",
         },
         traffic: {
-          title: "Generate traffic",
+          title: "3. Generate traffic",
           description:
             "One daily visit would already help. You could save us as your browser's homepage. If we have traffic, we have attention and if we have attention we will be able to decide what to do with it.",
         },
@@ -155,17 +155,17 @@ export const translations: Record<string, Translations> = {
         "Falls du helfen möchtest, unser Unternehmen zum Laufen zu bringen, haben wir einige Ideen, die wir mit dir besprechen möchten. Aber für den Anfang haben wir uns einen einfachen <strong>3-Schritte-Plan</strong> überlegt, wie wir vorgehen können:",
       cards: {
         signup: {
-          title: "Melde Dich an",
+          title: "1. Melde Dich an",
           description:
             "Unser erstes Ziel ist es, eine bestimmte Anzahl registrierter Benutzer zu erreichen. Je mehr wir sind, desto besser, denn unsere Ressource werden wir selbst sein.",
         },
         friends: {
-          title: "Erzähle es weiter",
+          title: "2. Erzähle es weiter",
           description:
             "Erzähl den Leuten von uns. Schlage Freunden vor sich anzumelden. Schließlich ist es jetzt auch dein Unternehmen.",
         },
         traffic: {
-          title: "Traffic generieren",
+          title: "3. Traffic generieren",
           description:
             "Ein täglicher Besuch würde bereits helfen. Du könntest uns als deine Browser-Startseite speichern. Wenn wir Traffic haben, haben wir Aufmerksamkeit und wenn wir Aufmerksamkeit haben, können wir entscheiden, was wir damit machen.",
         },
