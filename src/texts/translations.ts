@@ -68,7 +68,7 @@ export const translations: Record<string, Translations> = {
       paragraph1:
         "We believe sustainable wealth isn't about fast profits — it's about <strong>ownership</strong> . Online, that means owning our data and the spaces we build together.",
       paragraph2:
-        'The trade of data for "free" access to services might seem fair, but we imagine a space used by everyone, where we actually own the data we create — and have the freedom to decide what happens to it.',
+        'The trade of data for "free" access to services might seem fair, but we imagine a space where we not only get to decide what happens to our data, but also profit from any revenue generated from it. All of us.',
       paragraph3:
         "We've started by creating a Forum, a Discord Server, and a GitHub Repository — open spaces that allow us to exchange ideas and collaborate. Join if you wish. Every voice helps build what comes next.",
     },
@@ -113,9 +113,9 @@ export const translations: Record<string, Translations> = {
       income: "Income generated",
     },
     cta: {
-      title: "Care to join us?",
+      title: "Care to join?",
       description:
-        "Worst case this will have zero impact on your life. Best case, we will build something unprecedented. Our choice.",
+        "Worst case this will have zero impact on your life. Best case, we will build something unprecedented. <strong>Our choice.</strong>",
       signup: "Sign up",
       about: "About Us",
     },
@@ -143,9 +143,9 @@ export const translations: Record<string, Translations> = {
     about2: {
       title: "Etwas das uns wichtig ist:",
       paragraph1:
-        "Unser Ziel ist es nicht, ein System zu entwerfen, das Leistung mit persönlicher finanzieller Belohnung verknüpft. Wir glauben, dass wahrer Wohlstand nur auf kollektiver Ebene existiert — und wir sind entschlossen, dieses Prinzip zu bewahren.",
+        "Es ist <strong>nicht</strong> unsere Absicht, ein System zu entwerfen, das Leistung mit persönlicher finanzieller Belohnung verknüpft. Wir glauben, dass wahrer Wohlstand nur auf kollektiver Ebene existiert — und wir sind entschlossen, dieses Prinzip zu bewahren.",
       paragraph2:
-        "Das bedeutet allerdings <strong>nicht</strong>, dass es keinerlei Hierarchien gibt. Vorerst fungieren wir — die Gründer — als Administratoren der Plattform, Server und Code-Base und dienen als funktionale Führung des Unternehmens. Langfristig streben wir ein verteilteres Modell an — die Wahl von Sprecherinnen und Sprechern nach Fachgebiet und kollektive Entscheidungsfindung.",
+        "Das bedeutet allerdings nicht, dass es keinerlei Hierarchien gibt. Vorerst fungieren wir — die Gründer — als Administratoren der Plattform, Server und Code-Base und dienen als funktionale Führung des Unternehmens. Langfristig streben wir ein verteilteres Modell an — die Wahl von Sprecherinnen und Sprechern nach Fachgebiet und kollektive Entscheidungsfindung.",
       paragraph3:
         "Die Arbeit mit uns ist nicht verpflichtend und wird es nie sein. Aber wir möchten, dass du das auch als dein Unternehmen betrachtest.",
     },
@@ -183,12 +183,12 @@ export const translations: Record<string, Translations> = {
     cta: {
       title: "Lust mitzumachen?",
       description:
-        "Im schlimmsten Fall wird es keinerlei Auswirkungen auf dein Leben haben. Im besten Fall werden wir etwas Beispielloses aufbauen. Unsere Wahl.",
+        "Im schlimmsten Fall wird es keinerlei Auswirkungen auf dein Leben haben. Im besten Fall werden wir etwas Beispielloses aufbauen. <strong>Unsere Wahl.</strong>",
       signup: "Anmelden",
       about: "Über uns",
     },
     footer: {
-      copyright: "© 2025 siefke1. Alle Rechte vorbehalten. Gebaut mit ❤️",
+      copyright: "©2025 siefke1. All rights reserved. Built with ❤️",
     },
   },
 };

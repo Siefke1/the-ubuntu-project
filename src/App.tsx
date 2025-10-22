@@ -784,7 +784,7 @@ function AppContent() {
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
-              {t.cta.description}
+              <span dangerouslySetInnerHTML={{ __html: t.cta.description }} />
             </Typography>
             <Box
               sx={{
