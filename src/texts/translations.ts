@@ -61,7 +61,7 @@ export const translations: Record<string, Translations> = {
       title: "Ubuntu-Project",
       description:
         "Ever wanted to own a company? Our idea is simple. We founded an online company and for now we provide this platform. By signing up, you become an equal shareholder — meaning every bit of revenue our little business generates is split equally among all of us. Simple as that. No fine print, no tricks.",
-      button: "Got your curiosity?",
+      button: "Got curious?",
     },
     about: {
       title: "Here's the plan...",
@@ -128,7 +128,7 @@ export const translations: Record<string, Translations> = {
       welcome: "Willkommen beim",
       title: "Ubuntu-Projekt",
       description:
-        "Hast du schon mal davon geträumt, ein Unternehmen zu besitzen? Unsere Idee ist simpel. Wir haben ein Online-Unternehmen gegründet und stellen momentan diese Plattform zur Verfügung. Durch die Anmeldung bei uns, wirst du zum gleichberechtigten Aktionär — das bedeutet, jeder Cent Umsatz, den unser kleines Unternehmen generiert, wird gleichmäßig unter uns allen aufgeteilt. Keine versteckten Kosten, keine Tricks.",
+        "Hast Du mal davon geträumt, dein eigenes Unternehmen zu haben? Unsere Idee ist simpel. Wir haben ein Online-Unternehmen gegründet und stellen momentan diese Plattform zur Verfügung. Durch die Anmeldung bei uns, wirst du zum gleichberechtigten Aktionär — das bedeutet, jeder Cent Umsatz, den unser kleines Unternehmen generiert, wird gleichmäßig unter uns allen aufgeteilt. Keine versteckten Kosten, keine Tricks.",
       button: "Neugierig geworden?",
     },
     about: {
@@ -141,11 +141,11 @@ export const translations: Record<string, Translations> = {
         "Wir haben mit der Erstellung eines Forums, eines Discord-Servers und eines GitHub-Repositories begonnen — offene Räume, die es uns ermöglichen, Ideen auszutauschen und zusammenzuarbeiten. Mach mit, wenn du möchtest. Jede Stimme hilft dabei, das nächste zu bauen.",
     },
     about2: {
-      title: "Etwas Wichtiges für uns:",
+      title: "Etwas das uns wichtig ist:",
       paragraph1:
         "Unser Ziel ist es nicht, ein System zu entwerfen, das Leistung mit persönlicher finanzieller Belohnung verknüpft. Wir glauben, dass wahrer Wohlstand nur auf kollektiver Ebene existiert — und wir sind entschlossen, dieses Prinzip zu bewahren.",
       paragraph2:
-        "Das bedeutet auch nicht, dass es keinerlei Hierarchien gibt. Vorerst fungieren wir — die Gründer — als Administratoren der Plattform, Server und Code-Base und dienen als funktionale Führung des Unternehmens. Langfristig streben wir ein verteilteres Modell an — die Wahl von Sprecherinnen und Sprechern nach Fachgebiet und kollektive Entscheidungsfindung.",
+        "Das bedeutet allerdings nicht, dass es keinerlei Hierarchien gibt. Vorerst fungieren wir — die Gründer — als Administratoren der Plattform, Server und Code-Base und dienen als funktionale Führung des Unternehmens. Langfristig streben wir ein verteilteres Modell an — die Wahl von Sprecherinnen und Sprechern nach Fachgebiet und kollektive Entscheidungsfindung.",
       paragraph3:
         "Die Arbeit mit uns ist nicht verpflichtend und wird es nie sein. Aber wir möchten, dass du das auch als dein Unternehmen betrachtest.",
     },
