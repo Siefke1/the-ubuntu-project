@@ -144,7 +144,7 @@ function AppContent() {
               lineHeight: { xs: 1.4, md: 1.6 },
             }}
           >
-            Ever wanted to own a company? Our idea is simple. <br /> We founded
+            Ever wanted to own a company? Our idea is simple. <Box component="br" sx={{ display: { xs: "none", md: "block" } }} /> We founded
             an online company and for now we provide this platform. If you sign
             up on our platform, you become an owner of the company. And whatever
             income our shared little business generates, everyone will get their
@@ -259,7 +259,7 @@ function AppContent() {
               }}
             >
               We believe that sustainable wealth isn't in fast profits — it's in
-              ownership. <br /> Online, that means owning our data and the
+              ownership. <Box component="br" sx={{ display: { xs: "none", md: "block" } }} /> Online, that means owning our data and the
               spaces we build together.
             </Typography>
             <Typography
@@ -278,8 +278,8 @@ function AppContent() {
               }}
             >
               The trade of data for "free" access to services might seem fair,
-              <br /> but what if there was a space where we own the data we
-              create <br /> and could therefore decide what to do with it for
+              <Box component="br" sx={{ display: { xs: "none", md: "block" } }} /> but what if there was a space where we own the data we
+              create <Box component="br" sx={{ display: { xs: "none", md: "block" } }} /> and could therefore decide what to do with it for
               ourselves?
             </Typography>
             <Typography
@@ -372,7 +372,7 @@ function AppContent() {
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
-              Working for us is not mandatory and will never be. <br /> But we
+              Working for us is not mandatory and will never be. <Box component="br" sx={{ display: { xs: "none", md: "block" } }} /> But we
               want you to see this as your company as well.
             </Typography>
           </motion.div>
@@ -782,8 +782,8 @@ function AppContent() {
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
-              Worst case this will have zero impact on your life. <br /> Best
-              case, we will build something unprecedented. <br /> Our choice.
+              Worst case this will have zero impact on your life. <Box component="br" sx={{ display: { xs: "none", md: "block" } }} /> Best
+              case, we will build something unprecedented. <Box component="br" sx={{ display: { xs: "none", md: "block" } }} /> Our choice.
             </Typography>
             <Box
               sx={{
