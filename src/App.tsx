@@ -147,10 +147,9 @@ function AppContent() {
             Ever wanted to own a company? Our idea is simple.{" "}
             <Box component="br" sx={{ display: { xs: "none", md: "block" } }} />{" "}
             We founded an online company and for now we provide this platform.
-            If you sign up on our platform, you become an equal shareholder in
-            our company, meaning that whatever revenue our shared little business
-            generates, everyone will get their equal share. You, us and everyone
-            else. No smallprint, no catches.
+            By signing up, you become an equal shareholder — meaning every bit
+            of revenue our little business generates is split equally among all
+            of us. Simple as that. No fine print, no tricks.
           </Typography>
         </motion.div>
 
