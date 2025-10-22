@@ -95,10 +95,10 @@ function AppContent() {
           <Typography
             variant="h1"
             sx={{
-              fontSize: { xs: "1.5rem", md: "3rem" },
+              fontSize: { xs: "1.2rem", sm: "1.8rem", md: "3rem" },
               fontWeight: "bold",
               textAlign: "center",
-              mb: 3,
+              mb: { xs: 1, md: 3 },
               opacity: 0.6,
               color:
                 currentTheme === "darknight"
@@ -112,10 +112,10 @@ function AppContent() {
           <Typography
             variant="h1"
             sx={{
-              fontSize: { xs: "3rem", md: "6rem" },
+              fontSize: { xs: "2.5rem", sm: "3.5rem", md: "6rem" },
               fontWeight: "bold",
               textAlign: "center",
-              mb: 3,
+              mb: { xs: 2, md: 3 },
               color:
                 currentTheme === "darknight"
                   ? colors.textColorLight
@@ -135,10 +135,13 @@ function AppContent() {
             variant="h5"
             sx={{
               textAlign: "center",
-              mb: 4,
+              mb: { xs: 3, md: 4 },
               color: colors.secondary,
-              maxWidth: "700px",
+              maxWidth: { xs: "90%", md: "700px" },
               mx: "auto",
+              fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+              px: { xs: 2, md: 0 },
+              lineHeight: { xs: 1.4, md: 1.6 },
             }}
           >
             Ever wanted to own a company? Our idea is simple. <br /> We founded
@@ -159,9 +162,9 @@ function AppContent() {
             variant="contained"
             size="large"
             sx={{
-              fontSize: "1.2rem",
-              px: 4,
-              py: 2,
+              fontSize: { xs: "1rem", md: "1.2rem" },
+              px: { xs: 3, md: 4 },
+              py: { xs: 1.5, md: 2 },
               background: `linear-gradient(45deg, ${colors.light} 30%, ${colors.background.medium} 90%)`,
               color:
                 currentTheme === "darknight"
@@ -229,8 +232,9 @@ function AppContent() {
               variant="h2"
               sx={{
                 textAlign: "center",
-                mb: 3,
+                mb: { xs: 2, md: 3 },
                 fontWeight: "bold",
+                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
                 color:
                   currentTheme === "darknight"
                     ? colors.textColorLight
@@ -242,36 +246,38 @@ function AppContent() {
             <Typography
               variant="h6"
               sx={{
-                fontSize: "1.5rem",
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
                 textAlign: "center",
-                lineHeight: 1,
-                mb: 4,
+                lineHeight: { xs: 1.4, md: 1 },
+                mb: { xs: 3, md: 4 },
                 color:
                   currentTheme === "darknight"
                     ? colors.textColorLight
                     : colors.textColorDark,
                 opacity: 0.6,
+                px: { xs: 2, md: 0 },
               }}
             >
-              We believe that sustainable wealth isn’t in fast profits — it’s in
+              We believe that sustainable wealth isn't in fast profits — it's in
               ownership. <br /> Online, that means owning our data and the
               spaces we build together.
             </Typography>
             <Typography
               variant="h6"
               sx={{
-                fontSize: "1.5rem",
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
                 textAlign: "center",
-                lineHeight: 1,
-                mb: 4,
+                lineHeight: { xs: 1.4, md: 1 },
+                mb: { xs: 3, md: 4 },
                 color:
                   currentTheme === "darknight"
                     ? colors.textColorLight
                     : colors.textColorDark,
                 opacity: 0.6,
+                px: { xs: 2, md: 0 },
               }}
             >
-              The trade of data for “free” access to services might seem fair,
+              The trade of data for "free" access to services might seem fair,
               <br /> but what if there was a space where we own the data we
               create <br /> and could therefore decide what to do with it for
               ourselves?
@@ -279,18 +285,19 @@ function AppContent() {
             <Typography
               variant="h6"
               sx={{
-                fontSize: "1.5rem",
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
                 textAlign: "center",
-                lineHeight: 1,
-                mb: 4,
+                lineHeight: { xs: 1.4, md: 1 },
+                mb: { xs: 3, md: 4 },
                 color:
                   currentTheme === "darknight"
                     ? colors.textColorLight
                     : colors.textColorDark,
                 opacity: 0.6,
+                px: { xs: 2, md: 0 },
               }}
             >
-              We’ve started by creating a forum, a Discord Server, and a GitHub
+              We've started by creating a forum, a Discord Server, and a GitHub
               Repository — open spaces that allow us to exchange ideas and
               collaborate. Join if you wish. Every voice helps build what comes
               next.
@@ -320,8 +327,9 @@ function AppContent() {
               variant="h2"
               sx={{
                 textAlign: "center",
-                mb: 3,
+                mb: { xs: 2, md: 3 },
                 fontWeight: "bold",
+                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
                 color: colors.textColorLight,
               }}
             >
@@ -331,20 +339,22 @@ function AppContent() {
               variant="h6"
               sx={{
                 textAlign: "center",
-                fontSize: "1.5rem",
-                mb: 4,
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                mb: { xs: 3, md: 4 },
                 opacity: 0.6,
                 color:
                   currentTheme === "darknight" ? colors.textColorDark : "#ccc",
+                px: { xs: 2, md: 0 },
+                lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
               Our aim is not to design a system that ties contribution to
               personal financial reward. We believe that true prosperity exists
               only at the collective level — and we are committed to preserving
-              that principle. For us and for you. This doesn’t mean there’s no
+              that principle. For us and for you. This doesn't mean there's no
               hierarchy at all. For now, we — the founders — act as
               administrators of the platform, servers, and repositories, serving
-              as the company’s functional leadership. In the long run, we aim to
+              as the company's functional leadership. In the long run, we aim to
               establish a more distributed model — electing spokespersons by
               area of expertise and making key decisions collectively.
             </Typography>
@@ -352,12 +362,14 @@ function AppContent() {
               variant="h6"
               sx={{
                 textAlign: "center",
-                mb: 4,
+                mb: { xs: 3, md: 4 },
                 opacity: 0.6,
-                fontSize: "1.5rem",
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
                 fontWeight: "bold",
                 color:
                   currentTheme === "darknight" ? colors.textColorDark : "#ccc",
+                px: { xs: 2, md: 0 },
+                lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
               Working for us is not mandatory and will never be. <br /> But we
@@ -387,8 +399,9 @@ function AppContent() {
               variant="h2"
               sx={{
                 textAlign: "center",
-                mb: 2,
+                mb: { xs: 2, md: 2 },
                 fontWeight: "bold",
+                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
                 color:
                   currentTheme === "darknight"
                     ? colors.textColorLight
@@ -401,14 +414,17 @@ function AppContent() {
               variant="h6"
               sx={{
                 textAlign: "center",
-                mb: 8,
+                mb: { xs: 4, md: 8 },
                 color:
                   currentTheme === "darknight"
                     ? colors.textColorLight
                     : colors.textColorDark,
                 opacity: 0.6,
-                maxWidth: "800px",
+                maxWidth: { xs: "90%", md: "800px" },
                 mx: "auto",
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                px: { xs: 2, md: 0 },
+                lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
               So in case you do want to help to get our business started, we
@@ -418,11 +434,11 @@ function AppContent() {
             </Typography>
           </motion.div>
 
+          {/* Desktop: Show cards in same section */}
           <Box
             sx={{
-              display: "grid",
+              display: { xs: "none", md: "grid" },
               gridTemplateColumns: {
-                xs: "1fr",
                 md: "repeat(2, 1fr)",
                 lg: "repeat(3, 1fr)",
               },
@@ -481,13 +497,14 @@ function AppContent() {
                     },
                   }}
                 >
-                  <CardContent sx={{ p: 3 }}>
-                    <Box sx={{ mb: 2 }}>{feature.icon}</Box>
+                  <CardContent sx={{ p: { xs: 2, md: 3 } }}>
+                    <Box sx={{ mb: { xs: 1.5, md: 2 } }}>{feature.icon}</Box>
                     <Typography
                       variant="h5"
                       sx={{
-                        mb: 2,
+                        mb: { xs: 1.5, md: 2 },
                         fontWeight: "bold",
+                        fontSize: { xs: "1.2rem", md: "1.5rem" },
                         color:
                           currentTheme === "darknight"
                             ? colors.textColorLight
@@ -498,7 +515,115 @@ function AppContent() {
                     </Typography>
                     <Typography
                       variant="body1"
-                      sx={{ color: colors.secondary }}
+                      sx={{ 
+                        color: colors.secondary,
+                        fontSize: { xs: "0.9rem", md: "1rem" },
+                        lineHeight: { xs: 1.4, md: 1.6 },
+                      }}
+                    >
+                      {feature.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </Box>
+        </Container>
+      </Box>
+
+      {/* Mobile: Cards Section */}
+      <Box
+        sx={{
+          height: "100vh",
+          display: { xs: "flex", md: "none" },
+          alignItems: "center",
+          scrollSnapAlign: "start",
+        }}
+      >
+        <Container maxWidth="lg" sx={{ width: "100%" }}>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: 3,
+              px: 2,
+            }}
+          >
+            {[
+              {
+                icon: (
+                  <People sx={{ fontSize: "2rem", color: colors.secondary }} />
+                ),
+                title: "Sign up",
+                description:
+                  "Our first goal is to achieve a certain amount of registrated users. Our strength will come from numbers. And our resource will be ourselves.",
+              },
+              {
+                icon: (
+                  <Diversity1
+                    sx={{ fontSize: "2rem", color: colors.secondary }}
+                  />
+                ),
+                title: "Tell your Friends",
+                description:
+                  "Tell people about us. There is literally no downside to signing up, there is no mandatory tasks anyone must do. But this is your company now too.",
+              },
+              {
+                icon: (
+                  <FlashOn sx={{ fontSize: "2rem", color: colors.secondary }} />
+                ),
+                title: "Generate traffic",
+                description:
+                  "One daily visit would already help. You could save us as your browser's homepage. If we have traffic, we have attention and if we have attention we will be able to decide what to do with it.",
+              },
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ margin: "-50px" }}
+              >
+                <Card
+                  sx={{
+                    height: "100%",
+                    backgroundColor: colors.background.light,
+                    border: `1px solid ${colors.light}`,
+                    transition:
+                      "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out",
+                    "&:hover": {
+                      transform: "translateY(-8px)",
+                      boxShadow:
+                        currentTheme === "darknight"
+                          ? `0 8px 25px ${colors.accent}40`
+                          : `0 8px 25px ${colors.accent}20`,
+                      borderColor: colors.accent,
+                    },
+                  }}
+                >
+                  <CardContent sx={{ p: { xs: 2, md: 3 } }}>
+                    <Box sx={{ mb: { xs: 1.5, md: 2 } }}>{feature.icon}</Box>
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        mb: { xs: 1.5, md: 2 },
+                        fontWeight: "bold",
+                        fontSize: { xs: "1.2rem", md: "1.5rem" },
+                        color:
+                          currentTheme === "darknight"
+                            ? colors.textColorLight
+                            : colors.textColorDark,
+                      }}
+                    >
+                      {feature.title}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{ 
+                        color: colors.secondary,
+                        fontSize: { xs: "0.9rem", md: "1rem" },
+                        lineHeight: { xs: 1.4, md: 1.6 },
+                      }}
                     >
                       {feature.description}
                     </Typography>
@@ -530,8 +655,9 @@ function AppContent() {
               variant="h2"
               sx={{
                 textAlign: "center",
-                mb: 2,
+                mb: { xs: 2, md: 2 },
                 fontWeight: "bold",
+                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
                 color:
                   currentTheme === "darknight"
                     ? colors.textColorLight
@@ -544,8 +670,10 @@ function AppContent() {
               variant="h6"
               sx={{
                 textAlign: "center",
-                mb: 8,
+                mb: { xs: 4, md: 8 },
                 color: "#666",
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                px: { xs: 2, md: 0 },
               }}
             >
               We have launched in October 2025 and these are our current
@@ -561,7 +689,8 @@ function AppContent() {
                 sm: "repeat(2, 1fr)",
                 md: "repeat(4, 1fr)",
               },
-              gap: 4,
+              gap: { xs: 3, md: 4 },
+              px: { xs: 2, md: 0 },
             }}
           >
             {[
@@ -580,7 +709,7 @@ function AppContent() {
                 <Paper
                   elevation={3}
                   sx={{
-                    p: 3,
+                    p: { xs: 2, md: 3 },
                     textAlign: "center",
                     background: `linear-gradient(135deg, ${colors.background.dark} 0%, ${colors.light} 100%)`,
                     color: "white",
@@ -590,15 +719,19 @@ function AppContent() {
                     variant="h3"
                     sx={{
                       fontWeight: "bold",
-                      mb: 1,
+                      mb: { xs: 0.5, md: 1 },
                       color: colors.textColorLight,
+                      fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
                     }}
                   >
                     {stat.number}
                   </Typography>
                   <Typography
                     variant="h6"
-                    sx={{ color: colors.textColorLight }}
+                    sx={{ 
+                      color: colors.textColorLight,
+                      fontSize: { xs: "0.9rem", md: "1.2rem" },
+                    }}
                   >
                     {stat.label}
                   </Typography>
@@ -630,8 +763,9 @@ function AppContent() {
               variant="h2"
               sx={{
                 textAlign: "center",
-                mb: 3,
+                mb: { xs: 2, md: 3 },
                 fontWeight: "bold",
+                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
                 color: colors.textColorLight,
               }}
             >
@@ -641,8 +775,11 @@ function AppContent() {
               variant="h6"
               sx={{
                 textAlign: "center",
-                mb: 4,
+                mb: { xs: 3, md: 4 },
                 opacity: 0.9,
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                px: { xs: 2, md: 0 },
+                lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
               Worst case this will have zero impact on your life. <br /> Best
@@ -651,9 +788,12 @@ function AppContent() {
             <Box
               sx={{
                 display: "flex",
-                gap: 2,
+                gap: { xs: 1.5, md: 2 },
                 justifyContent: "center",
                 flexWrap: "wrap",
+                flexDirection: { xs: "column", sm: "row" },
+                alignItems: "center",
+                px: { xs: 2, md: 0 },
               }}
             >
               <Button
@@ -663,6 +803,11 @@ function AppContent() {
                   backgroundColor: colors.background.dark,
                   color: colors.textColorLight,
                   border: `1px solid ${colors.accent}`,
+                  fontSize: { xs: "1rem", md: "1.2rem" },
+                  px: { xs: 3, md: 4 },
+                  py: { xs: 1.5, md: 2 },
+                  width: { xs: "100%", sm: "auto" },
+                  maxWidth: { xs: "300px", sm: "none" },
                   "&:hover": {
                     backgroundColor: colors.background.medium,
                     color: colors.accent,
@@ -689,6 +834,11 @@ function AppContent() {
                       ? colors.textColorLight
                       : colors.textColorDark,
                   backgroundColor: "transparent",
+                  fontSize: { xs: "1rem", md: "1.2rem" },
+                  px: { xs: 3, md: 4 },
+                  py: { xs: 1.5, md: 2 },
+                  width: { xs: "100%", sm: "auto" },
+                  maxWidth: { xs: "300px", sm: "none" },
                   "&:hover": {
                     backgroundColor: colors.background.dark,
                     color: colors.accent,
