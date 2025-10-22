@@ -161,6 +161,12 @@ function AppContent() {
           <Button
             variant="contained"
             size="large"
+            onClick={() => {
+              const aboutSection = document.querySelector('[data-section="about"]');
+              if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
             sx={{
               fontSize: { xs: "1rem", md: "1.2rem" },
               px: { xs: 3, md: 4 },
@@ -214,6 +220,7 @@ function AppContent() {
 
       {/* About Section */}
       <Box
+        data-section="about"
         sx={{
           height: { xs: "100dvh", md: "100vh" },
           display: "flex",
