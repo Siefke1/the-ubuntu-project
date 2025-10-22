@@ -268,7 +268,7 @@ function AppContent() {
                 px: { xs: 2, md: 0 },
               }}
             >
-              We believe that sustainable wealth isn't in fast profits — it's in
+              We believe sustainable wealth isn't about fast profits — it's about
               {" "}<strong>ownership</strong>.{" "}
               <Box
                 component="br"
