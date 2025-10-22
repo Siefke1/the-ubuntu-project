@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Button,
   Card,
@@ -70,6 +70,26 @@ function AppContent() {
   const { language } = useLanguage();
   const t = getTranslations(language);
 
+  // Scroll-based light animation
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollContainer = document.querySelector('[data-scroll-container]');
+      if (!scrollContainer) return;
+      
+      const scrollTop = scrollContainer.scrollTop;
+      const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+      const scrollProgress = Math.min(scrollTop / scrollHeight, 1);
+      
+      document.documentElement.style.setProperty('--scroll-progress', scrollProgress.toString());
+    };
+
+    const scrollContainer = document.querySelector('[data-scroll-container]');
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll);
+      return () => scrollContainer.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
   return (
     <Box
       data-scroll-container
@@ -91,8 +111,20 @@ function AppContent() {
           alignItems: "center",
           justifyContent: "center",
           position: "relative",
-          overflow: "hidden",
+          overflow: "visible",
           scrollSnapAlign: "start",
+          "&::before": {
+            content: '""',
+            position: "fixed",
+            top: "calc(-250px + var(--scroll-progress, 0) * 100vh)",
+            right: "calc(-250px + var(--scroll-progress, 0) * -100vw)",
+            width: "1400px",
+            height: "1400px",
+            background: `radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)`,
+            pointerEvents: "none",
+            zIndex: 1,
+            transition: "all 0.3s ease-out",
+          },
         }}
       >
         <motion.div
@@ -233,6 +265,17 @@ function AppContent() {
           alignItems: "center",
           color: "white",
           scrollSnapAlign: "start",
+          position: "relative",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "3000px",
+            height: "3000px",
+            background: `radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)`,
+            pointerEvents: "none",
+          },
         }}
       >
         <Container maxWidth="md">
@@ -318,6 +361,17 @@ function AppContent() {
           display: "flex",
           alignItems: "center",
           scrollSnapAlign: "start",
+          // position: "relative",
+          // "&::before": {
+          //   content: '""',
+          //   position: "absolute",
+          //   top: 0,
+          //   right: 0,
+          //   width: "300px",
+          //   height: "300px",
+          //   background: `radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%)`,
+          //   pointerEvents: "none",
+          // },
         }}
       >
         <Container maxWidth="lg" sx={{ width: "100%" }}>
