@@ -35,24 +35,24 @@ class ErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error('React Error Boundary caught an error:', error, errorInfo);
+    console.error("React Error Boundary caught an error:", error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ 
-          padding: '20px', 
-          color: 'red', 
-          fontFamily: 'Arial, sans-serif',
-          textAlign: 'center',
-          marginTop: '50px'
-        }}>
+        <div
+          style={{
+            padding: "20px",
+            color: "red",
+            fontFamily: "Arial, sans-serif",
+            textAlign: "center",
+            marginTop: "50px",
+          }}
+        >
           <h2>Something went wrong</h2>
-          <p>{this.state.error?.message || 'Unknown error'}</p>
-          <button onClick={() => window.location.reload()}>
-            Reload Page
-          </button>
+          <p>{this.state.error?.message || "Unknown error"}</p>
+          <button onClick={() => window.location.reload()}>Reload Page</button>
         </div>
       );
     }
@@ -144,11 +144,13 @@ function AppContent() {
               lineHeight: { xs: 1.4, md: 1 },
             }}
           >
-            Ever wanted to own a company? Our idea is simple. <Box component="br" sx={{ display: { xs: "none", md: "block" } }} /> We founded
-            an online company and for now we provide this platform. If you sign
-            up on our platform, you become an owner of the company. And whatever
-            income our shared little business generates, everyone will get their
-            equal share. You, us and everyone else. No smallprint, no catches.
+            Ever wanted to own a company? Our idea is simple.{" "}
+            <Box component="br" sx={{ display: { xs: "none", md: "block" } }} />{" "}
+            We founded an online company and for now we provide this platform.
+            If you sign up on our platform, you become an owner of the company.
+            And whatever income our shared little business generates, everyone
+            will get their equal share. You, us and everyone else. No
+            smallprint, no catches.
           </Typography>
         </motion.div>
 
@@ -162,9 +164,11 @@ function AppContent() {
             variant="contained"
             size="large"
             onClick={() => {
-              const aboutSection = document.querySelector('[data-section="about"]');
+              const aboutSection = document.querySelector(
+                '[data-section="about"]'
+              );
               if (aboutSection) {
-                aboutSection.scrollIntoView({ behavior: 'smooth' });
+                aboutSection.scrollIntoView({ behavior: "smooth" });
               }
             }}
             sx={{
@@ -266,8 +270,13 @@ function AppContent() {
               }}
             >
               We believe that sustainable wealth isn't in fast profits — it's in
-              ownership. <Box component="br" sx={{ display: { xs: "none", md: "block" } }} /> Online, that means owning our data and the
-              spaces we build together.
+              ownership.{" "}
+              <Box
+                component="br"
+                sx={{ display: { xs: "none", md: "block" } }}
+              />{" "}
+              Online, that means owning our data and the spaces we build
+              together.
             </Typography>
             <Typography
               variant="h6"
@@ -285,9 +294,13 @@ function AppContent() {
               }}
             >
               The trade of data for "free" access to services might seem fair,
-              <Box component="br" sx={{ display: { xs: "none", md: "block" } }} /> but what if there was a space where we own the data we
-              create <Box component="br" sx={{ display: { xs: "none", md: "block" } }} /> and could therefore decide what to do with it for
-              ourselves?
+              <Box
+                component="br"
+                sx={{ display: { xs: "none", md: "block" } }}
+              />{" "}
+              but we imagine a space used by everyone, where we actually own the
+              data we create — and have the freedom to decide what happens to
+              it.
             </Typography>
             <Typography
               variant="h6"
@@ -304,7 +317,7 @@ function AppContent() {
                 px: { xs: 2, md: 0 },
               }}
             >
-              We've started by creating a forum, a Discord Server, and a GitHub
+              We've started by creating a Forum, a Discord Server, and a GitHub
               Repository — open spaces that allow us to exchange ideas and
               collaborate. Join if you wish. Every voice helps build what comes
               next.
@@ -379,8 +392,12 @@ function AppContent() {
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
-              Working for us is not mandatory and will never be. <Box component="br" sx={{ display: { xs: "none", md: "block" } }} /> But we
-              want you to see this as your company as well.
+              Working for us is not mandatory and will never be.{" "}
+              <Box
+                component="br"
+                sx={{ display: { xs: "none", md: "block" } }}
+              />{" "}
+              But we want you to see this as your company as well.
             </Typography>
           </motion.div>
         </Container>
@@ -522,7 +539,7 @@ function AppContent() {
                     </Typography>
                     <Typography
                       variant="body1"
-                      sx={{ 
+                      sx={{
                         color: colors.secondary,
                         fontSize: { xs: "0.9rem", md: "1rem" },
                         lineHeight: { xs: 1.4, md: 1.6 },
@@ -626,7 +643,7 @@ function AppContent() {
                     </Typography>
                     <Typography
                       variant="body1"
-                      sx={{ 
+                      sx={{
                         color: colors.secondary,
                         fontSize: { xs: "0.9rem", md: "1rem" },
                         lineHeight: { xs: 1.4, md: 1.6 },
@@ -735,7 +752,7 @@ function AppContent() {
                   </Typography>
                   <Typography
                     variant="h6"
-                    sx={{ 
+                    sx={{
                       color: colors.textColorLight,
                       fontSize: { xs: "0.9rem", md: "1.2rem" },
                     }}
@@ -789,8 +806,17 @@ function AppContent() {
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
-              Worst case this will have zero impact on your life. <Box component="br" sx={{ display: { xs: "none", md: "block" } }} /> Best
-              case, we will build something unprecedented. <Box component="br" sx={{ display: { xs: "none", md: "block" } }} /> Our choice.
+              Worst case this will have zero impact on your life.{" "}
+              <Box
+                component="br"
+                sx={{ display: { xs: "none", md: "block" } }}
+              />{" "}
+              Best case, we will build something unprecedented.{" "}
+              <Box
+                component="br"
+                sx={{ display: { xs: "none", md: "block" } }}
+              />{" "}
+              Our choice.
             </Typography>
             <Box
               sx={{
