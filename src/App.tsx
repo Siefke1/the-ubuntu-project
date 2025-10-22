@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import React from "react";
 import {
   Button,
   Card,
@@ -18,6 +19,47 @@ import {
 import { ThemeProvider } from "./context/ThemeProvider";
 import { useTheme } from "./hooks/useTheme";
 import ThemeSwitcher from "./components/ThemeSwitcher";
+
+// Error Boundary Component
+class ErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { hasError: boolean; error?: Error }
+> {
+  constructor(props: { children: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error('React Error Boundary caught an error:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ 
+          padding: '20px', 
+          color: 'red', 
+          fontFamily: 'Arial, sans-serif',
+          textAlign: 'center',
+          marginTop: '50px'
+        }}>
+          <h2>Something went wrong</h2>
+          <p>{this.state.error?.message || 'Unknown error'}</p>
+          <button onClick={() => window.location.reload()}>
+            Reload Page
+          </button>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
 
 function AppContent() {
   const { currentTheme, setTheme, colors } = useTheme();
@@ -698,9 +740,11 @@ function AppContent() {
 
 function App() {
   return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <AppContent />
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
 
