@@ -1,5 +1,5 @@
 export interface Translations {
-  hero: {
+  welcome: {
     welcome: string;
     title: string;
     description: string;
@@ -56,7 +56,7 @@ export interface Translations {
 
 export const translations: Record<string, Translations> = {
   en: {
-    hero: {
+    welcome: {
       welcome: "Welcome to the",
       title: "Ubuntu-Project",
       description:
@@ -124,7 +124,7 @@ export const translations: Record<string, Translations> = {
     },
   },
   de: {
-    hero: {
+    welcome: {
       welcome: "Willkommen beim",
       title: "Ubuntu-Projekt",
       description:

@@ -110,7 +110,7 @@ function AppContent() {
     >
       <ThemeSwitcher currentTheme={currentTheme} onThemeChange={setTheme} />
       <LanguageSwitcher />
-      {/* Hero Section */}
+      {/* Welcome Section */}
       <Box
         sx={{
           height: { xs: "100dvh", md: "100vh" },
@@ -155,7 +155,7 @@ function AppContent() {
             }}
             style={{ marginBottom: 0, lineHeight: 0.3 }}
           >
-            {t.hero.welcome}
+            {t.welcome.welcome}
           </Typography>
           <Typography
             variant="h1"
@@ -170,7 +170,7 @@ function AppContent() {
                   : colors.textColorDark,
             }}
           >
-            {t.hero.title}
+            {t.welcome.title}
           </Typography>
         </motion.div>
 
@@ -192,7 +192,7 @@ function AppContent() {
               lineHeight: { xs: 1.4, md: 1 },
             }}
           >
-            {t.hero.description}
+            {t.welcome.description}
           </Typography>
         </motion.div>
 
@@ -237,7 +237,7 @@ function AppContent() {
               },
             }}
           >
-            {t.hero.button}
+            {t.welcome.button}
           </Button>
         </motion.div>
 
