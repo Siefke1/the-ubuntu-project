@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node src/server.js",
     "prisma": "npx prisma studio",
-    "dev": "nodemon src/server.js",
+    "kill-port": "lsof -ti:3001 | xargs -r kill -9",
+    "dev": "npm run kill-port && nodemon src/server.js",
+    "dev:clean": "npm run kill-port && npm run seed && nodemon src/server.js",
     "seed": "node scripts/seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

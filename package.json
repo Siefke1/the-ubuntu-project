@@ -9,8 +9,10 @@
     "dev:clean": "docker-compose -f docker-compose.dev.yml down -v --remove-orphans",
     "prod": "docker-compose up --build",
     "prod:down": "docker-compose down",
-    "backend:dev": "cd backend && npm run dev",
-    "frontend:dev": "cd frontend && npm run dev"
+    "kill-ports": "lsof -ti:3000,3001 | xargs -r kill -9",
+    "backend:dev": "npm run kill-ports && cd backend && npm run dev",
+    "frontend:dev": "npm run kill-ports && cd frontend && npm run dev",
+    "dev:both": "npm run kill-ports && npm run backend:dev & npm run frontend:dev"
   },
   "keywords": [],
   "author": "",

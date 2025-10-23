@@ -32,9 +32,9 @@ const categories = [
     sortOrder: 1
   },
   {
-    name: 'Installation & Setup',
-    slug: 'installation-setup',
-    description: 'Help with installing Ubuntu, dual-booting, and initial system setup',
+    name: 'Introductuons',
+    slug: 'introductions',
+    description: 'Let us know who you are and how you got here. Or simply tell us a joke.',
     color: '#2196F3',
     allowedRoles: ['BEGINNER', 'CONTRIBUTOR', 'ADMIN'],
     isPublic: true,
@@ -42,9 +42,9 @@ const categories = [
     sortOrder: 2
   },
   {
-    name: 'Hardware Support',
-    slug: 'hardware-support',
-    description: 'Hardware compatibility, drivers, and hardware-related issues',
+    name: 'FAQ',
+    slug: 'faq',
+    description: 'You must have questions. Some we might know the answer to, some we might have to find together.',
     color: '#FF9800',
     allowedRoles: ['BEGINNER', 'CONTRIBUTOR', 'ADMIN'],
     isPublic: true,
@@ -52,9 +52,9 @@ const categories = [
     sortOrder: 3
   },
   {
-    name: 'Software & Applications',
-    slug: 'software-applications',
-    description: 'Software installation, configuration, and application support',
+    name: 'TODO',
+    slug: 'todo',
+    description: 'Looking to get busy? This is a good place to start looking for some ways to contribute.',
     color: '#9C27B0',
     allowedRoles: ['BEGINNER', 'CONTRIBUTOR', 'ADMIN'],
     isPublic: true,
@@ -62,9 +62,9 @@ const categories = [
     sortOrder: 4
   },
   {
-    name: 'System Administration',
-    slug: 'system-administration',
-    description: 'Advanced system management, server administration, and enterprise topics',
+    name: 'Dev Space',
+    slug: 'dev-space',
+    description: 'If you would like to get involved in the development of our platform, or any other digital product, this is the place.',
     color: '#F44336',
     allowedRoles: ['CONTRIBUTOR', 'ADMIN'],
     isPublic: true,
@@ -319,35 +319,35 @@ function generateEmail(firstName, lastName, index) {
 
 async function clearDatabase() {
   console.log('🗑️  Clearing database...');
-  
+
   // Delete in correct order due to foreign key constraints
   await prisma.like.deleteMany();
   await prisma.reply.deleteMany();
   await prisma.post.deleteMany();
   await prisma.category.deleteMany();
   await prisma.user.deleteMany();
-  
+
   console.log('✅ Database cleared');
 }
 
 async function seedCategories() {
   console.log('📂 Creating categories...');
-  
+
   for (const categoryData of categories) {
     await prisma.category.create({
       data: categoryData
     });
   }
-  
+
   console.log(`✅ Created ${categories.length} categories`);
 }
 
 async function seedUsers() {
   console.log('👥 Creating users...');
-  
+
   const users = [];
   const hashedPassword = await bcrypt.hash('password123', 10);
-  
+
   // Create admin user
   const adminUser = await prisma.user.create({
     data: {
@@ -362,28 +362,28 @@ async function seedUsers() {
     }
   });
   users.push(adminUser);
-  
+
   // Create contributor users (50)
   for (let i = 0; i < 50; i++) {
     const firstName = getRandomElement(firstNames);
     const lastName = getRandomElement(lastNames);
     const user = await prisma.user.create({
       data: {
-          email: generateEmail(firstName, lastName, i + 1),
-          username: generateUsername(firstName, lastName),
-          password: hashedPassword,
-          firstName,
-          lastName,
-          role: UserRole.CONTRIBUTOR,
-          isVerified: Math.random() > 0.1, // 90% verified
-          isActive: Math.random() > 0.05, // 95% active
-          bio: Math.random() > 0.7 ? `Ubuntu enthusiast and ${getRandomElement(['developer', 'sysadmin', 'student', 'teacher', 'engineer'])}` : null,
-          lastLogin: getRandomDate(new Date(Date.now() - 30 * 24 * 60 * 60 * 1000), new Date())
-        }
+        email: generateEmail(firstName, lastName, i + 1),
+        username: generateUsername(firstName, lastName),
+        password: hashedPassword,
+        firstName,
+        lastName,
+        role: UserRole.CONTRIBUTOR,
+        isVerified: Math.random() > 0.1, // 90% verified
+        isActive: Math.random() > 0.05, // 95% active
+        bio: Math.random() > 0.7 ? `Ubuntu enthusiast and ${getRandomElement(['developer', 'sysadmin', 'student', 'teacher', 'engineer'])}` : null,
+        lastLogin: getRandomDate(new Date(Date.now() - 30 * 24 * 60 * 60 * 1000), new Date())
+      }
     });
     users.push(user);
   }
-  
+
   // Create beginner users (449)
   for (let i = 0; i < 449; i++) {
     const firstName = getRandomElement(firstNames);
@@ -404,18 +404,18 @@ async function seedUsers() {
     });
     users.push(user);
   }
-  
+
   console.log(`✅ Created ${users.length} users (1 admin, 50 contributors, 449 beginners)`);
   return users;
 }
 
 async function seedPosts(users, categories) {
   console.log('📝 Creating posts...');
-  
+
   const posts = [];
   const startDate = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000); // 90 days ago
   const endDate = new Date();
-  
+
   // Create 800 posts
   for (let i = 0; i < 800; i++) {
     const user = getRandomElement(users);
@@ -424,7 +424,7 @@ async function seedPosts(users, categories) {
     const content = getRandomElement(postContents);
     const postTags = getRandomElements(tags, Math.floor(Math.random() * 5) + 1);
     const createdAt = getRandomDate(startDate, endDate);
-    
+
     const post = await prisma.post.create({
       data: {
         title,
@@ -432,40 +432,40 @@ async function seedPosts(users, categories) {
         authorId: user.id,
         categoryId: category.id,
         tags: postTags,
-        isPinned: Math.random() > 0.95, // 5% pinned
+        isPinned: false, // 5% pinned
         isLocked: Math.random() > 0.98, // 2% locked
         createdAt,
         updatedAt: createdAt
       }
     });
-    
+
     posts.push(post);
-    
+
     // Update category post count
     await prisma.category.update({
       where: { id: category.id },
       data: { postCount: { increment: 1 } }
     });
   }
-  
+
   console.log(`✅ Created ${posts.length} posts`);
   return posts;
 }
 
 async function seedReplies(posts, users) {
   console.log('💬 Creating replies...');
-  
+
   const replies = [];
   const startDate = new Date(Date.now() - 60 * 24 * 60 * 60 * 1000); // 60 days ago
   const endDate = new Date();
-  
+
   // Create 2000 replies
   for (let i = 0; i < 2000; i++) {
     const post = getRandomElement(posts);
     const user = getRandomElement(users);
     const content = getRandomElement(replyContents);
     const createdAt = getRandomDate(new Date(post.createdAt), endDate);
-    
+
     const reply = await prisma.reply.create({
       data: {
         content,
@@ -475,24 +475,24 @@ async function seedReplies(posts, users) {
         updatedAt: createdAt
       }
     });
-    
+
     replies.push(reply);
   }
-  
+
   console.log(`✅ Created ${replies.length} replies`);
   return replies;
 }
 
 async function seedLikes(posts, users) {
   console.log('👍 Creating likes...');
-  
+
   const likes = [];
-  
+
   // Create 3000 likes
   for (let i = 0; i < 3000; i++) {
     const post = getRandomElement(posts);
     const user = getRandomElement(users);
-    
+
     // Check if like already exists
     const existingLike = await prisma.like.findFirst({
       where: {
@@ -500,7 +500,7 @@ async function seedLikes(posts, users) {
         postId: post.id
       }
     });
-    
+
     if (!existingLike) {
       const like = await prisma.like.create({
         data: {
@@ -508,11 +508,11 @@ async function seedLikes(posts, users) {
           postId: post.id
         }
       });
-      
+
       likes.push(like);
     }
   }
-  
+
   console.log(`✅ Created ${likes.length} likes`);
   return likes;
 }
@@ -520,26 +520,26 @@ async function seedLikes(posts, users) {
 async function main() {
   try {
     console.log('🌱 Starting database seeding...\n');
-    
+
     // Clear existing data
     await clearDatabase();
-    
+
     // Seed categories
     await seedCategories();
     const categories = await prisma.category.findMany();
-    
+
     // Seed users
     const users = await seedUsers();
-    
+
     // Seed posts
     const posts = await seedPosts(users, categories);
-    
+
     // Seed replies
     const replies = await seedReplies(posts, users);
-    
+
     // Seed likes
     const likes = await seedLikes(posts, users);
-    
+
     console.log('\n🎉 Database seeding completed successfully!');
     console.log('\n📊 Summary:');
     console.log(`   • ${categories.length} categories`);
@@ -550,7 +550,7 @@ async function main() {
     console.log('\n🔑 Default login credentials:');
     console.log('   • Admin: admin@ubuntu-forum.com / password123');
     console.log('   • All other users: [generated-email] / password123');
-    
+
   } catch (error) {
     console.error('❌ Error seeding database:', error);
     throw error;
