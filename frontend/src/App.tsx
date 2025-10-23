@@ -1192,17 +1192,17 @@ function AppContent() {
         </Container>
       </Box>
 
-      {/* Mobile: Stats Section 1 - Title + All 4 Cards (Scrollable) */}
+      {/* Mobile: Stats Section - All 4 Cards (Continuous Scroll) */}
       <Box
         sx={{
-          height: "100dvh",
+          minHeight: "100dvh",
           display: { xs: "flex", md: "none" },
           flexDirection: "column",
           scrollSnapAlign: "start",
           position: "relative",
         }}
       >
-        <Container maxWidth="lg" sx={{ width: "100%", height: "100%", display: "flex", flexDirection: "column" }}>
+        <Container maxWidth="lg" sx={{ width: "100%", py: 4, pb: 50 }}>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1245,26 +1245,6 @@ function AppContent() {
               gridTemplateColumns: "1fr",
               gap: 3,
               px: 2,
-              flex: 1,
-              overflowY: "auto",
-              pb: 2,
-            }}
-            onScroll={(e) => {
-              const target = e.target as HTMLElement;
-              const scrollTop = target.scrollTop;
-              const scrollHeight = target.scrollHeight;
-              const clientHeight = target.clientHeight;
-              
-              // Check if user has scrolled to the bottom (with 50px threshold)
-              if (scrollTop + clientHeight >= scrollHeight - 50) {
-                // Small delay to prevent immediate jump, then scroll to next section
-                setTimeout(() => {
-                  const nextSection = document.querySelector('[data-section="about2"]');
-                  if (nextSection) {
-                    nextSection.scrollIntoView({ behavior: "smooth" });
-                  }
-                }, 300);
-              }
             }}
           >
             {[
