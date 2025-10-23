@@ -26,6 +26,25 @@ export default defineConfig({
     // Ensure React 19 compatibility
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
   },
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-router-dom',
+      '@mui/material',
+      '@emotion/react',
+      '@emotion/styled',
+      'framer-motion',
+      'lodash',
+    ],
+    exclude: [],
+    force: true, // Force re-optimization
+  },
+  esbuild: {
+    // Ensure React 19 compatibility
+    jsx: 'automatic',
+    jsxImportSource: 'react',
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -36,31 +55,30 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
+      external: () => {
+        // Don't externalize anything, but ensure React is bundled correctly
+        return false;
+      },
       output: {
         manualChunks: (id) => {
-          // Node modules chunking
+          // Simplified chunking strategy
           if (id.includes('node_modules')) {
-            // React core - keep React together to avoid multiple instances
-            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+            // All React-related dependencies in one chunk
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router') || id.includes('scheduler')) {
               return 'react-vendor';
             }
-            // Material-UI
-            if (id.includes('@mui/material') || id.includes('@mui/icons-material') || id.includes('@mui/system')) {
+            // Material-UI in its own chunk
+            if (id.includes('@mui/') || id.includes('@emotion/')) {
               return 'mui-vendor';
             }
-            // Framer Motion
-            if (id.includes('framer-motion')) {
-              return 'framer-motion';
-            }
-            // Lodash
-            if (id.includes('lodash')) {
-              return 'lodash';
-            }
-            // Other large vendor libraries
-            if (id.includes('@emotion') || id.includes('@mui/styled-engine')) {
-              return 'emotion';
-            }
-            // Other vendor libraries
+            // Other major libraries
+            if (id.includes('framer-motion')) return 'framer-motion';
+            if (id.includes('lodash')) return 'lodash';
+            if (id.includes('@radix-ui')) return 'radix-vendor';
+            if (id.includes('lucide-react')) return 'lucide-vendor';
+            if (id.includes('@uiw/')) return 'md-editor-vendor';
+            
+            // Everything else in vendor
             return 'vendor';
           }
           
@@ -90,7 +108,7 @@ export default defineConfig({
         },
       },
     },
-    chunkSizeWarningLimit: 500,
+    chunkSizeWarningLimit: 1000, // Increase limit temporarily
     target: 'esnext',
     minify: 'esbuild',
     // Add sourcemap for debugging
