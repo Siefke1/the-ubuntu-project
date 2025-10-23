@@ -42,8 +42,14 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Auth routes (to be implemented)
+// Auth routes
 app.use('/api/auth', require('./routes/auth'));
+
+// Posts routes
+app.use('/api/posts', require('./routes/posts'));
+app.use('/api/admin', require('./routes/admin'));
+app.use('/api/admin/categories', require('./routes/categories'));
+app.use('/api/categories', require('./routes/categories'));
 
 // Error handling
 app.use((err, req, res, next) => {

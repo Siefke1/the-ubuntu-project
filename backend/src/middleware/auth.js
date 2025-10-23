@@ -22,7 +22,9 @@ passport.use(new JwtStrategy({
         firstName: true,
         lastName: true,
         avatar: true,
-        isVerified: true
+        isVerified: true,
+        role: true,
+        isActive: true
       }
     });
 
