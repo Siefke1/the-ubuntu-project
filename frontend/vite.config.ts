@@ -6,7 +6,13 @@ import { visualizer } from 'rollup-plugin-visualizer'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      // Add React plugin options to prevent hydration issues
+      jsxImportSource: '@emotion/react',
+      babel: {
+        plugins: ['@emotion/babel-plugin'],
+      },
+    }),
     // Add bundle analyzer in development
     process.env.NODE_ENV === 'development' && visualizer({
       filename: 'dist/stats.html',
@@ -16,9 +22,16 @@ export default defineConfig({
     }),
   ].filter(Boolean),
   base: '/the-ubuntu-project/', // GitHub Pages base path
+  define: {
+    // Ensure React 19 compatibility
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      // Ensure single React instance
+      "react": path.resolve(__dirname, "./node_modules/react"),
+      "react-dom": path.resolve(__dirname, "./node_modules/react-dom"),
     },
   },
   build: {
@@ -27,8 +40,8 @@ export default defineConfig({
         manualChunks: (id) => {
           // Node modules chunking
           if (id.includes('node_modules')) {
-            // React core
-            if (id.includes('react') || id.includes('react-dom')) {
+            // React core - keep React together to avoid multiple instances
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
               return 'react-vendor';
             }
             // Material-UI
@@ -42,10 +55,6 @@ export default defineConfig({
             // Lodash
             if (id.includes('lodash')) {
               return 'lodash';
-            }
-            // Router libraries
-            if (id.includes('react-router') || id.includes('@reach/router')) {
-              return 'router';
             }
             // Other large vendor libraries
             if (id.includes('@emotion') || id.includes('@mui/styled-engine')) {
@@ -81,8 +90,10 @@ export default defineConfig({
         },
       },
     },
-    chunkSizeWarningLimit: 500, // Reduce warning limit to 500KB
+    chunkSizeWarningLimit: 500,
     target: 'esnext',
-    minify: 'esbuild', // Use esbuild for faster, simpler minification
+    minify: 'esbuild',
+    // Add sourcemap for debugging
+    sourcemap: false,
   },
 })
