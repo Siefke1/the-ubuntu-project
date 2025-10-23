@@ -965,11 +965,12 @@ function AppContent() {
         </Container>
       </Box>
 
-      {/* About Section 2 */}
+      {/* About Section 2 - Desktop: Single section, Mobile: Split into 3 sections */}
+      {/* Desktop: Single About2 Section */}
       <Box
         sx={{
           height: { xs: "100dvh", md: "100vh" },
-          display: "flex",
+          display: { xs: "none", md: "flex" },
           alignItems: "center",
           backgroundColor:
             currentTheme === "darknight" ? "#999" : colors.background.dark,
@@ -999,7 +1000,7 @@ function AppContent() {
               variant="h6"
               sx={{
                 textAlign: "center",
-                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
                 mb: { xs: 3, md: 4 },
                 opacity: 0.6,
                 color:
@@ -1014,7 +1015,7 @@ function AppContent() {
               variant="h6"
               sx={{
                 textAlign: "center",
-                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
                 mb: { xs: 3, md: 4 },
                 opacity: 0.6,
                 color:
@@ -1031,8 +1032,130 @@ function AppContent() {
                 textAlign: "center",
                 mb: { xs: 3, md: 4 },
                 opacity: 0.6,
-                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
-                // fontWeight: "bold",
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
+                color:
+                  currentTheme === "darknight" ? colors.textColorDark : "#ccc",
+                px: { xs: 2, md: 0 },
+                lineHeight: { xs: 1.4, md: 1.2 },
+              }}
+            >
+              {t.about2.paragraph3}
+            </Typography>
+          </motion.div>
+        </Container>
+      </Box>
+
+      {/* Mobile: About2 Section 1 - Title + Paragraph 1 */}
+      <Box
+        sx={{
+          height: "100dvh",
+          display: { xs: "flex", md: "none" },
+          alignItems: "center",
+          backgroundColor:
+            currentTheme === "darknight" ? "#999" : colors.background.dark,
+          color: "white",
+          scrollSnapAlign: "start",
+        }}
+      >
+        <Container maxWidth="md">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Typography
+              variant="h2"
+              sx={{
+                textAlign: "center",
+                mb: { xs: 2, md: 3 },
+                fontWeight: "bold",
+                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
+                color: colors.textColorLight,
+              }}
+            >
+              {t.about2.title}
+            </Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                textAlign: "center",
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
+                mb: { xs: 3, md: 4 },
+                opacity: 0.6,
+                color:
+                  currentTheme === "darknight" ? colors.textColorDark : "#ccc",
+                px: { xs: 2, md: 0 },
+                lineHeight: { xs: 1.4, md: 1.2 },
+              }}
+            >
+              <span dangerouslySetInnerHTML={{ __html: t.about2.paragraph1 }} />
+            </Typography>
+          </motion.div>
+        </Container>
+      </Box>
+
+      {/* Mobile: About2 Section 2 - Paragraph 2 */}
+      <Box
+        sx={{
+          height: "100dvh",
+          display: { xs: "flex", md: "none" },
+          alignItems: "center",
+          backgroundColor:
+            currentTheme === "darknight" ? "#999" : colors.background.dark,
+          color: "white",
+          scrollSnapAlign: "start",
+        }}
+      >
+        <Container maxWidth="md">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                textAlign: "center",
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
+                mb: { xs: 3, md: 4 },
+                opacity: 0.6,
+                color:
+                  currentTheme === "darknight" ? colors.textColorDark : "#ccc",
+                px: { xs: 2, md: 0 },
+                lineHeight: { xs: 1.4, md: 1.2 },
+              }}
+            >
+              <span dangerouslySetInnerHTML={{ __html: t.about2.paragraph2 }} />
+            </Typography>
+          </motion.div>
+        </Container>
+      </Box>
+
+      {/* Mobile: About2 Section 3 - Paragraph 3 */}
+      <Box
+        sx={{
+          height: "100dvh",
+          display: { xs: "flex", md: "none" },
+          alignItems: "center",
+          backgroundColor:
+            currentTheme === "darknight" ? "#999" : colors.background.dark,
+          color: "white",
+          scrollSnapAlign: "start",
+        }}
+      >
+        <Container maxWidth="md">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                textAlign: "center",
+                mb: { xs: 3, md: 4 },
+                opacity: 0.6,
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
                 color:
                   currentTheme === "darknight" ? colors.textColorDark : "#ccc",
                 px: { xs: 2, md: 0 },
