@@ -18,7 +18,11 @@ import {
   FlashOn,
   Diversity1,
 } from "@mui/icons-material";
-import { HashRouter as Router, Link as RouterLink, useLocation } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Link as RouterLink,
+  useLocation,
+} from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeProvider";
 import { LanguageProvider } from "./context/LanguageProvider";
 import { AuthProvider } from "./context/AuthProvider";
@@ -43,26 +47,26 @@ const LoadingSpinner = () => {
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh",
         background: `linear-gradient(135deg, ${colors.background.dark} 0%, ${colors.background.medium} 50%, ${colors.background.light} 100%)`,
       }}
     >
-      <CircularProgress 
-        size={60} 
-        sx={{ 
+      <CircularProgress
+        size={60}
+        sx={{
           color: colors.accent,
-          mb: 2 
-        }} 
+          mb: 2,
+        }}
       />
-      <Typography 
-        variant="h6" 
-        sx={{ 
+      <Typography
+        variant="h6"
+        sx={{
           color: colors.textColorLight,
-          textAlign: 'center'
+          textAlign: "center",
         }}
       >
         Loading...
@@ -173,7 +177,7 @@ function AppContent() {
             position: "fixed",
             top: "calc(-250px + var(--scroll-progress, 0) * 100vh)",
             right: "calc(-250px + var(--scroll-progress, 0) * -100vw)",
-            width: "1400px",
+            width: { md: "1400px", xs: "1000px" },
             height: "1400px",
             background: `radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)`,
             pointerEvents: "none",
@@ -978,27 +982,27 @@ function AppContent() {
                 {t.cta.about}
               </Button>
             </Box>
-            
+
             {/* Login Link */}
-            <Box sx={{ textAlign: 'center', mt: 3 }}>
+            <Box sx={{ textAlign: "center", mt: 3 }}>
               <Typography
                 variant="body2"
                 sx={{
                   color: colors.secondary,
-                  fontSize: '0.9rem',
+                  fontSize: "0.9rem",
                 }}
               >
-                Already have an account?{' '}
+                Already have an account?{" "}
                 <Link
                   component={RouterLink}
                   to="/login"
                   sx={{
                     color: colors.accent,
-                    textDecoration: 'none',
-                    fontWeight: 'bold',
-                    '&:hover': {
+                    textDecoration: "none",
+                    fontWeight: "bold",
+                    "&:hover": {
                       color: colors.highlight,
-                      textDecoration: 'underline',
+                      textDecoration: "underline",
                     },
                   }}
                 >
@@ -1055,24 +1059,24 @@ function App() {
 
 function AppWithRouting() {
   const location = useLocation();
-  
-  if (location.pathname === '/signup' || location.hash === '#/signup') {
+
+  if (location.pathname === "/signup" || location.hash === "#/signup") {
     return (
       <Suspense fallback={<LoadingSpinner />}>
         <SignUp />
       </Suspense>
     );
   }
-  
-  if (location.pathname === '/login' || location.hash === '#/login') {
+
+  if (location.pathname === "/login" || location.hash === "#/login") {
     return (
       <Suspense fallback={<LoadingSpinner />}>
         <Login />
       </Suspense>
     );
   }
-  
-  if (location.pathname === '/forum' || location.hash === '#/forum') {
+
+  if (location.pathname === "/forum" || location.hash === "#/forum") {
     return (
       <AuthGuard>
         <Suspense fallback={<LoadingSpinner />}>
@@ -1081,8 +1085,11 @@ function AppWithRouting() {
       </AuthGuard>
     );
   }
-  
-  if (location.pathname === '/create-post' || location.hash === '#/create-post') {
+
+  if (
+    location.pathname === "/create-post" ||
+    location.hash === "#/create-post"
+  ) {
     return (
       <AuthGuard>
         <Suspense fallback={<LoadingSpinner />}>
@@ -1091,8 +1098,11 @@ function AppWithRouting() {
       </AuthGuard>
     );
   }
-  
-  if (location.pathname.startsWith('/post/') || location.hash.startsWith('#/post/')) {
+
+  if (
+    location.pathname.startsWith("/post/") ||
+    location.hash.startsWith("#/post/")
+  ) {
     return (
       <AuthGuard>
         <Suspense fallback={<LoadingSpinner />}>
@@ -1101,7 +1111,7 @@ function AppWithRouting() {
       </AuthGuard>
     );
   }
-  
+
   return <AppContent />;
 }
 
