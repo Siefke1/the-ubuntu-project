@@ -31,6 +31,7 @@ import { useLanguage } from "./hooks/useLanguage";
 import { getTranslations } from "./texts/translations";
 // import ThemeSwitcher from "./components/ThemeSwitcher";
 import LanguageSwitcher from "./components/LanguageSwitcher";
+import PieChart from "./components/PieChart";
 import { lazy, Suspense } from "react";
 import AuthGuard from "./components/AuthGuard";
 
@@ -779,115 +780,240 @@ function AppContent() {
         </Container>
       </Box>
 
-      {/* Mobile: Cards Section */}
+      {/* Mobile: HowTo Card 1 - Sign up */}
       <Box
         sx={{
-          height: { xs: "90dvh", md: "100vh" },
+          height: "100dvh",
           display: { xs: "flex", md: "none" },
           alignItems: "center",
           scrollSnapAlign: "start",
-          py: { xs: 2, md: 0 },
+          position: "relative",
         }}
       >
         <Container maxWidth="lg" sx={{ width: "100%" }}>
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: "1fr",
-              gap: { xs: 2, md: 3 },
-              px: 2,
-              alignItems: "center",
-              justifyContent: "center",
-            }}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ margin: "-100px" }}
           >
-            {[
-              {
-                icon: (
-                  <People sx={{ fontSize: "2rem", color: colors.secondary }} />
-                ),
-                title: t.howTo.cards.signup.title,
-                description: t.howTo.cards.signup.description,
-              },
-              {
-                icon: (
-                  <Diversity1
-                    sx={{ fontSize: "2rem", color: colors.secondary }}
-                  />
-                ),
-                title: t.howTo.cards.friends.title,
-                description: t.howTo.cards.friends.description,
-              },
-              {
-                icon: (
-                  <FlashOn sx={{ fontSize: "2rem", color: colors.secondary }} />
-                ),
-                title: t.howTo.cards.traffic.title,
-                description: t.howTo.cards.traffic.description,
-              },
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ margin: "-50px" }}
+            <Card
+              sx={{
+                height: "60vh",
+                backgroundColor: colors.background.light,
+                border: `1px solid ${colors.light}`,
+                borderRadius: 3,
+                transition:
+                  "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out",
+                "&:hover": {
+                  transform: "translateY(-8px)",
+                  boxShadow:
+                    currentTheme === "darknight"
+                      ? `0 8px 25px ${colors.accent}40`
+                      : `0 8px 25px ${colors.accent}20`,
+                  borderColor: colors.accent,
+                },
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+                px: 3,
+                py: 4,
+                mx: 2,
+              }}
+            >
+              <Box sx={{ mb: 3 }}>
+                <People sx={{ fontSize: "3rem", color: colors.secondary }} />
+              </Box>
+              <Typography
+                variant="h4"
+                sx={{
+                  mb: 3,
+                  fontWeight: "bold",
+                  fontSize: "2rem",
+                  color:
+                    currentTheme === "darknight"
+                      ? colors.textColorLight
+                      : colors.textColorDark,
+                }}
               >
-                <Card
-                  sx={{
-                    height: "100%",
-                    backgroundColor: colors.background.light,
-                    border: `1px solid ${colors.light}`,
-                    transition:
-                      "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out",
-                    "&:hover": {
-                      transform: "translateY(-8px)",
-                      boxShadow:
-                        currentTheme === "darknight"
-                          ? `0 8px 25px ${colors.accent}40`
-                          : `0 8px 25px ${colors.accent}20`,
-                      borderColor: colors.accent,
-                    },
-                  }}
-                >
-                  <CardContent sx={{ p: { xs: 1.2, md: 3 } }}>
-                    <Box sx={{ mb: { xs: 0.8, md: 2 } }}>{feature.icon}</Box>
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        mb: { xs: 0.8, md: 2 },
-                        fontWeight: "bold",
-                        fontSize: { xs: "1rem", md: "1.5rem" },
-                        color:
-                          currentTheme === "darknight"
-                            ? colors.textColorLight
-                            : colors.textColorDark,
-                      }}
-                    >
-                      {feature.title}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: colors.secondary,
-                        fontSize: { xs: "0.8rem", md: "1rem" },
-                        lineHeight: { xs: 1.2, md: 1.6 },
-                      }}
-                    >
-                      {feature.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </Box>
+                {t.howTo.cards.signup.title}
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: colors.secondary,
+                  fontSize: "1.1rem",
+                  lineHeight: 1.6,
+                  maxWidth: "500px",
+                }}
+              >
+                {t.howTo.cards.signup.description}
+              </Typography>
+            </Card>
+          </motion.div>
         </Container>
       </Box>
 
-      {/* Stats Section */}
+      {/* Mobile: HowTo Card 2 - Tell your Friends */}
+      <Box
+        sx={{
+          height: "100dvh",
+          display: { xs: "flex", md: "none" },
+          alignItems: "center",
+          scrollSnapAlign: "start",
+          position: "relative",
+        }}
+      >
+        <Container maxWidth="lg" sx={{ width: "100%" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ margin: "-100px" }}
+          >
+            <Card
+              sx={{
+                height: "60vh",
+                backgroundColor: colors.background.light,
+                border: `1px solid ${colors.light}`,
+                borderRadius: 3,
+                transition:
+                  "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out",
+                "&:hover": {
+                  transform: "translateY(-8px)",
+                  boxShadow:
+                    currentTheme === "darknight"
+                      ? `0 8px 25px ${colors.accent}40`
+                      : `0 8px 25px ${colors.accent}20`,
+                  borderColor: colors.accent,
+                },
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+                px: 3,
+                py: 4,
+                mx: 2,
+              }}
+            >
+              <Box sx={{ mb: 3 }}>
+                <Diversity1 sx={{ fontSize: "3rem", color: colors.secondary }} />
+              </Box>
+              <Typography
+                variant="h4"
+                sx={{
+                  mb: 3,
+                  fontWeight: "bold",
+                  fontSize: "2rem",
+                  color:
+                    currentTheme === "darknight"
+                      ? colors.textColorLight
+                      : colors.textColorDark,
+                }}
+              >
+                {t.howTo.cards.friends.title}
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: colors.secondary,
+                  fontSize: "1.1rem",
+                  lineHeight: 1.6,
+                  maxWidth: "500px",
+                }}
+              >
+                {t.howTo.cards.friends.description}
+              </Typography>
+            </Card>
+          </motion.div>
+        </Container>
+      </Box>
+
+      {/* Mobile: HowTo Card 3 - Generate traffic */}
+      <Box
+        sx={{
+          height: "100dvh",
+          display: { xs: "flex", md: "none" },
+          alignItems: "center",
+          scrollSnapAlign: "start",
+          position: "relative",
+        }}
+      >
+        <Container maxWidth="lg" sx={{ width: "100%" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ margin: "-100px" }}
+          >
+            <Card
+              sx={{
+                height: "60vh",
+                backgroundColor: colors.background.light,
+                border: `1px solid ${colors.light}`,
+                borderRadius: 3,
+                transition:
+                  "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out",
+                "&:hover": {
+                  transform: "translateY(-8px)",
+                  boxShadow:
+                    currentTheme === "darknight"
+                      ? `0 8px 25px ${colors.accent}40`
+                      : `0 8px 25px ${colors.accent}20`,
+                  borderColor: colors.accent,
+                },
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+                px: 3,
+                py: 4,
+                mx: 2,
+              }}
+            >
+              <Box sx={{ mb: 3 }}>
+                <FlashOn sx={{ fontSize: "3rem", color: colors.secondary }} />
+              </Box>
+              <Typography
+                variant="h4"
+                sx={{
+                  mb: 3,
+                  fontWeight: "bold",
+                  fontSize: "2rem",
+                  color:
+                    currentTheme === "darknight"
+                      ? colors.textColorLight
+                      : colors.textColorDark,
+                }}
+              >
+                {t.howTo.cards.traffic.title}
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: colors.secondary,
+                  fontSize: "1.1rem",
+                  lineHeight: 1.6,
+                  maxWidth: "500px",
+                }}
+              >
+                {t.howTo.cards.traffic.description}
+              </Typography>
+            </Card>
+          </motion.div>
+        </Container>
+      </Box>
+
+      {/* Stats Section - Desktop: Single section, Mobile: Split into 2 sections */}
+      {/* Desktop: Single Stats Section */}
       <Box
         sx={{
           height: { xs: "100dvh", md: "100vh" },
-          display: "flex",
+          display: { xs: "none", md: "flex" },
           alignItems: "center",
           scrollSnapAlign: "start",
         }}
@@ -931,20 +1057,33 @@ function AppContent() {
           <Box
             sx={{
               display: "grid",
-              gridTemplateColumns: {
-                xs: "1fr",
-                sm: "repeat(2, 1fr)",
-                md: "repeat(4, 1fr)",
-              },
-              gap: { xs: 3, md: 4 },
-              px: { xs: 2, md: 0 },
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gap: 4,
             }}
           >
             {[
-              { number: "1337", label: t.stats.users },
-              { number: "24887", label: t.stats.visits },
-              { number: "47.9%", label: t.stats.contribution },
-              { number: "0$", label: t.stats.income },
+              { 
+                type: "pie", 
+                current: 13370, 
+                goal: 1000000, 
+                label: t.stats.users,
+                size: 140
+              },
+              { 
+                type: "number", 
+                number: "24887", 
+                label: t.stats.visits 
+              },
+              { 
+                type: "number", 
+                number: "47.9%", 
+                label: t.stats.contribution 
+              },
+              { 
+                type: "number", 
+                number: "0$", 
+                label: t.stats.income 
+              },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -956,7 +1095,7 @@ function AppContent() {
                 <Paper
                   elevation={3}
                   sx={{
-                    p: { xs: 2, md: 3 },
+                    p: 3,
                     textAlign: "center",
                     background: `linear-gradient(135deg, ${
                       currentTheme === "darknight"
@@ -968,34 +1107,250 @@ function AppContent() {
                         : colors.secondary
                     } 100%)`,
                     color: "white",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    minHeight: "250px",
                   }}
                 >
-                  <Typography
-                    variant="h3"
-                    sx={{
-                      fontWeight: "bold",
-                      mb: { xs: 0.5, md: 1 },
-                      color: colors.textColorLight,
-                      fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
-                    }}
-                  >
-                    {stat.number}
-                  </Typography>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      color: colors.textColorLight,
-                      fontSize: { xs: "0.9rem", md: "1.2rem" },
-                    }}
-                  >
-                    {stat.label}
-                  </Typography>
+                  {stat.type === "pie" ? (
+                    <>
+                      <PieChart
+                        current={stat.current!}
+                        goal={stat.goal!}
+                        size={stat.size}
+                        strokeWidth={8}
+                        showPercentage={true}
+                      />
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          color: colors.textColorLight,
+                          fontSize: "1.2rem",
+                          mt: 2,
+                          textAlign: "center",
+                        }}
+                      >
+                        {stat.label}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: colors.secondary,
+                          fontSize: "0.9rem",
+                          mt: 1,
+                          textAlign: "center",
+                        }}
+                      >
+                        Goal: {stat.goal!.toLocaleString()}
+                      </Typography>
+                    </>
+                  ) : (
+                    <>
+                      <Typography
+                        variant="h3"
+                        sx={{
+                          fontWeight: "bold",
+                          mb: 1,
+                          color: colors.textColorLight,
+                          fontSize: "3rem",
+                        }}
+                      >
+                        {stat.number}
+                      </Typography>
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          color: colors.textColorLight,
+                          fontSize: "1.2rem",
+                        }}
+                      >
+                        {stat.label}
+                      </Typography>
+                    </>
+                  )}
                 </Paper>
               </motion.div>
             ))}
           </Box>
         </Container>
       </Box>
+
+      {/* Mobile: Stats Section 1 - Title + All 4 Cards (Scrollable) */}
+      <Box
+        sx={{
+          height: "100dvh",
+          display: { xs: "flex", md: "none" },
+          flexDirection: "column",
+          scrollSnapAlign: "start",
+          position: "relative",
+        }}
+      >
+        <Container maxWidth="lg" sx={{ width: "100%", height: "100%", display: "flex", flexDirection: "column" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ margin: "-100px" }}
+            style={{ marginTop: "60px" }}
+          >
+            <Typography
+              variant="h2"
+              sx={{
+                textAlign: "center",
+                mb: 2,
+                fontWeight: "bold",
+                fontSize: "1.8rem",
+                color:
+                  currentTheme === "darknight"
+                    ? colors.textColorLight
+                    : colors.textColorDark,
+              }}
+            >
+              {t.stats.title}
+            </Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                textAlign: "center",
+                mb: 4,
+                color: "#666",
+                fontSize: "1rem",
+                px: 2,
+              }}
+            >
+              {t.stats.description}
+            </Typography>
+          </motion.div>
+
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: 3,
+              px: 2,
+              flex: 1,
+              overflowY: "auto",
+              pb: 2,
+            }}
+          >
+            {[
+              { 
+                type: "pie", 
+                current: 13370, 
+                goal: 1000000, 
+                label: t.stats.users,
+                size: 120
+              },
+              { 
+                type: "number", 
+                number: "24887", 
+                label: t.stats.visits 
+              },
+              { 
+                type: "number", 
+                number: "47.9%", 
+                label: t.stats.contribution 
+              },
+              { 
+                type: "number", 
+                number: "0$", 
+                label: t.stats.income 
+              },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ margin: "-50px" }}
+              >
+                <Paper
+                  elevation={3}
+                  sx={{
+                    p: 2,
+                    textAlign: "center",
+                    background: `linear-gradient(135deg, ${
+                      currentTheme === "darknight"
+                        ? colors.background.light
+                        : colors.background.dark
+                    } 0%, ${
+                      currentTheme === "darknight"
+                        ? colors.light
+                        : colors.secondary
+                    } 100%)`,
+                    color: "white",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    minHeight: "180px",
+                  }}
+                >
+                  {stat.type === "pie" ? (
+                    <>
+                      <PieChart
+                        current={stat.current!}
+                        goal={stat.goal!}
+                        size={stat.size}
+                        strokeWidth={8}
+                        showPercentage={true}
+                      />
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          color: colors.textColorLight,
+                          fontSize: "0.9rem",
+                          mt: 2,
+                          textAlign: "center",
+                        }}
+                      >
+                        {stat.label}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: colors.secondary,
+                          fontSize: "0.7rem",
+                          mt: 1,
+                          textAlign: "center",
+                        }}
+                      >
+                        Goal: {stat.goal!.toLocaleString()}
+                      </Typography>
+                    </>
+                  ) : (
+                    <>
+                      <Typography
+                        variant="h3"
+                        sx={{
+                          fontWeight: "bold",
+                          mb: 0.5,
+                          color: colors.textColorLight,
+                          fontSize: "1.8rem",
+                        }}
+                      >
+                        {stat.number}
+                      </Typography>
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          color: colors.textColorLight,
+                          fontSize: "0.9rem",
+                        }}
+                      >
+                        {stat.label}
+                      </Typography>
+                    </>
+                  )}
+                </Paper>
+              </motion.div>
+            ))}
+          </Box>
+        </Container>
+      </Box>
+
 
       {/* About Section 2 - Desktop: Single section, Mobile: Split into 3 sections */}
       {/* Desktop: Single About2 Section */}

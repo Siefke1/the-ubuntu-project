@@ -153,7 +153,7 @@ export const translations: Record<string, Translations> = {
         signup: {
           title: "1. Sign up",
           description:
-            "Our first goal is to achieve a certain amount of registrated users. Our strength will come from numbers. And our resource will be ourselves.",
+            "Our first goal is to achieve a certain amount of registered users. Our strength will come from numbers. And our resource will be ourselves.",
         },
         friends: {
           title: "2. Tell your Friends",
@@ -170,11 +170,11 @@ export const translations: Record<string, Translations> = {
     stats: {
       title: "How it's going so far?",
       description:
-        "We have launched in October 2025 and these are our current numbers.",
+        "We launched in October 2025, our first primary goal is 1 Million Registered Users and these are our current numbers.",
       users: "Registered Users",
       visits: "Daily Visits",
       contribution: "User contribution",
-      income: "Income generated",
+      income: "Profit generated",
     },
     cta: {
       title: "Care to join?",
