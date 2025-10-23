@@ -732,6 +732,7 @@ function AppContent() {
                 <Card
                   sx={{
                     height: "100%",
+                    minHeight: "300px",
                     backgroundColor: colors.background.light,
                     border: `1px solid ${colors.light}`,
                     transition:
@@ -744,6 +745,8 @@ function AppContent() {
                           : `0 8px 25px ${colors.accent}20`,
                       borderColor: colors.accent,
                     },
+                    display: "flex",
+                    flexDirection: "column",
                   }}
                 >
                   <CardContent sx={{ p: { xs: 1.2, md: 3 } }}>
@@ -1111,7 +1114,8 @@ function AppContent() {
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
-                    minHeight: "250px",
+                    minHeight: "300px",
+                    height: "100%",
                   }}
                 >
                   {stat.type === "pie" ? (
