@@ -130,7 +130,7 @@ export const translations: Record<string, Translations> = {
       paragraph2:
         'So what if we could build a platform hosting millions of users, that generates vast amounts of data, but we collectively own everything at the same time? Examples like the <a href="https://en.wikipedia.org/wiki/GameStop_short_squeeze" style="color: inherit;" target="_blank" rel="noopener noreferrer">GameStop Short-Squeeze</a> demonstrated impressively, how much impact we as consumers really have, as long as we bundle our efforts. We have come to the overdue conclusion, that in order to fundamentally succeed, we will need each other.',
       paragraph3:
-        "So first, we want to build a community. A big one. We've started by creating a Twitter-Like-Forum that allows us to exchange ideas, collaborate  and vote on critical decisions. Swing by if you want to know a little more about our thoughts and ideas, maybe even share your own?",
+        "First, we want to build a community. A big one. We've started by creating a Twitter-Like-Forum that allows us to exchange ideas, collaborate  and vote on critical decisions. Swing by if you want to know a little more about our thoughts and ideas, maybe even share your own?",
     },
     about2: {
       title: "Something important to us:",
