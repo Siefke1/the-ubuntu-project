@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { useTheme } from '../hooks/useTheme';
 import { useLanguage } from '../hooks/useLanguage';
+import { useAuth } from '../hooks/useAuth';
 import { getTranslations } from '../texts/translations';
 
 interface FormData {
@@ -37,6 +38,7 @@ interface FormErrors {
 const SignUp: React.FC = () => {
   const { currentTheme, colors } = useTheme();
   const { language } = useLanguage();
+  const { register } = useAuth();
   const t = getTranslations(language);
 
   const [formData, setFormData] = useState<FormData>({
@@ -132,26 +134,18 @@ const SignUp: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3001/api/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          username: formData.username,
-          password: formData.password,
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-        }),
+      const success = await register({
+        email: formData.email,
+        username: formData.username,
+        password: formData.password,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
+      if (success) {
         setSnackbar({
           open: true,
-          message: t.signup.success.message,
+          message: 'Registration successful! Redirecting to forum...',
           severity: 'success',
         });
         
@@ -164,16 +158,15 @@ const SignUp: React.FC = () => {
           firstName: '',
           lastName: '',
         });
+        
+        // Redirect to forum after a short delay
+        setTimeout(() => {
+          window.location.hash = '#/forum';
+        }, 1500);
       } else {
-        let errorMessage = t.signup.error.serverError;
-        
-        if (data.error === 'User with this email or username already exists') {
-          errorMessage = t.signup.error.userExists;
-        }
-        
         setSnackbar({
           open: true,
-          message: errorMessage,
+          message: t.signup.error.serverError,
           severity: 'error',
         });
       }
@@ -271,6 +264,9 @@ const SignUp: React.FC = () => {
                           '&.Mui-focused fieldset': {
                             borderColor: colors.accent,
                           },
+                          '& input': {
+                            color: currentTheme === 'darknight' ? colors.textColorLight : colors.textColorDark,
+                          },
                         },
                         '& .MuiInputLabel-root': {
                           color: currentTheme === 'darknight' 
@@ -297,6 +293,9 @@ const SignUp: React.FC = () => {
                           },
                           '&.Mui-focused fieldset': {
                             borderColor: colors.accent,
+                          },
+                          '& input': {
+                            color: colors.textColorLight,
                           },
                         },
                         '& .MuiInputLabel-root': {
@@ -389,6 +388,9 @@ const SignUp: React.FC = () => {
                           '&.Mui-focused fieldset': {
                             borderColor: colors.accent,
                           },
+                          '& input': {
+                            color: colors.textColorLight,
+                          },
                         },
                         '& .MuiInputLabel-root': {
                           color: currentTheme === 'darknight' 
@@ -416,6 +418,9 @@ const SignUp: React.FC = () => {
                           },
                           '&.Mui-focused fieldset': {
                             borderColor: colors.accent,
+                          },
+                          '& input': {
+                            color: colors.textColorLight,
                           },
                         },
                         '& .MuiInputLabel-root': {
@@ -476,7 +481,7 @@ const SignUp: React.FC = () => {
                 >
                   {t.signup.form.loginLink}{' '}
                   <Link
-                    href="#"
+                    href="#login"
                     sx={{
                       color: colors.accent,
                       textDecoration: 'none',

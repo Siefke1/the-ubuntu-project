@@ -11,4 +11,20 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor chunks
+          'react-vendor': ['react', 'react-dom'],
+          'mui-vendor': ['@mui/material', '@mui/icons-material'],
+          'framer-motion': ['framer-motion'],
+          // App chunks
+          'auth': ['./src/context/AuthProvider', './src/context/AuthContext', './src/hooks/useAuth'],
+          'components': ['./src/components/SignUp', './src/components/Login', './src/components/ForumMainpage'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000, // Increase limit to 1MB
+  },
 })

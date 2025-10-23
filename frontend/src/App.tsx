@@ -9,6 +9,8 @@ import {
   Box,
   Paper,
   IconButton,
+  Link,
+  CircularProgress,
 } from "@mui/material";
 import {
   KeyboardArrowDown,
@@ -16,15 +18,58 @@ import {
   FlashOn,
   Diversity1,
 } from "@mui/icons-material";
-import { HashRouter as Router, Link, useLocation } from "react-router-dom";
+import { HashRouter as Router, Link as RouterLink, useLocation } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeProvider";
 import { LanguageProvider } from "./context/LanguageProvider";
+import { AuthProvider } from "./context/AuthProvider";
 import { useTheme } from "./hooks/useTheme";
 import { useLanguage } from "./hooks/useLanguage";
 import { getTranslations } from "./texts/translations";
-import ThemeSwitcher from "./components/ThemeSwitcher";
+// import ThemeSwitcher from "./components/ThemeSwitcher";
 import LanguageSwitcher from "./components/LanguageSwitcher";
-import SignUp from "./components/SignUp";
+import { lazy, Suspense } from "react";
+import AuthGuard from "./components/AuthGuard";
+
+// Lazy load components for code splitting
+const SignUp = lazy(() => import("./components/SignUp"));
+const Login = lazy(() => import("./components/Login"));
+const ForumMainpage = lazy(() => import("./components/ForumMainpage"));
+const CreatePost = lazy(() => import("./components/CreatePost"));
+const PostView = lazy(() => import("./components/PostView"));
+
+// Loading spinner component
+const LoadingSpinner = () => {
+  const { colors } = useTheme();
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        background: `linear-gradient(135deg, ${colors.background.dark} 0%, ${colors.background.medium} 50%, ${colors.background.light} 100%)`,
+      }}
+    >
+      <CircularProgress 
+        size={60} 
+        sx={{ 
+          color: colors.accent,
+          mb: 2 
+        }} 
+      />
+      <Typography 
+        variant="h6" 
+        sx={{ 
+          color: colors.textColorLight,
+          textAlign: 'center'
+        }}
+      >
+        Loading...
+      </Typography>
+    </Box>
+  );
+};
 
 // Error Boundary Component
 class ErrorBoundary extends React.Component<
@@ -68,7 +113,7 @@ class ErrorBoundary extends React.Component<
 }
 
 function AppContent() {
-  const { currentTheme, setTheme, colors } = useTheme();
+  const { currentTheme, colors } = useTheme();
   const { language } = useLanguage();
   const t = getTranslations(language);
 
@@ -110,7 +155,7 @@ function AppContent() {
         position: "relative",
       }}
     >
-      <ThemeSwitcher currentTheme={currentTheme} onThemeChange={setTheme} />
+      {/* <ThemeSwitcher currentTheme={currentTheme} onThemeChange={setTheme} /> */}
       <LanguageSwitcher />
       {/* Welcome Section */}
       <Box
@@ -871,7 +916,7 @@ function AppContent() {
               }}
             >
               <Button
-                component={Link}
+                component={RouterLink}
                 to="/signup"
                 variant="contained"
                 size="large"
@@ -933,6 +978,34 @@ function AppContent() {
                 {t.cta.about}
               </Button>
             </Box>
+            
+            {/* Login Link */}
+            <Box sx={{ textAlign: 'center', mt: 3 }}>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: colors.secondary,
+                  fontSize: '0.9rem',
+                }}
+              >
+                Already have an account?{' '}
+                <Link
+                  component={RouterLink}
+                  to="/login"
+                  sx={{
+                    color: colors.accent,
+                    textDecoration: 'none',
+                    fontWeight: 'bold',
+                    '&:hover': {
+                      color: colors.highlight,
+                      textDecoration: 'underline',
+                    },
+                  }}
+                >
+                  Sign in here
+                </Link>
+              </Typography>
+            </Box>
           </motion.div>
         </Container>
       </Box>
@@ -969,9 +1042,11 @@ function App() {
     <ErrorBoundary>
       <LanguageProvider>
         <ThemeProvider>
-          <Router>
-            <AppWithRouting />
-          </Router>
+          <AuthProvider>
+            <Router>
+              <AppWithRouting />
+            </Router>
+          </AuthProvider>
         </ThemeProvider>
       </LanguageProvider>
     </ErrorBoundary>
@@ -982,7 +1057,49 @@ function AppWithRouting() {
   const location = useLocation();
   
   if (location.pathname === '/signup' || location.hash === '#/signup') {
-    return <SignUp />;
+    return (
+      <Suspense fallback={<LoadingSpinner />}>
+        <SignUp />
+      </Suspense>
+    );
+  }
+  
+  if (location.pathname === '/login' || location.hash === '#/login') {
+    return (
+      <Suspense fallback={<LoadingSpinner />}>
+        <Login />
+      </Suspense>
+    );
+  }
+  
+  if (location.pathname === '/forum' || location.hash === '#/forum') {
+    return (
+      <AuthGuard>
+        <Suspense fallback={<LoadingSpinner />}>
+          <ForumMainpage />
+        </Suspense>
+      </AuthGuard>
+    );
+  }
+  
+  if (location.pathname === '/create-post' || location.hash === '#/create-post') {
+    return (
+      <AuthGuard>
+        <Suspense fallback={<LoadingSpinner />}>
+          <CreatePost />
+        </Suspense>
+      </AuthGuard>
+    );
+  }
+  
+  if (location.pathname.startsWith('/post/') || location.hash.startsWith('#/post/')) {
+    return (
+      <AuthGuard>
+        <Suspense fallback={<LoadingSpinner />}>
+          <PostView />
+        </Suspense>
+      </AuthGuard>
+    );
   }
   
   return <AppContent />;

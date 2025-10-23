@@ -83,6 +83,35 @@ export interface Translations {
       serverError: string;
     };
   };
+  forum: {
+    title: string;
+    subtitle: string;
+    searchPlaceholder: string;
+    tabs: {
+      recent: string;
+      hot: string;
+      pinned: string;
+    };
+    categories: {
+      title: string;
+    };
+    stats: {
+      title: string;
+      members: string;
+      posts: string;
+      online: string;
+    };
+    createPost: string;
+  };
+  auth: {
+    loading: string;
+    loginRequired: {
+      title: string;
+      message: string;
+      signup: string;
+      home: string;
+    };
+  };
 }
 
 export const translations: Record<string, Translations> = {
@@ -184,6 +213,35 @@ export const translations: Record<string, Translations> = {
         serverError: "Something went wrong. Please try again.",
       },
     },
+    forum: {
+      title: "Ubuntu-Project Forum",
+      subtitle: "Connect, Learn, and Share with the Ubuntu Community",
+      searchPlaceholder: "Search discussions...",
+      tabs: {
+        recent: "Recent",
+        hot: "Hot",
+        pinned: "Pinned",
+      },
+      categories: {
+        title: "Categories",
+      },
+      stats: {
+        title: "Community Stats",
+        members: "Members",
+        posts: "Posts",
+        online: "Online Now",
+      },
+      createPost: "Create New Post",
+    },
+    auth: {
+      loading: "Loading...",
+      loginRequired: {
+        title: "Login Required",
+        message: "You need to be logged in to access this page.",
+        signup: "Sign Up",
+        home: "Log In",
+      },
+    },
   },
   de: {
     welcome: {
@@ -281,6 +339,35 @@ export const translations: Record<string, Translations> = {
         title: "Anmeldung fehlgeschlagen",
         userExists: "Ein Benutzer mit dieser E-Mail oder diesem Benutzernamen existiert bereits",
         serverError: "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
+      },
+    },
+    forum: {
+      title: "Ubuntu-Project Forum",
+      subtitle: "Verbinden, Lernen und Teilen mit der Ubuntu Community",
+      searchPlaceholder: "Diskussionen durchsuchen...",
+      tabs: {
+        recent: "Neueste",
+        hot: "Beliebt",
+        pinned: "Angepinnt",
+      },
+      categories: {
+        title: "Kategorien",
+      },
+      stats: {
+        title: "Community Statistiken",
+        members: "Mitglieder",
+        posts: "Beiträge",
+        online: "Jetzt online",
+      },
+      createPost: "Neuen Beitrag erstellen",
+    },
+    auth: {
+      loading: "Laden...",
+      loginRequired: {
+        title: "Anmeldung erforderlich",
+        message: "Sie müssen angemeldet sein, um auf diese Seite zuzugreifen.",
+        signup: "Registrieren",
+        home: "Anmelden",
       },
     },
   },
