@@ -749,28 +749,39 @@ function AppContent() {
                     flexDirection: "column",
                   }}
                 >
-                  <CardContent sx={{ p: { xs: 1.2, md: 3 } }}>
-                    <Box sx={{ mb: { xs: 0.8, md: 2 } }}>{feature.icon}</Box>
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        mb: { xs: 0.8, md: 2 },
-                        fontWeight: "bold",
-                        fontSize: { xs: "1rem", md: "1.5rem" },
-                        color:
-                          currentTheme === "darknight"
-                            ? colors.textColorLight
-                            : colors.textColorDark,
-                      }}
-                    >
-                      {feature.title}
-                    </Typography>
+                  <CardContent sx={{ 
+                    p: { xs: 1.2, md: 3 },
+                    display: "flex",
+                    flexDirection: "column",
+                    height: "100%",
+                    justifyContent: "space-between",
+                  }}>
+                    <Box>
+                      <Box sx={{ mb: { xs: 0.8, md: 2 } }}>{feature.icon}</Box>
+                      <Typography
+                        variant="h5"
+                        sx={{
+                          mb: { xs: 0.8, md: 2 },
+                          fontWeight: "bold",
+                          fontSize: { xs: "1rem", md: "1.5rem" },
+                          color:
+                            currentTheme === "darknight"
+                              ? colors.textColorLight
+                              : colors.textColorDark,
+                        }}
+                      >
+                        {feature.title}
+                      </Typography>
+                    </Box>
                     <Typography
                       variant="body1"
                       sx={{
                         color: colors.secondary,
                         fontSize: { xs: "0.8rem", md: "1rem" },
                         lineHeight: { xs: 1.2, md: 1.6 },
+                        flex: 1,
+                        display: "flex",
+                        alignItems: "center",
                       }}
                     >
                       {feature.description}
@@ -1238,6 +1249,23 @@ function AppContent() {
               overflowY: "auto",
               pb: 2,
             }}
+            onScroll={(e) => {
+              const target = e.target as HTMLElement;
+              const scrollTop = target.scrollTop;
+              const scrollHeight = target.scrollHeight;
+              const clientHeight = target.clientHeight;
+              
+              // Check if user has scrolled to the bottom (with 50px threshold)
+              if (scrollTop + clientHeight >= scrollHeight - 50) {
+                // Small delay to prevent immediate jump, then scroll to next section
+                setTimeout(() => {
+                  const nextSection = document.querySelector('[data-section="about2"]');
+                  if (nextSection) {
+                    nextSection.scrollIntoView({ behavior: "smooth" });
+                  }
+                }, 300);
+              }
+            }}
           >
             {[
               { 
@@ -1359,6 +1387,7 @@ function AppContent() {
       {/* About Section 2 - Desktop: Single section, Mobile: Split into 3 sections */}
       {/* Desktop: Single About2 Section */}
       <Box
+        data-section="about2"
         sx={{
           height: { xs: "100dvh", md: "100vh" },
           display: { xs: "none", md: "flex" },
@@ -1438,6 +1467,7 @@ function AppContent() {
 
       {/* Mobile: About2 Section 1 - Title + Paragraph 1 */}
       <Box
+        data-section="about2"
         sx={{
           height: "100dvh",
           display: { xs: "flex", md: "none" },
