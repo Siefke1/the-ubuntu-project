@@ -10,6 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRole {
+  ADMIN
+  CONTRIBUTOR
+  BEGINNER
+}
+
 model User {
   id        String   @id @default(cuid())
   email     String   @unique
@@ -20,6 +26,8 @@ model User {
   avatar    String?
   bio       String?
   isVerified Boolean @default(false)
+  role      UserRole @default(BEGINNER)
+  isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   lastLogin DateTime?
@@ -32,18 +40,46 @@ model User {
   @@map("users")
 }
 
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique // URL-friendly version of name
+  description String?
+  icon        String?  // Icon name or URL
+  color       String?  // Hex color code for theming
+  isActive    Boolean  @default(true)
+  sortOrder   Int      @default(0) // For custom ordering
+  postCount   Int      @default(0) // Cached count of posts
+  
+  // Role-based permissions
+  allowedRoles UserRole[] // Which roles can post in this category
+  isPublic     Boolean  @default(true) // Can everyone view this category?
+  requiresApproval Boolean @default(false) // Do posts need admin approval?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relationships
+  posts       Post[]
+
+  @@map("categories")
+}
+
 model Post {
-  id        String   @id @default(cuid())
-  title     String
-  content   String
-  authorId  String
-  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  category  String
-  tags      String[]
-  likes     Like[]
-  replies   Reply[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(cuid())
+  title      String
+  content    String
+  authorId   String
+  author     User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  tags       String[]
+  isPinned   Boolean  @default(false)
+  isLocked   Boolean  @default(false) // Prevent new replies
+  likes      Like[]
+  replies    Reply[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
   @@map("posts")
 }
