@@ -170,7 +170,7 @@ export const translations: Record<string, Translations> = {
     stats: {
       title: "How it's going so far?",
       description:
-        "We launched in October 2025, our first primary goal is 1 Million Registered Users and these are our current numbers.",
+        "We launched in October 2025 and our first goal is to reach 1 Million Registered Users. These are our current numbers.",
       users: "Registered Users",
       visits: "Daily Visits",
       contribution: "User contribution",
@@ -188,7 +188,7 @@ export const translations: Record<string, Translations> = {
     },
     signup: {
       title: "Join the Ubuntu-Project",
-      subtitle: "Yes, we like old-school registration forms.",
+      subtitle: "We really do like old-school registration forms.",
       form: {
         email: "Email",
         username: "Username",
@@ -301,7 +301,7 @@ export const translations: Record<string, Translations> = {
     stats: {
       title: "Wie läuft es bisher?",
       description:
-        "Wir haben im Oktober 2025 gestartet und das sind unsere aktuellen Zahlen.",
+        "Wir haben im Oktober 2025 gestartet und unser erstes Ziel ist es, 1 Million registrierte Benutzer zu erreichen. Dies sind unsere aktuellen Zahlen.",
       users: "Registrierte Benutzer",
       visits: "Besuche Heute",
       contribution: "Benutzerbeitrag",
@@ -319,7 +319,7 @@ export const translations: Record<string, Translations> = {
     },
     signup: {
       title: "Dem Ubuntu-Projekt beitreten",
-      subtitle: "Ja, wir mögen old-school Anmelde-Formulare.",
+      subtitle: "Hotmail-Adressen sind Tabu für Ü-30-Jährige.",
       form: {
         email: "E-Mail",
         username: "Benutzername",
