@@ -84,7 +84,7 @@ const LanguageSwitcher: React.FC = () => {
       sx={{
         position: 'fixed',
         top: 20,
-        right: 80, // Position next to theme switcher
+        right: 20, // Position at top right corner
         zIndex: 1000,
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(0)' : 'translateY(-10px)',

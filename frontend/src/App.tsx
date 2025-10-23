@@ -262,13 +262,15 @@ function AppContent() {
                 '[data-section="about"]'
               );
               if (aboutSections.length > 0) {
-                // On mobile, there might be multiple about sections, 
+                // On mobile, there might be multiple about sections,
                 // but only one is visible at a time due to responsive display
-                const visibleSection = Array.from(aboutSections).find(section => {
-                  const style = window.getComputedStyle(section);
-                  return style.display !== 'none';
-                });
-                
+                const visibleSection = Array.from(aboutSections).find(
+                  (section) => {
+                    const style = window.getComputedStyle(section);
+                    return style.display !== "none";
+                  }
+                );
+
                 if (visibleSection) {
                   visibleSection.scrollIntoView({ behavior: "smooth" });
                 } else {
@@ -519,6 +521,21 @@ function AppContent() {
             transition={{ duration: 0.8 }}
           >
             <Typography
+              variant="h2"
+              sx={{
+                textAlign: "center",
+                mb: { xs: 2, md: 3 },
+                fontWeight: "bold",
+                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
+                color:
+                  currentTheme === "darknight"
+                    ? colors.textColorLight
+                    : colors.textColorDark,
+              }}
+            >
+              {t.about.paragraph2Title}
+            </Typography>
+            <Typography
               variant="h6"
               sx={{
                 fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
@@ -566,6 +583,21 @@ function AppContent() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            <Typography
+              variant="h2"
+              sx={{
+                textAlign: "center",
+                mb: { xs: 2, md: 3 },
+                fontWeight: "bold",
+                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
+                color:
+                  currentTheme === "darknight"
+                    ? colors.textColorLight
+                    : colors.textColorDark,
+              }}
+            >
+              {t.about.paragraph3Title}
+            </Typography>
             <Typography
               variant="h6"
               sx={{
