@@ -257,11 +257,24 @@ function AppContent() {
             variant="contained"
             size="large"
             onClick={() => {
-              const aboutSection = document.querySelector(
+              // Find the first visible about section (works for both desktop and mobile)
+              const aboutSections = document.querySelectorAll(
                 '[data-section="about"]'
               );
-              if (aboutSection) {
-                aboutSection.scrollIntoView({ behavior: "smooth" });
+              if (aboutSections.length > 0) {
+                // On mobile, there might be multiple about sections, 
+                // but only one is visible at a time due to responsive display
+                const visibleSection = Array.from(aboutSections).find(section => {
+                  const style = window.getComputedStyle(section);
+                  return style.display !== 'none';
+                });
+                
+                if (visibleSection) {
+                  visibleSection.scrollIntoView({ behavior: "smooth" });
+                } else {
+                  // Fallback to first section
+                  aboutSections[0].scrollIntoView({ behavior: "smooth" });
+                }
               }
             }}
             sx={{
@@ -315,12 +328,13 @@ function AppContent() {
         </motion.div>
       </Box>
 
-      {/* About Section */}
+      {/* About Section - Desktop: Single section, Mobile: Split into 3 sections */}
+      {/* Desktop: Single About Section */}
       <Box
         data-section="about"
         sx={{
           height: { xs: "100dvh", md: "100vh" },
-          display: "flex",
+          display: { xs: "none", md: "flex" },
           alignItems: "center",
           color: "white",
           scrollSnapAlign: "start",
@@ -392,6 +406,166 @@ function AppContent() {
             >
               <span dangerouslySetInnerHTML={{ __html: t.about.paragraph2 }} />
             </Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                textAlign: "center",
+                lineHeight: { xs: 1.4, md: 1 },
+                mb: { xs: 3, md: 4 },
+                color:
+                  currentTheme === "darknight"
+                    ? colors.textColorLight
+                    : colors.textColorDark,
+                opacity: 0.6,
+                px: { xs: 2, md: 0 },
+              }}
+            >
+              {t.about.paragraph3}
+            </Typography>
+          </motion.div>
+        </Container>
+      </Box>
+
+      {/* Mobile: About Section 1 - Title + Paragraph 1 */}
+      <Box
+        data-section="about"
+        sx={{
+          height: "100dvh",
+          display: { xs: "flex", md: "none" },
+          alignItems: "center",
+          color: "white",
+          scrollSnapAlign: "start",
+          position: "relative",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "3000px",
+            height: "3000px",
+            background: `radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)`,
+            pointerEvents: "none",
+          },
+        }}
+      >
+        <Container maxWidth="md">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Typography
+              variant="h2"
+              sx={{
+                textAlign: "center",
+                mb: { xs: 2, md: 3 },
+                fontWeight: "bold",
+                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
+                color:
+                  currentTheme === "darknight"
+                    ? colors.textColorLight
+                    : colors.textColorDark,
+              }}
+            >
+              {t.about.title}
+            </Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                textAlign: "center",
+                lineHeight: { xs: 1.4, md: 1 },
+                mb: { xs: 3, md: 4 },
+                color:
+                  currentTheme === "darknight"
+                    ? colors.textColorLight
+                    : colors.textColorDark,
+                opacity: 0.6,
+                px: { xs: 2, md: 0 },
+              }}
+            >
+              <span dangerouslySetInnerHTML={{ __html: t.about.paragraph1 }} />
+            </Typography>
+          </motion.div>
+        </Container>
+      </Box>
+
+      {/* Mobile: About Section 2 - Paragraph 2 */}
+      <Box
+        sx={{
+          height: "100dvh",
+          display: { xs: "flex", md: "none" },
+          alignItems: "center",
+          color: "white",
+          scrollSnapAlign: "start",
+          position: "relative",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "3000px",
+            height: "3000px",
+            background: `radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)`,
+            pointerEvents: "none",
+          },
+        }}
+      >
+        <Container maxWidth="md">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                textAlign: "center",
+                lineHeight: { xs: 1.4, md: 1 },
+                mb: { xs: 3, md: 4 },
+                color:
+                  currentTheme === "darknight"
+                    ? colors.textColorLight
+                    : colors.textColorDark,
+                opacity: 0.6,
+                px: { xs: 2, md: 0 },
+              }}
+            >
+              <span dangerouslySetInnerHTML={{ __html: t.about.paragraph2 }} />
+            </Typography>
+          </motion.div>
+        </Container>
+      </Box>
+
+      {/* Mobile: About Section 3 - Paragraph 3 */}
+      <Box
+        sx={{
+          height: "100dvh",
+          display: { xs: "flex", md: "none" },
+          alignItems: "center",
+          color: "white",
+          scrollSnapAlign: "start",
+          position: "relative",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "3000px",
+            height: "3000px",
+            background: `radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)`,
+            pointerEvents: "none",
+          },
+        }}
+      >
+        <Container maxWidth="md">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <Typography
               variant="h6"
               sx={{
