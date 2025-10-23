@@ -264,11 +264,11 @@ export const translations: Record<string, Translations> = {
     about2: {
       title: "Etwas das uns wichtig ist:",
       paragraph1:
-        "Wir sind in erster Linie eine <strong>ökonomische</strong> Gemeinschaft, keine politische, religiöse oder andere. Bei uns sind Menschen willkommen, die in der Lage sind Andere für Ihre persönlichen Einstellungen und Überzeugungen zu respektieren, solange diese im Einklang mit eben jenen Grundsätzen stehen.",
+        "Wir sind eine <strong>ökonomische</strong> Gemeinschaft, keine politische, religiöse oder sonstige. Alle sind willkommen, die in der Lage sind Andere für Ihre persönlichen Einstellungen und Überzeugungen zu respektieren, solange diese im Einklang mit eben jenen Grundsätzen stehen.",
       paragraph2:
-        "Außerdem ist es <strong>nicht</strong> unsere Absicht, ein System zu entwerfen, das Leistung mit persönlicher finanzieller Belohnung verknüpft. Wir sind offen ein minimales Stufensystem zu diskutieren, glauben grundsätzlich aber dass kontinuierlicher Wohlstand nur auf <strong>kollektiver Ebene</strong> erreicht werden kann — und wir sind entschlossen, dieses Prinzip zu bewahren.",
+        "Außerdem ist es <strong>nicht</strong> unsere Absicht, ein System zu entwerfen, das Leistung mit persönlicher finanzieller Belohnung verknüpft. Wir sind offen ein minimales Stufensystem zu diskutieren, glauben aber grundsätzlich, dass kontinuierlicher Wohlstand nur auf <strong>kollektiver Ebene</strong> erreicht werden kann — und sind entschlossen, dieses Prinzip zu bewahren.",
       paragraph3:
-        "Wir sind aber auch nicht ganz frei von Hierarchien. Vorerst fungieren wir — die GründerInnen — als Administratoren der Plattform, Server und Code-Base und dienen als funktionale Führung des Unternehmens - maßgeblich um den Erhalt unserer Werte und Ziele zu garantieren. Langfristig streben wir ein verteilteres Modell an — die Wahl von Sprecherinnen und Sprechern nach Fachgebiet und kollektive Entscheidungsfindung.",
+        "Auch sind wir nicht frei von Hierarchien. Vorerst fungieren wir — die GründerInnen — als Administratoren der Plattform, Server und Code-Base und dienen als funktionale Führung des Unternehmens - maßgeblich um den Erhalt unserer Werte und Ziele zu garantieren. Langfristig streben wir ein verteilteres Modell an — die Wahl von Sprecherinnen und Sprechern nach Fachgebiet und kollektive Entscheidungsfindung.",
     },
     howTo: {
       title: "Was kannst du tun?",

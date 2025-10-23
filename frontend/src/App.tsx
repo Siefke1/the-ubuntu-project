@@ -375,7 +375,7 @@ function AppContent() {
             <Typography
               variant="h6"
               sx={{
-                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
                 textAlign: "center",
                 lineHeight: { xs: 1.4, md: 1 },
                 mb: { xs: 3, md: 4 },
@@ -392,7 +392,7 @@ function AppContent() {
             <Typography
               variant="h6"
               sx={{
-                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
                 textAlign: "center",
                 lineHeight: { xs: 1.4, md: 1 },
                 mb: { xs: 3, md: 4 },
@@ -409,7 +409,7 @@ function AppContent() {
             <Typography
               variant="h6"
               sx={{
-                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
                 textAlign: "center",
                 lineHeight: { xs: 1.4, md: 1 },
                 mb: { xs: 3, md: 4 },
@@ -473,7 +473,7 @@ function AppContent() {
             <Typography
               variant="h6"
               sx={{
-                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
                 textAlign: "center",
                 lineHeight: { xs: 1.4, md: 1 },
                 mb: { xs: 3, md: 4 },
@@ -521,7 +521,7 @@ function AppContent() {
             <Typography
               variant="h6"
               sx={{
-                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
                 textAlign: "center",
                 lineHeight: { xs: 1.4, md: 1 },
                 mb: { xs: 3, md: 4 },
@@ -569,7 +569,7 @@ function AppContent() {
             <Typography
               variant="h6"
               sx={{
-                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
                 textAlign: "center",
                 lineHeight: { xs: 1.4, md: 1 },
                 mb: { xs: 3, md: 4 },
@@ -641,7 +641,7 @@ function AppContent() {
                 opacity: 0.6,
                 maxWidth: { xs: "90%", md: "800px" },
                 mx: "auto",
-                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
                 px: { xs: 2, md: 0 },
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
@@ -658,7 +658,10 @@ function AppContent() {
                 md: "repeat(2, 1fr)",
                 lg: "repeat(3, 1fr)",
               },
-              gap: 4,
+              gap: 6,
+              alignItems: "center",
+              justifyContent: "center",
+              mt: 4,
             }}
           >
             {[
@@ -751,7 +754,7 @@ function AppContent() {
           display: { xs: "flex", md: "none" },
           alignItems: "center",
           scrollSnapAlign: "start",
-          py: { xs: 0.5, md: 0 },
+          py: { xs: 2, md: 0 },
         }}
       >
         <Container maxWidth="lg" sx={{ width: "100%" }}>
@@ -759,8 +762,10 @@ function AppContent() {
             sx={{
               display: "grid",
               gridTemplateColumns: "1fr",
-              gap: { xs: 0.8, md: 3 },
+              gap: { xs: 2, md: 3 },
               px: 2,
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
             {[
