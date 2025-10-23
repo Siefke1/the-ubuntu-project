@@ -120,31 +120,31 @@ export const translations: Record<string, Translations> = {
       welcome: "Welcome to the",
       title: "Ubuntu-Project",
       description:
-        "Ever wanted to own a company? Our idea is simple. We founded an online company and for now we provide this platform. By signing up, you become an equal shareholder — meaning every bit of revenue our little business generates is split equally among all of us. Simple as that. No fine print, no tricks.",
-      button: "Curious?",
+        "Our idea is simple. We founded an online company and for now we provide a social media platform. If you sign up, you become a shareholder in our company, meaning any profit generated will be divided between <strong>all</strong> of us.",
+      button: "Sounds interesting?",
     },
     about: {
       title: "Here's the plan...",
       paragraph1:
-        "We believe sustainable wealth isn't about fast profits — it's about <strong>ownership</strong>. Online, that means owning our data and the spaces we build together.",
+        "Data is a massive ressource in the modern web. It is collected where ever we go and the companies owning the platforms we use, generate billions in revenue selling this data to various customers. Our business model isn't only about profits — it's about <strong>ownership</strong>. Ownership of the data and spaces we build and use together.",
       paragraph2:
-        'The trade of data for "free" access to services might seem fair, but we imagine a space where we not only get to decide what happens to our data, but also profit from any revenue generated from it. All of us.',
+        'So what if we could build a platform hosting millions of users, that generates vast amounts of data, but we collectively own everything at the same time? Examples like the <a href="https://en.wikipedia.org/wiki/GameStop_short_squeeze" style="color: inherit;" target="_blank" rel="noopener noreferrer">GameStop Short-Squeeze</a> demonstrated impressively, how much impact we as consumers really have, as long as we bundle our efforts. We have come to the overdue conclusion, that in order to fundamentally succeed, we will need each other.',
       paragraph3:
-        "We've started by creating a Forum, a Discord Server, and a GitHub Repository — open spaces that allow us to exchange ideas and collaborate. Join if you wish. Every voice helps build what comes next.",
+        "So first, we want to build a community. A big one. We've started by creating a Twitter-Like-Forum that allows us to exchange ideas, collaborate  and vote on critical decisions. Swing by if you want to know a little more about our thoughts and ideas, maybe even share your own?",
     },
     about2: {
       title: "Something important to us:",
       paragraph1:
-        "Our aim is <strong>not</strong> to design a system that ties contribution to personal financial reward. We believe that true prosperity exists only at the <strong>collective level</strong> — and we are committed to preserving that principle.",
+        "We are an <strong>economical</strong> community, not a political, religious or other. We welcome everyone, who is willing to respect others for their personal preferences and convictions, as long as these are compatible with the aforementioned fundamental values.",
       paragraph2:
-        "Also, this doesn't mean there's no hierarchy at all. For now, we — the founders — act as administrators of the platform, servers, and repositories, serving as the company's functional leadership. In the long run, we aim to establish a more distributed model — electing spokespersons by area of expertise and making key decisions collectively.",
+        "Also it is <strong>not</strong> our intention to design a system that ties contribution to personal financial reward. Though we are open to discuss a minimal financial hierarchical system, we believe that lasting prosperity can only be achieved at the <strong>collective level</strong> — and we are committed to preserving that principle.",
       paragraph3:
-        "Working with us is not mandatory and will never be. But we want you to see this as your company as well.",
+        "That said, we are not free of hierarchy. For now we — the founders — act as administrators of the platform, servers, and repositories, serving as the company's functional leadership, in order to ensure the preservation of our values and goals. In the long run, we aim to establish a more distributed model — electing spokespersons by area of expertise and making key decisions collectively.",
     },
     howTo: {
       title: "What can you do?",
       description:
-        "If you are looking to help get our business running, we have a few ideas we would like to discuss with you. But for starters, we have thought of a simple <strong>3-Step-Plan</strong>, on how to proceed from here:",
+        "Don't worry, we are not asking you to work for us. Actually we see it quite the other way around. But no matter if you actively contribute or not, there is still something you can do for us. By following at least one of these <strong>3-Step-Plan</strong> for us:",
       cards: {
         signup: {
           title: "1. Sign up",
@@ -175,7 +175,7 @@ export const translations: Record<string, Translations> = {
     cta: {
       title: "Care to join?",
       description:
-        "Worst case this will have zero impact on your life. Best case, we will build something unprecedented. <strong>Our choice.</strong>",
+        "We will not ask any sensitive information of you. Email, Password and a funky Username should do the trick for now.",
       signup: "Sign up",
       about: "About Us",
     },
@@ -205,7 +205,8 @@ export const translations: Record<string, Translations> = {
       },
       success: {
         title: "Welcome aboard!",
-        message: "Your account has been created successfully. You are now an equal shareholder in our collective venture.",
+        message:
+          "Your account has been created successfully. You are now an equal shareholder in our collective venture.",
       },
       error: {
         title: "Sign up failed",
@@ -248,36 +249,36 @@ export const translations: Record<string, Translations> = {
       welcome: "Willkommen beim",
       title: "Ubuntu-Projekt",
       description:
-        "Unsere Idee ist simpel. Wir haben ein Online-Unternehmen gegründet und stellen momentan diese Plattform zur Verfügung. Durch die Anmeldung bei uns, wirst du zum gleichberechtigten Aktionär — das bedeutet, jeder Cent Umsatz, den unser kleines Unternehmen generiert, wird gleichmäßig unter uns allen aufgeteilt. Keine versteckten Kosten, keine Tricks.",
+        "Unsere Idee ist simpel. Wir haben ein Unternehmen gegründet und stellen eine Social Media Plattform zur Verfügung. Wenn Du dich anmeldest, wirst du ein Anteilseigner unseres Unternehmes, das bedeutet jeglicher Umsatz den wir einstreichen sollten, wird unter <strong>Allen</strong> aufgeteilt.",
       button: "Neugierig geworden?",
     },
     about: {
       title: "Hier ist der Plan...",
       paragraph1:
-        "Wir glauben, dass nachhaltiger Wohlstand nicht in schnellen Gewinnen liegt — sondern in <strong>Beteiligung</strong>. Online bedeutet das, ein Besitzrecht geltend machen zu können, für unsere Daten und die Räume die wir gemeinsam aufbauen.",
+        "Daten sind heute eine Ressource mit hoher Nachfrage. Sie werden von uns ermittelt wohin wir auch gehen und die Besitzer der Plattformen die wir benutzen, streichen Milliardengewinne ein, mit dem Verkauf dieser Daten. Unser Geschätsmodell verspricht keine schnellen Gewinne, sondern <strong>Beteiligung</strong>. Beteiligung an den Räumen in denen wir uns aufhalten und den Daten die darin generiert werden.",
       paragraph2:
-        'Der Deal persönliche Daten gegen "kostenlosen" Zugang zu Webservices mag fair erscheinen, aber wir stellen uns einen Raum vor, in dem wir nicht nur entscheiden können wem wir unsere Daten geben, sondern auch am damit generierten Umsatz beteiligt sind.',
+        'Was, wenn wir in der Lage sind, eine Plattform aufzubauen, die Millionen von Nutzern beheimatet, die große Mengen an Daten generiert, die wir selbstbestimmt verwalten und verkaufen können? Beispiele wie die <a href="https://en.wikipedia.org/wiki/GameStop_short_squeeze" style="color: inherit;" target="_blank" rel="noopener noreferrer">GameStop Short-Squeeze</a> haben eindrucksvoll demonstriert, wie viel mehr Einfluss wir als Verbraucher wirklich haben.',
       paragraph3:
-        "Wir haben mit der Erstellung eines Forums, eines Discord-Servers und eines GitHub-Repositories begonnen — offene Räume, die es uns ermöglichen, Ideen auszutauschen und zusammenzuarbeiten. Melde Dich dort wenn Du möchtest. Jede Idee hilft.",
+        "Also wollen wir eine Community bauen. Eine ziemlich große. Wir haben mit der Erstellung eines Twitter-Like-Forums begonnen, das es uns ermöglicht, Ideen auszutauschen, zusammenzuarbeiten und über wichtige Entscheidungen abzustimmen. Schau dort vorbei wenn du ein bisschen mehr über unsere Pläne und Ideen erfahren möchtest oder Dich vielleicht sogar einbringen möchtest?",
     },
     about2: {
       title: "Etwas das uns wichtig ist:",
       paragraph1:
-        "Es ist <strong>nicht</strong> unsere Absicht, ein System zu entwerfen, das Leistung mit persönlicher finanzieller Belohnung verknüpft. Wir glauben, dass wahrer Wohlstand nur auf kollektiver Ebene existiert — und wir sind entschlossen, dieses Prinzip zu bewahren.",
+        "Wir sind in erster Linie eine <strong>ökonomische</strong> Gemeinschaft, keine politische, religiöse oder andere. Bei uns sind Menschen willkommen, die in der Lage sind Andere für Ihre persönlichen Einstellungen und Überzeugungen zu respektieren, solange diese im Einklang mit eben jenen Grundsätzen stehen.",
       paragraph2:
-        "Das bedeutet allerdings nicht, dass es keinerlei Hierarchien gibt. Vorerst fungieren wir — die GründerInnen — als Administratoren der Plattform, Server und Code-Base und dienen als funktionale Führung des Unternehmens. Langfristig streben wir ein verteilteres Modell an — die Wahl von Sprecherinnen und Sprechern nach Fachgebiet und kollektive Entscheidungsfindung.",
+        "Außerdem ist es <strong>nicht</strong> unsere Absicht, ein System zu entwerfen, das Leistung mit persönlicher finanzieller Belohnung verknüpft. Wir sind offen ein minimales Stufensystem zu diskutieren, glauben grundsätzlich aber dass kontinuierlicher Wohlstand nur auf <strong>kollektiver Ebene</strong> erreicht werden kann — und wir sind entschlossen, dieses Prinzip zu bewahren.",
       paragraph3:
-        "Die Arbeit mit uns ist nicht verpflichtend und wird es nie sein. Aber wir möchten, dass du das auch als dein Unternehmen betrachtest.",
+        "Wir sind aber auch nicht ganz frei von Hierarchien. Vorerst fungieren wir — die GründerInnen — als Administratoren der Plattform, Server und Code-Base und dienen als funktionale Führung des Unternehmens - maßgeblich um den Erhalt unserer Werte und Ziele zu garantieren. Langfristig streben wir ein verteilteres Modell an — die Wahl von Sprecherinnen und Sprechern nach Fachgebiet und kollektive Entscheidungsfindung.",
     },
     howTo: {
       title: "Was kannst du tun?",
       description:
-        "Falls du helfen möchtest, unser Unternehmen zum Laufen zu bringen, haben wir einige Ideen, die wir mit dir besprechen möchten. Aber für den Anfang haben wir uns einen einfachen <strong>3-Schritte-Plan</strong> überlegt, wie wir vorgehen können:",
+        "Keine Angst, wir erwarten nicht von Dir, dass Du für uns arbeitest. Tatsächlich sehen wir die Sache genau anders herum. Aber auch wenn Du Dich vielleicht nicht aktiv beteiligen möchtest, gibt es trotzdem etwas dass Du für uns tun kannst. Für den Anfang haben wir uns einen einfachen <strong>3-Schritte-Plan</strong> überlegt:",
       cards: {
         signup: {
           title: "1. Melde Dich an",
           description:
-            "Unser erstes Ziel ist es, eine bestimmte Anzahl registrierter Benutzer zu erreichen. Je mehr wir sind, desto besser, denn unsere Ressource werden wir selbst sein.",
+            "Unser erstes Ziel ist es, eine große Anzahl registrierter Benutzer zu erreichen. Je mehr wir sind, desto besser, denn unsere Ressource werden wir selbst sein.",
         },
         friends: {
           title: "2. Erzähle es weiter",
@@ -303,7 +304,7 @@ export const translations: Record<string, Translations> = {
     cta: {
       title: "Lust mitzumachen?",
       description:
-        "Im schlimmsten Fall wird es keinerlei Auswirkungen auf dein Leben haben. Im besten Fall werden wir etwas Beispielloses aufbauen. <strong>Unsere Wahl.</strong>",
+        "Wir werden dich nach keinerlei vertraulichen Informationen fragen. E-Mail, Passwort und ein lustiger Benutzername sollten reichen für den Anfang.",
       signup: "Anmelden",
       about: "Über uns",
     },
@@ -333,12 +334,15 @@ export const translations: Record<string, Translations> = {
       },
       success: {
         title: "Willkommen an Bord!",
-        message: "Ihr Konto wurde erfolgreich erstellt. Sie sind jetzt ein gleichberechtigter Aktionär in unserem kollektiven Unternehmen.",
+        message:
+          "Ihr Konto wurde erfolgreich erstellt. Sie sind jetzt ein gleichberechtigter Aktionär in unserem kollektiven Unternehmen.",
       },
       error: {
         title: "Anmeldung fehlgeschlagen",
-        userExists: "Ein Benutzer mit dieser E-Mail oder diesem Benutzernamen existiert bereits",
-        serverError: "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
+        userExists:
+          "Ein Benutzer mit dieser E-Mail oder diesem Benutzernamen existiert bereits",
+        serverError:
+          "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
       },
     },
     forum: {
