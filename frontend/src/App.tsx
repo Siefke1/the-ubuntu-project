@@ -243,7 +243,7 @@ function AppContent() {
               lineHeight: { xs: 1.4, md: 1 },
             }}
           >
-            {t.welcome.description}
+            <span dangerouslySetInnerHTML={{ __html: t.welcome.description }} />
           </Typography>
         </motion.div>
 
@@ -390,7 +390,7 @@ function AppContent() {
                 px: { xs: 2, md: 0 },
               }}
             >
-              {t.about.paragraph2}
+              <span dangerouslySetInnerHTML={{ __html: t.about.paragraph2 }} />
             </Typography>
             <Typography
               variant="h6"
@@ -420,17 +420,17 @@ function AppContent() {
           display: "flex",
           alignItems: "center",
           scrollSnapAlign: "start",
-          // position: "relative",
-          // "&::before": {
-          //   content: '""',
-          //   position: "absolute",
-          //   top: 0,
-          //   right: 0,
-          //   width: "300px",
-          //   height: "300px",
-          //   background: `radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%)`,
-          //   pointerEvents: "none",
-          // },
+          position: "relative",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            right: 0,
+            width: "300px",
+            height: "300px",
+            background: `radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%)`,
+            pointerEvents: "none",
+          },
         }}
       >
         <Container maxWidth="lg" sx={{ width: "100%" }}>
@@ -844,7 +844,7 @@ function AppContent() {
                 lineHeight: { xs: 1.4, md: 1.2 },
               }}
             >
-              {t.about2.paragraph2}
+              <span dangerouslySetInnerHTML={{ __html: t.about2.paragraph2 }} />
             </Typography>
             <Typography
               variant="h6"
@@ -853,7 +853,7 @@ function AppContent() {
                 mb: { xs: 3, md: 4 },
                 opacity: 0.6,
                 fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
-                fontWeight: "bold",
+                // fontWeight: "bold",
                 color:
                   currentTheme === "darknight" ? colors.textColorDark : "#ccc",
                 px: { xs: 2, md: 0 },

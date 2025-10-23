@@ -97,6 +97,7 @@ router.post('/login', (req, res, next) => {
         firstName: user.firstName,
         lastName: user.lastName,
         avatar: user.avatar,
+        role: user.role,
         isVerified: user.isVerified
       },
       token
@@ -107,7 +108,16 @@ router.post('/login', (req, res, next) => {
 // Get current user profile
 router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json({
-    user: req.user
+    user: {
+      id: req.user.id,
+      email: req.user.email,
+      username: req.user.username,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
+      avatar: req.user.avatar,
+      role: req.user.role,
+      isVerified: req.user.isVerified
+    }
   });
 });
 

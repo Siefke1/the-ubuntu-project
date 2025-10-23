@@ -64,6 +64,8 @@ interface Post {
   likes: number;
   repliesCount: number;
   replies: Reply[];
+  isPinned: boolean;
+  isLocked: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -768,18 +770,42 @@ const PostView: React.FC = () => {
               }
               title={
                 <Box>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      color: colors.textColorLight,
-                      fontWeight: "bold",
-                      mb: 1,
-                      fontSize: '1.5rem',
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {post.title}
-                  </Typography>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        color: colors.textColorLight,
+                        fontWeight: "bold",
+                        fontSize: '1.5rem',
+                        lineHeight: 1.3,
+                        flex: 1,
+                      }}
+                    >
+                      {post.title}
+                    </Typography>
+                    {post.isLocked && (
+                      <Chip
+                        label="CLOSED"
+                        sx={{
+                          backgroundColor: '#f44336',
+                          color: 'white',
+                          fontWeight: 'bold',
+                          fontSize: '0.8rem',
+                        }}
+                      />
+                    )}
+                    {post.isPinned && (
+                      <Chip
+                        label="PINNED"
+                        sx={{
+                          backgroundColor: colors.accent,
+                          color: 'white',
+                          fontWeight: 'bold',
+                          fontSize: '0.8rem',
+                        }}
+                      />
+                    )}
+                  </Box>
                   <Typography
                     variant="body2"
                     sx={{ color: colors.secondary, fontSize: '0.9rem' }}
@@ -1037,16 +1063,21 @@ const PostView: React.FC = () => {
                     variant="outlined"
                     startIcon={<Message />}
                     onClick={() => setShowReplyForm(!showReplyForm)}
+                    disabled={post.isLocked}
                     sx={{
-                      borderColor: colors.accent,
-                      color: colors.accent,
+                      borderColor: post.isLocked ? 'rgba(255, 255, 255, 0.3)' : colors.accent,
+                      color: post.isLocked ? 'rgba(255, 255, 255, 0.6)' : colors.accent,
                       '&:hover': {
-                        backgroundColor: colors.accent + '10',
-                        borderColor: colors.accent,
+                        backgroundColor: post.isLocked ? 'transparent' : colors.accent + '10',
+                        borderColor: post.isLocked ? 'rgba(255, 255, 255, 0.3)' : colors.accent,
+                      },
+                      '&.Mui-disabled': {
+                        borderColor: 'rgba(255, 255, 255, 0.3)',
+                        color: 'rgba(255, 255, 255, 0.6)',
                       },
                     }}
                   >
-                    Reply
+                    {post.isLocked ? 'Closed' : 'Reply'}
                   </Button>
                   {/* Edit/Delete buttons for post author */}
                   {user && post.author.id === user.id && (
@@ -1357,7 +1388,7 @@ const PostView: React.FC = () => {
       </Container>
 
       {/* Sticky Reply Form Overlay */}
-      {showReplyForm && (
+      {showReplyForm && !post.isLocked && (
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}

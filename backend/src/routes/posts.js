@@ -116,15 +116,23 @@ router.get('/', async (req, res) => {
     const category = req.query.category;
     const search = req.query.search;
     const sort = req.query.sort || 'recent'; // 'recent' or 'hot'
+    const pinned = req.query.pinned; // 'true' to get only pinned posts
     const skip = (page - 1) * limit;
 
     // Build where clause
     const where = {};
     if (category && category !== 'all') {
+      const decodedCategory = decodeURIComponent(category);
       where.category = {
-        name: category
+        name: decodedCategory
       };
     }
+    
+    // Pinned filtering
+    if (pinned === 'true') {
+      where.isPinned = true;
+    }
+    
     if (search) {
       where.OR = [
         { title: { contains: search, mode: 'insensitive' } },
@@ -195,6 +203,8 @@ router.get('/', async (req, res) => {
         author: post.author,
         likes: post._count.likes,
         replies: post._count.replies,
+        isPinned: post.isPinned,
+        isLocked: post.isLocked,
         createdAt: post.createdAt,
         updatedAt: post.updatedAt
       })),
@@ -281,6 +291,8 @@ router.get('/:id', async (req, res) => {
         replies: post.replies,
         likes: post._count.likes,
         repliesCount: post._count.replies,
+        isPinned: post.isPinned,
+        isLocked: post.isLocked,
         createdAt: post.createdAt,
         updatedAt: post.updatedAt
       }
@@ -319,6 +331,14 @@ router.post('/:id/reply', passport.authenticate('jwt', { session: false }), asyn
       return res.status(404).json({
         success: false,
         error: 'Post not found'
+      });
+    }
+
+    // Check if post is closed/locked
+    if (post.isLocked) {
+      return res.status(403).json({
+        success: false,
+        error: 'This post is closed. No new replies are allowed.'
       });
     }
 
@@ -680,6 +700,270 @@ router.delete('/:postId/reply/:replyId', passport.authenticate('jwt', { session:
   } catch (error) {
     console.error('Delete reply error:', error);
     res.status(500).json({ success: false, error: 'Failed to delete reply' });
+  }
+});
+
+// Pin/Unpin a post (Admin only)
+router.patch('/:id/pin', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  try {
+    // Check if user has admin role
+    if (!hasRole(req.user.role, UserRole.ADMIN)) {
+      return res.status(403).json({
+        success: false,
+        error: 'Admin access required'
+      });
+    }
+
+    const { id } = req.params;
+    const { isPinned } = req.body;
+
+    // Check if post exists
+    const existingPost = await prisma.post.findUnique({
+      where: { id },
+      include: {
+        author: {
+          select: {
+            id: true,
+            username: true,
+            firstName: true,
+            lastName: true,
+            avatar: true
+          }
+        },
+        category: {
+          select: {
+            name: true
+          }
+        },
+        _count: {
+          select: {
+            likes: true,
+            replies: true
+          }
+        }
+      }
+    });
+
+    if (!existingPost) {
+      return res.status(404).json({
+        success: false,
+        error: 'Post not found'
+      });
+    }
+
+    // Update the pin status
+    const updatedPost = await prisma.post.update({
+      where: { id },
+      data: { isPinned: Boolean(isPinned) },
+      include: {
+        author: {
+          select: {
+            id: true,
+            username: true,
+            firstName: true,
+            lastName: true,
+            avatar: true
+          }
+        },
+        category: {
+          select: {
+            name: true
+          }
+        },
+        _count: {
+          select: {
+            likes: true,
+            replies: true
+          }
+        }
+      }
+    });
+
+    res.json({
+      success: true,
+      message: `Post ${isPinned ? 'pinned' : 'unpinned'} successfully`,
+      post: {
+        id: updatedPost.id,
+        title: updatedPost.title,
+        content: updatedPost.content,
+        category: updatedPost.category.name,
+        tags: updatedPost.tags,
+        author: updatedPost.author,
+        likes: updatedPost._count.likes,
+        replies: updatedPost._count.replies,
+        isPinned: updatedPost.isPinned,
+        createdAt: updatedPost.createdAt,
+        updatedAt: updatedPost.updatedAt
+      }
+    });
+
+  } catch (error) {
+    console.error('Pin/Unpin post error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to update pin status'
+    });
+  }
+});
+
+// Close/Unclose a post (Admin only)
+router.patch('/:id/close', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  try {
+    // Check if user has admin role
+    if (!hasRole(req.user.role, UserRole.ADMIN)) {
+      return res.status(403).json({
+        success: false,
+        error: 'Admin access required'
+      });
+    }
+
+    const { id } = req.params;
+    const { isLocked } = req.body;
+
+    // Check if post exists
+    const existingPost = await prisma.post.findUnique({
+      where: { id },
+      include: {
+        author: {
+          select: {
+            id: true,
+            username: true,
+            firstName: true,
+            lastName: true,
+            avatar: true
+          }
+        },
+        category: {
+          select: {
+            name: true
+          }
+        },
+        _count: {
+          select: {
+            likes: true,
+            replies: true
+          }
+        }
+      }
+    });
+
+    if (!existingPost) {
+      return res.status(404).json({
+        success: false,
+        error: 'Post not found'
+      });
+    }
+
+    // Update the lock status
+    const updatedPost = await prisma.post.update({
+      where: { id },
+      data: { isLocked: Boolean(isLocked) },
+      include: {
+        author: {
+          select: {
+            id: true,
+            username: true,
+            firstName: true,
+            lastName: true,
+            avatar: true
+          }
+        },
+        category: {
+          select: {
+            name: true
+          }
+        },
+        _count: {
+          select: {
+            likes: true,
+            replies: true
+          }
+        }
+      }
+    });
+
+    res.json({
+      success: true,
+      message: `Post ${isLocked ? 'closed' : 'opened'} successfully`,
+      post: {
+        id: updatedPost.id,
+        title: updatedPost.title,
+        content: updatedPost.content,
+        category: updatedPost.category.name,
+        tags: updatedPost.tags,
+        author: updatedPost.author,
+        likes: updatedPost._count.likes,
+        replies: updatedPost._count.replies,
+        isPinned: updatedPost.isPinned,
+        isLocked: updatedPost.isLocked,
+        createdAt: updatedPost.createdAt,
+        updatedAt: updatedPost.updatedAt
+      }
+    });
+
+  } catch (error) {
+    console.error('Close/Unclose post error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to update lock status'
+    });
+  }
+});
+
+// Delete a post (Admin or Author)
+router.delete('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user.id;
+    const userRole = req.user.role;
+
+    // Check if post exists
+    const existingPost = await prisma.post.findUnique({
+      where: { id },
+      include: {
+        author: {
+          select: {
+            id: true,
+            username: true
+          }
+        }
+      }
+    });
+
+    if (!existingPost) {
+      return res.status(404).json({
+        success: false,
+        error: 'Post not found'
+      });
+    }
+
+    // Check permissions: Admin can delete any post, users can only delete their own
+    const isAdmin = hasRole(userRole, UserRole.ADMIN);
+    const isAuthor = existingPost.author.id === userId;
+
+    if (!isAdmin && !isAuthor) {
+      return res.status(403).json({
+        success: false,
+        error: 'You can only delete your own posts'
+      });
+    }
+
+    // Delete the post (cascade will handle replies and likes)
+    await prisma.post.delete({
+      where: { id }
+    });
+
+    res.json({
+      success: true,
+      message: 'Post deleted successfully'
+    });
+
+  } catch (error) {
+    console.error('Delete post error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to delete post'
+    });
   }
 });
 
