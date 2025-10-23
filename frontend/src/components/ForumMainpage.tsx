@@ -660,7 +660,10 @@ const ForumMainpage: React.FC = () => {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem
-          onClick={handleProfileMenuClose}
+          onClick={() => {
+            window.location.hash = "#/profile";
+            handleProfileMenuClose();
+          }}
           sx={{
             color: colors.textColorLight,
             "&:hover": {

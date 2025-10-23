@@ -106,23 +106,41 @@ router.post('/login', (req, res, next) => {
 });
 
 // Get current user profile
-router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.json({
-    user: {
-      id: req.user.id,
-      email: req.user.email,
-      username: req.user.username,
-      firstName: req.user.firstName,
-      lastName: req.user.lastName,
-      avatar: req.user.avatar,
-      role: req.user.role,
-      isVerified: req.user.isVerified
+router.get('/profile', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id: req.user.id },
+      select: {
+        id: true,
+        email: true,
+        username: true,
+        firstName: true,
+        lastName: true,
+        bio: true,
+        avatar: true,
+        role: true,
+        isVerified: true,
+        createdAt: true,
+        updatedAt: true
+      }
+    });
+
+    if (!user) {
+      return res.status(404).json({ success: false, error: 'User not found' });
     }
-  });
+
+    res.json({
+      success: true,
+      user
+    });
+  } catch (error) {
+    console.error('Profile fetch error:', error);
+    res.status(500).json({ success: false, error: 'Internal server error' });
+  }
 });
 
 // Update user profile
-router.put('/profile', passport.authenticate('jwt', { session: false }), async (req, res) => {
+router.patch('/profile', passport.authenticate('jwt', { session: false }), async (req, res) => {
   try {
     const { firstName, lastName, bio, avatar } = req.body;
     
@@ -142,17 +160,70 @@ router.put('/profile', passport.authenticate('jwt', { session: false }), async (
         lastName: true,
         bio: true,
         avatar: true,
-        isVerified: true
+        role: true,
+        isVerified: true,
+        createdAt: true,
+        updatedAt: true
       }
     });
 
     res.json({
+      success: true,
       message: 'Profile updated successfully',
       user: updatedUser
     });
   } catch (error) {
     console.error('Profile update error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ success: false, error: 'Internal server error' });
+  }
+});
+
+// Change password
+router.post('/change-password', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+
+    // Validation
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({ success: false, error: 'Current password and new password are required' });
+    }
+
+    if (newPassword.length < 6) {
+      return res.status(400).json({ success: false, error: 'New password must be at least 6 characters long' });
+    }
+
+    // Get user with password
+    const user = await prisma.user.findUnique({
+      where: { id: req.user.id },
+      select: { password: true }
+    });
+
+    if (!user) {
+      return res.status(404).json({ success: false, error: 'User not found' });
+    }
+
+    // Verify current password
+    const isCurrentPasswordValid = await bcrypt.compare(currentPassword, user.password);
+    if (!isCurrentPasswordValid) {
+      return res.status(400).json({ success: false, error: 'Current password is incorrect' });
+    }
+
+    // Hash new password
+    const hashedNewPassword = await bcrypt.hash(newPassword, 12);
+
+    // Update password
+    await prisma.user.update({
+      where: { id: req.user.id },
+      data: { password: hashedNewPassword }
+    });
+
+    res.json({
+      success: true,
+      message: 'Password changed successfully'
+    });
+  } catch (error) {
+    console.error('Password change error:', error);
+    res.status(500).json({ success: false, error: 'Internal server error' });
   }
 });
 

@@ -41,6 +41,7 @@ const Login = lazy(() => import("./components/Login"));
 const ForumMainpage = lazy(() => import("./components/ForumMainpage"));
 const CreatePost = lazy(() => import("./components/CreatePost"));
 const PostView = lazy(() => import("./components/PostView"));
+const Profile = lazy(() => import("./components/Profile"));
 
 // Loading spinner component
 const LoadingSpinner = () => {
@@ -121,6 +122,7 @@ function AppContent() {
   const { currentTheme, colors } = useTheme();
   const { language } = useLanguage();
   const t = getTranslations(language);
+  const [activeCard, setActiveCard] = React.useState<number | null>(null);
 
   // Scroll-based light animation
   useEffect(() => {
@@ -142,6 +144,38 @@ function AppContent() {
     const scrollContainer = document.querySelector("[data-scroll-container]");
     if (scrollContainer) {
       scrollContainer.addEventListener("scroll", handleScroll);
+      return () => scrollContainer.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
+
+  // Track which howTo card is currently in view on mobile
+  useEffect(() => {
+    const handleScroll = () => {
+      const howToCards = document.querySelectorAll('[data-howto-card]');
+      const scrollContainer = document.querySelector("[data-scroll-container]");
+      if (!scrollContainer || howToCards.length === 0) return;
+
+      const scrollTop = scrollContainer.scrollTop;
+      const containerHeight = scrollContainer.clientHeight;
+
+      howToCards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const cardTop = rect.top + scrollTop;
+        const cardBottom = cardTop + rect.height;
+        const viewportCenter = scrollTop + containerHeight / 2;
+
+        // Check if the card is in the center of the viewport
+        if (viewportCenter >= cardTop && viewportCenter <= cardBottom) {
+          setActiveCard(index);
+        }
+      });
+    };
+
+    const scrollContainer = document.querySelector("[data-scroll-container]");
+    if (scrollContainer) {
+      scrollContainer.addEventListener("scroll", handleScroll);
+      // Initial check
+      handleScroll();
       return () => scrollContainer.removeEventListener("scroll", handleScroll);
     }
   }, []);
@@ -796,6 +830,7 @@ function AppContent() {
 
       {/* Mobile: HowTo Card 1 - Sign up */}
       <Box
+        data-howto-card="0"
         sx={{
           height: "100dvh",
           display: { xs: "flex", md: "none" },
@@ -815,10 +850,15 @@ function AppContent() {
               sx={{
                 height: "60vh",
                 backgroundColor: colors.background.light,
-                border: `1px solid ${colors.light}`,
+                border: `1px solid ${activeCard === 0 ? colors.accent : colors.light}`,
                 borderRadius: 3,
                 transition:
                   "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out",
+                boxShadow: activeCard === 0 
+                  ? currentTheme === "darknight"
+                    ? `0 0 30px ${colors.accent}60, 0 8px 25px ${colors.accent}40`
+                    : `0 0 30px ${colors.accent}40, 0 8px 25px ${colors.accent}20`
+                  : "none",
                 "&:hover": {
                   transform: "translateY(-8px)",
                   boxShadow:
@@ -872,6 +912,7 @@ function AppContent() {
 
       {/* Mobile: HowTo Card 2 - Tell your Friends */}
       <Box
+        data-howto-card="1"
         sx={{
           height: "100dvh",
           display: { xs: "flex", md: "none" },
@@ -891,10 +932,15 @@ function AppContent() {
               sx={{
                 height: "60vh",
                 backgroundColor: colors.background.light,
-                border: `1px solid ${colors.light}`,
+                border: `1px solid ${activeCard === 1 ? colors.accent : colors.light}`,
                 borderRadius: 3,
                 transition:
                   "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out",
+                boxShadow: activeCard === 1 
+                  ? currentTheme === "darknight"
+                    ? `0 0 30px ${colors.accent}60, 0 8px 25px ${colors.accent}40`
+                    : `0 0 30px ${colors.accent}40, 0 8px 25px ${colors.accent}20`
+                  : "none",
                 "&:hover": {
                   transform: "translateY(-8px)",
                   boxShadow:
@@ -948,6 +994,7 @@ function AppContent() {
 
       {/* Mobile: HowTo Card 3 - Generate traffic */}
       <Box
+        data-howto-card="2"
         sx={{
           height: "100dvh",
           display: { xs: "flex", md: "none" },
@@ -967,10 +1014,15 @@ function AppContent() {
               sx={{
                 height: "60vh",
                 backgroundColor: colors.background.light,
-                border: `1px solid ${colors.light}`,
+                border: `1px solid ${activeCard === 2 ? colors.accent : colors.light}`,
                 borderRadius: 3,
                 transition:
                   "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out",
+                boxShadow: activeCard === 2 
+                  ? currentTheme === "darknight"
+                    ? `0 0 30px ${colors.accent}60, 0 8px 25px ${colors.accent}40`
+                    : `0 0 30px ${colors.accent}40, 0 8px 25px ${colors.accent}20`
+                  : "none",
                 "&:hover": {
                   transform: "translateY(-8px)",
                   boxShadow:
@@ -1810,6 +1862,16 @@ function AppWithRouting() {
       <AuthGuard>
         <Suspense fallback={<LoadingSpinner />}>
           <PostView />
+        </Suspense>
+      </AuthGuard>
+    );
+  }
+
+  if (location.pathname === "/profile" || location.hash === "#/profile") {
+    return (
+      <AuthGuard>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Profile />
         </Suspense>
       </AuthGuard>
     );
