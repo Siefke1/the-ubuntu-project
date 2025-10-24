@@ -1629,7 +1629,7 @@ function HomePage() {
               <Button
                 variant="outlined"
                 size="large"
-                onClick={() => (window.location.hash = "#/about")}
+                onClick={() => (console.log("About us button clicked"))}
                 sx={{
                   borderColor: colors.accent,
                   color:
