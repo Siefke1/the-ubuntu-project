@@ -317,9 +317,10 @@ const AboutUs: React.FC = () => {
                   md: member.id % 2 === 0 ? "row-reverse" : "row",
                 },
                 alignItems: "center",
-                gap: { xs: 4, md: 8 },
+                gap: { xs: 3, md: 8 },
                 height: "100%",
-                py: 4,
+                py: { xs: 2, md: 4 },
+                px: { xs: 2, md: 0 },
               }}
             >
               {/* Portrait Side */}
@@ -335,16 +336,17 @@ const AboutUs: React.FC = () => {
                 <Box
                   sx={{
                     position: "relative",
-                    width: { xs: "200px", md: "300px" },
-                    height: { xs: "200px", md: "300px" },
+                    width: { xs: "150px", sm: "180px", md: "300px" },
+                    height: { xs: "150px", sm: "180px", md: "300px" },
                     mx: "auto",
+                    mb: { xs: 2, md: 0 },
                     "&::before": {
                       content: '""',
                       position: "absolute",
-                      top: "-20px",
-                      left: "-20px",
-                      right: "-20px",
-                      bottom: "-20px",
+                      top: { xs: "-10px", md: "-20px" },
+                      left: { xs: "-10px", md: "-20px" },
+                      right: { xs: "-10px", md: "-20px" },
+                      bottom: { xs: "-10px", md: "-20px" },
                       background: `linear-gradient(45deg, ${colors.accent}40, ${colors.highlight}40)`,
                       borderRadius: "50%",
                       filter: "blur(20px)",
@@ -380,8 +382,11 @@ const AboutUs: React.FC = () => {
                     backdropFilter: "blur(10px)",
                     border: `1px solid ${colors.accent}20`,
                     borderRadius: 3,
-                    p: 4,
+                    p: { xs: 2, md: 4 },
                     boxShadow: `0 8px 32px ${colors.background.dark}40`,
+                    width: "100%",
+                    maxWidth: { xs: "100%", md: "500px" },
+                    mx: { xs: 1, md: 0 },
                   }}
                 >
                   <CardContent sx={{ p: 0 }}>
@@ -394,6 +399,8 @@ const AboutUs: React.FC = () => {
                             : colors.textColorDark,
                         fontWeight: "bold",
                         mb: 1,
+                        fontSize: { xs: "1.5rem", md: "2.125rem" },
+                        textAlign: { xs: "center", md: "left" },
                       }}
                     >
                       {member.name}
@@ -404,6 +411,8 @@ const AboutUs: React.FC = () => {
                         color: colors.accent,
                         fontWeight: "bold",
                         mb: 1,
+                        fontSize: { xs: "1rem", md: "1.25rem" },
+                        textAlign: { xs: "center", md: "left" },
                       }}
                     >
                       {member.role}
@@ -415,6 +424,7 @@ const AboutUs: React.FC = () => {
                         fontWeight: "medium",
                         mb: 3,
                         fontStyle: "italic",
+                        textAlign: { xs: "center", md: "left" },
                       }}
                     >
                       {member.username}
@@ -424,15 +434,21 @@ const AboutUs: React.FC = () => {
                       sx={{
                         color: colors.secondary,
                         lineHeight: 1.8,
-                        fontSize: { xs: "1rem", md: "1.1rem" },
+                        fontSize: { xs: "0.9rem", md: "1.1rem" },
                         mb: 3,
+                        textAlign: { xs: "center", md: "left" },
                       }}
                     >
                       {member.bio}
                     </Typography>
 
                     {/* Social Links */}
-                    <Box sx={{ display: "flex", gap: 2 }}>
+                    <Box sx={{ 
+                      display: "flex", 
+                      gap: 2, 
+                      justifyContent: { xs: "center", md: "flex-start" },
+                      flexWrap: "wrap"
+                    }}>
                       {member.social.linkedin && (
                         <IconButton
                           href={member.social.linkedin}
@@ -520,7 +536,7 @@ const AboutUs: React.FC = () => {
           },
         }}
       >
-        <Container maxWidth="md" sx={{ position: "relative", zIndex: 2 }}>
+        <Container maxWidth="md" sx={{ position: "relative", zIndex: 2, px: { xs: 2, md: 0 } }}>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -548,10 +564,11 @@ const AboutUs: React.FC = () => {
                 textAlign: "center",
                 color: colors.secondary,
                 lineHeight: 1.8,
-                fontSize: { xs: "1.1rem", md: "1.3rem" },
+                fontSize: { xs: "1rem", md: "1.3rem" },
                 maxWidth: "800px",
                 mx: "auto",
                 mb: 4,
+                px: { xs: 1, md: 0 },
               }}
             >
               There is many ways in which you can contribute to the Project.
@@ -562,7 +579,12 @@ const AboutUs: React.FC = () => {
               email of course:
             </Typography>
 
-            <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
+            <Box sx={{ 
+              display: "flex", 
+              justifyContent: "center", 
+              mt: 3,
+              px: { xs: 2, md: 0 }
+            }}>
               <Button
                 variant="contained"
                 size="large"
@@ -571,8 +593,8 @@ const AboutUs: React.FC = () => {
                 sx={{
                   backgroundColor: colors.accent,
                   color: colors.textColorLight,
-                  fontSize: { xs: "1rem", md: "1.2rem" },
-                  px: { xs: 3, md: 4 },
+                  fontSize: { xs: "0.9rem", sm: "1rem", md: "1.2rem" },
+                  px: { xs: 2, sm: 3, md: 4 },
                   py: { xs: 1.5, md: 2 },
                   borderRadius: 3,
                   fontWeight: "bold",
@@ -585,6 +607,8 @@ const AboutUs: React.FC = () => {
                     boxShadow: `0 6px 20px ${colors.accent}60`,
                   },
                   transition: "all 0.3s ease",
+                  width: { xs: "100%", sm: "auto" },
+                  maxWidth: { xs: "100%", sm: "none" },
                 }}
               >
                 contact@ubuntu-project.com
