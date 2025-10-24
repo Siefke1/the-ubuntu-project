@@ -344,9 +344,9 @@ export const translations: Record<string, Translations> = {
         "Vorerst fungieren wir — die GründerInnen — als Administratoren der Plattform, Server und Code-Base und dienen als funktionale Führung des Unternehmens - maßgeblich um den Erhalt unserer Werte und Ziele zu garantieren. Langfristig streben wir ein verteilteres Modell an — die Wahl von Sprecherinnen und Sprechern nach Fachgebiet und kollektive Entscheidungsfindung.",
     },
     socialMediaStats: {
-      title: "Das Ausmaß der Social Media",
+      title: "Das Ausmaß von Social Media",
       description:
-        "Verstehen der massiven Datengenerierung und Einnahmen der größten Social Media Plattformen",
+        "Statistische Daten der größten Social Media Plattformen aus dem Jahr 2024",
       platforms: {
         meta: {
           name: "Meta (Facebook & Instagram)",
