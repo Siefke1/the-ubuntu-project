@@ -37,6 +37,12 @@ model User {
   replies   Reply[]
   likes     Like[]
 
+  // Social relationships
+  following     UserFollow[] @relation("UserFollowing")
+  followers     UserFollow[] @relation("UserFollowers")
+  friendRequestsSent     FriendRequest[] @relation("FriendRequestSender")
+  friendRequestsReceived FriendRequest[] @relation("FriendRequestReceiver")
+
   @@map("users")
 }
 
@@ -106,4 +112,38 @@ model Like {
 
   @@unique([userId, postId])
   @@map("likes")
+}
+
+// Social media models
+model UserFollow {
+  id          String   @id @default(cuid())
+  followerId  String
+  followingId String
+  follower    User     @relation("UserFollowing", fields: [followerId], references: [id], onDelete: Cascade)
+  following   User     @relation("UserFollowers", fields: [followingId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+
+  @@unique([followerId, followingId])
+  @@map("user_follows")
+}
+
+model FriendRequest {
+  id        String   @id @default(cuid())
+  senderId  String
+  receiverId String
+  sender    User     @relation("FriendRequestSender", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver  User     @relation("FriendRequestReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  status    FriendRequestStatus @default(PENDING)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([senderId, receiverId])
+  @@map("friend_requests")
+}
+
+enum FriendRequestStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  BLOCKED
 }
