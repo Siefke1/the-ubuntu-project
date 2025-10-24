@@ -51,6 +51,9 @@ app.use('/api/admin', require('./routes/admin'));
 app.use('/api/admin/categories', require('./routes/categories'));
 app.use('/api/categories', require('./routes/categories'));
 
+// Social routes
+app.use('/api/social', require('./routes/social'));
+
 // Error handling
 app.use((err, req, res, next) => {
   console.error(err.stack);

@@ -306,6 +306,7 @@ const CreatePost: React.FC = () => {
               }}
             >
               <Avatar
+                src={user?.avatar}
                 sx={{
                   bgcolor: colors.accent,
                   color: colors.textColorLight,

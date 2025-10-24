@@ -36,6 +36,7 @@ import { motion } from "framer-motion";
 import MDEditor from "@uiw/react-md-editor";
 import { useTheme } from "../hooks/useTheme";
 import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 interface Author {
   id: string;
@@ -79,6 +80,7 @@ interface SnackbarState {
 const PostView: React.FC = () => {
   const { colors, currentTheme } = useTheme();
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const [post, setPost] = useState<Post | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -546,6 +548,7 @@ const PostView: React.FC = () => {
               }}
             >
               <Avatar
+                src={user?.avatar}
                 sx={{
                   bgcolor: colors.accent,
                   color: colors.textColorLight,
@@ -631,6 +634,11 @@ const PostView: React.FC = () => {
                 <CardContent sx={{ p: 3 }}>
                   <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 3 }}>
                     <Avatar
+                      src={post.author.avatar}
+                      onClick={() => {
+                        console.log("Navigating to user profile for author ID:", post.author.id);
+                        navigate(`/user/${post.author.id}`);
+                      }}
                       sx={{
                         bgcolor: colors.accent,
                         color: colors.textColorLight,
@@ -639,6 +647,13 @@ const PostView: React.FC = () => {
                         fontSize: '2rem',
                         fontWeight: 'bold',
                         mb: 2,
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          transform: 'scale(1.05)',
+                          borderColor: colors.highlight,
+                          boxShadow: `0 0 20px ${colors.accent}40`,
+                        },
                       }}
                     >
                       {post.author.firstName?.charAt(0) || post.author.username.charAt(0)}
@@ -755,6 +770,8 @@ const PostView: React.FC = () => {
               sx={{ pb: 2, pt: 3, px: 3 }}
               avatar={
                 <Avatar
+                  src={post.author.avatar}
+                  onClick={() => navigate(`/user/${post.author.id}`)}
                   sx={{
                     bgcolor: colors.accent,
                     color: colors.textColorLight,
@@ -762,6 +779,12 @@ const PostView: React.FC = () => {
                     height: 48,
                     fontSize: '1.2rem',
                     fontWeight: 'bold',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'scale(1.1)',
+                      boxShadow: `0 0 15px ${colors.accent}40`,
+                    },
                   }}
                 >
                   {post.author.firstName?.charAt(0) ||
@@ -1147,6 +1170,8 @@ const PostView: React.FC = () => {
                     {/* Author Info - Left Side */}
                     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '80px' }}>
                       <Avatar
+                        src={reply.author.avatar}
+                        onClick={() => navigate(`/user/${reply.author.id}`)}
                         sx={{
                           bgcolor: colors.accent,
                           color: colors.textColorLight,
@@ -1155,6 +1180,12 @@ const PostView: React.FC = () => {
                           fontSize: '0.9rem',
                           fontWeight: 'bold',
                           mb: 1,
+                          cursor: 'pointer',
+                          transition: 'all 0.3s ease',
+                          '&:hover': {
+                            transform: 'scale(1.1)',
+                            boxShadow: `0 0 10px ${colors.accent}40`,
+                          },
                         }}
                       >
                         {reply.author.firstName?.charAt(0) || reply.author.username.charAt(0)}

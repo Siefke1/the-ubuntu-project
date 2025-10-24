@@ -5,6 +5,93 @@ const { hasRole, UserRole } = require('../middleware/authorization');
 const router = express.Router();
 const prisma = new PrismaClient();
 
+// Get posts by user
+router.get('/user/:userId', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const { page = 1, limit = 10 } = req.query;
+    const skip = (parseInt(page) - 1) * parseInt(limit);
+
+    // Check if user exists
+    const user = await prisma.user.findUnique({
+      where: { id: userId }
+    });
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        error: 'User not found'
+      });
+    }
+
+    // Get posts by user
+    const posts = await prisma.post.findMany({
+      where: { authorId: userId },
+      include: {
+        author: {
+          select: {
+            id: true,
+            username: true,
+            firstName: true,
+            lastName: true,
+            avatar: true
+          }
+        },
+        category: {
+          select: {
+            id: true,
+            name: true,
+            color: true
+          }
+        },
+        likes: true,
+        replies: true,
+        _count: {
+          select: {
+            likes: true,
+            replies: true
+          }
+        }
+      },
+      orderBy: { createdAt: 'desc' },
+      skip,
+      take: parseInt(limit)
+    });
+
+    // Get total count for pagination
+    const totalPosts = await prisma.post.count({
+      where: { authorId: userId }
+    });
+
+    res.json({
+      success: true,
+      posts: posts.map(post => ({
+        id: post.id,
+        title: post.title,
+        content: post.content,
+        category: post.category.name,
+        likes: post._count.likes,
+        replies: post._count.replies,
+        createdAt: post.createdAt,
+        author: post.author
+      })),
+      pagination: {
+        currentPage: parseInt(page),
+        totalPages: Math.ceil(totalPosts / parseInt(limit)),
+        totalPosts,
+        hasNext: skip + posts.length < totalPosts,
+        hasPrev: parseInt(page) > 1
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching user posts:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to fetch user posts'
+    });
+  }
+});
+
 // Create a new post
 router.post('/create', passport.authenticate('jwt', { session: false }), async (req, res) => {
   try {

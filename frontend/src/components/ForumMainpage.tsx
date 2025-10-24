@@ -61,6 +61,7 @@ interface ForumPost {
   title: string;
   author: string;
   authorAvatar: string;
+  authorAvatarUrl?: string;
   content: string;
   category: string;
   replies: number;
@@ -264,6 +265,7 @@ const ForumMainpage: React.FC = () => {
               authorAvatar: (post.author.firstName || post.author.username)
                 .charAt(0)
                 .toUpperCase(),
+              authorAvatarUrl: post.author.avatar,
               content: post.content,
               category: post.category,
               replies: post.replies,
@@ -629,6 +631,7 @@ const ForumMainpage: React.FC = () => {
               }}
             >
               <Avatar
+                src={user?.avatar}
                 sx={{
                   bgcolor: colors.accent,
                   color: colors.textColorLight,
@@ -931,6 +934,7 @@ const ForumMainpage: React.FC = () => {
                             >
                               {/* Author Avatar */}
                               <Avatar
+                                src={post.authorAvatarUrl}
                                 sx={{
                                   bgcolor: colors.accent,
                                   color: colors.textColorLight,

@@ -307,9 +307,9 @@ function getRandomDate(start, end) {
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 }
 
-function generateUsername(firstName, lastName) {
-  const randomNum = Math.floor(Math.random() * 1000);
-  return `${firstName.toLowerCase()}${lastName.toLowerCase()}${randomNum}`;
+function generateUsername(firstName, lastName, index) {
+  const randomNum = Math.floor(Math.random() * 10000);
+  return `${firstName.toLowerCase()}${lastName.toLowerCase()}${index}${randomNum}`;
 }
 
 function generateEmail(firstName, lastName, index) {
@@ -370,7 +370,7 @@ async function seedUsers() {
     const user = await prisma.user.create({
       data: {
         email: generateEmail(firstName, lastName, i + 1),
-        username: generateUsername(firstName, lastName),
+        username: generateUsername(firstName, lastName, i + 1),
         password: hashedPassword,
         firstName,
         lastName,
@@ -391,7 +391,7 @@ async function seedUsers() {
     const user = await prisma.user.create({
       data: {
         email: generateEmail(firstName, lastName, i + 51), // Start from 51 to avoid conflicts
-        username: generateUsername(firstName, lastName),
+        username: generateUsername(firstName, lastName, i + 1),
         password: hashedPassword,
         firstName,
         lastName,

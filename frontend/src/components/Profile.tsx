@@ -32,6 +32,7 @@ interface UserProfile {
   firstName?: string;
   lastName?: string;
   bio?: string;
+  avatar?: string;
   role: string;
   createdAt: string;
   updatedAt: string;
@@ -47,12 +48,14 @@ const Profile: React.FC = () => {
 
   // State for form fields
   const [bio, setBio] = useState("");
+  const [avatar, setAvatar] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   // State for UI
   const [isEditingBio, setIsEditingBio] = useState(false);
+  const [isEditingAvatar, setIsEditingAvatar] = useState(false);
   const [isChangingPassword, setIsChangingPassword] = useState(false);
   const [snackbar, setSnackbar] = useState({
     open: false,
@@ -66,6 +69,7 @@ const Profile: React.FC = () => {
     newPassword: "",
     confirmPassword: "",
     bio: "",
+    avatar: "",
   });
 
   // Fetch user profile
@@ -84,6 +88,7 @@ const Profile: React.FC = () => {
       if (response.ok && data.success) {
         setProfile(data.user);
         setBio(data.user.bio || "");
+        setAvatar(data.user.avatar || "");
       } else {
         console.error("Failed to fetch profile:", data.error);
         setSnackbar({
@@ -149,6 +154,57 @@ const Profile: React.FC = () => {
     }
   };
 
+  // Update avatar
+  const handleUpdateAvatar = async () => {
+    // Basic URL validation - more flexible to handle various image hosting services
+    if (avatar && !avatar.match(/^https?:\/\/.+/i)) {
+      setErrors(prev => ({ ...prev, avatar: "Please enter a valid HTTPS URL" }));
+      return;
+    }
+
+    try {
+      setIsSaving(true);
+      const token = localStorage.getItem("authToken");
+      const response = await fetch("http://localhost:3001/api/auth/profile", {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ avatar }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSnackbar({
+          open: true,
+          message: "Avatar updated successfully",
+          severity: "success",
+        });
+        setIsEditingAvatar(false);
+        if (profile) {
+          setProfile({ ...profile, avatar });
+        }
+      } else {
+        setSnackbar({
+          open: true,
+          message: data.error || "Failed to update avatar",
+          severity: "error",
+        });
+      }
+    } catch (error) {
+      console.error("Error updating avatar:", error);
+      setSnackbar({
+        open: true,
+        message: "Error updating avatar",
+        severity: "error",
+      });
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
   // Change password
   const handleChangePassword = async () => {
     // Reset errors
@@ -157,6 +213,7 @@ const Profile: React.FC = () => {
       newPassword: "",
       confirmPassword: "",
       bio: "",
+      avatar: "",
     });
 
     // Validation
@@ -243,6 +300,7 @@ const Profile: React.FC = () => {
       newPassword: "",
       confirmPassword: "",
       bio: "",
+      avatar: "",
     });
   };
 
@@ -250,6 +308,13 @@ const Profile: React.FC = () => {
   const handleCancelBioEdit = () => {
     setIsEditingBio(false);
     setBio(profile?.bio || "");
+  };
+
+  // Cancel avatar edit
+  const handleCancelAvatarEdit = () => {
+    setIsEditingAvatar(false);
+    setAvatar(profile?.avatar || "");
+    setErrors(prev => ({ ...prev, avatar: "" }));
   };
 
   // Load profile on component mount
@@ -347,6 +412,7 @@ const Profile: React.FC = () => {
               <CardContent sx={{ p: 4 }}>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 3, mb: 3 }}>
                   <Avatar
+                    src={profile.avatar}
                     sx={{
                       width: 80,
                       height: 80,
@@ -381,6 +447,116 @@ const Profile: React.FC = () => {
                       {profile.role} • Member since {new Date(profile.createdAt).getFullYear()}
                     </Typography>
                   </Box>
+                </Box>
+
+                <Divider sx={{ backgroundColor: colors.secondary + "20", my: 3 }} />
+
+                {/* Avatar Section */}
+                <Box sx={{ mb: 3 }}>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+                    <Avatar sx={{ color: colors.accent, bgcolor: colors.accent + "20" }} />
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        color: colors.textColorLight,
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Profile Picture
+                    </Typography>
+                    {!isEditingAvatar && (
+                      <IconButton
+                        size="small"
+                        onClick={() => setIsEditingAvatar(true)}
+                        sx={{
+                          color: colors.accent,
+                          "&:hover": {
+                            backgroundColor: colors.accent + "10",
+                          },
+                        }}
+                      >
+                        <Edit />
+                      </IconButton>
+                    )}
+                  </Box>
+
+                  {isEditingAvatar ? (
+                    <Box>
+                      <TextField
+                        fullWidth
+                        value={avatar}
+                        onChange={(e) => setAvatar(e.target.value)}
+                        placeholder="Enter image URL (https://...)"
+                        error={!!errors.avatar}
+                        helperText={errors.avatar}
+                        sx={{
+                          "& .MuiOutlinedInput-root": {
+                            backgroundColor: colors.background.medium,
+                            borderRadius: 2,
+                            "& fieldset": {
+                              borderColor: colors.secondary,
+                            },
+                            "&:hover fieldset": {
+                              borderColor: colors.accent,
+                            },
+                            "&.Mui-focused fieldset": {
+                              borderColor: colors.accent,
+                            },
+                            "& input": {
+                              color: colors.textColorLight,
+                            },
+                          },
+                          "& .MuiFormHelperText-root": {
+                            color: colors.secondary,
+                          },
+                        }}
+                      />
+                      <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
+                        <Button
+                          variant="contained"
+                          startIcon={<Save />}
+                          onClick={handleUpdateAvatar}
+                          disabled={isSaving}
+                          sx={{
+                            backgroundColor: colors.accent,
+                            "&:hover": {
+                              backgroundColor: colors.highlight,
+                            },
+                          }}
+                        >
+                          {isSaving ? "Saving..." : "Save Avatar"}
+                        </Button>
+                        <Button
+                          variant="outlined"
+                          onClick={handleCancelAvatarEdit}
+                          disabled={isSaving}
+                          sx={{
+                            borderColor: colors.secondary,
+                            color: colors.textColorLight,
+                            "&:hover": {
+                              borderColor: colors.accent,
+                              backgroundColor: colors.accent + "10",
+                            },
+                          }}
+                        >
+                          Cancel
+                        </Button>
+                      </Box>
+                    </Box>
+                  ) : (
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: avatar ? colors.textColorLight : colors.secondary,
+                        fontStyle: avatar ? "normal" : "italic",
+                        minHeight: "40px",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
+                      {avatar || "No profile picture set. Click the edit button to add one."}
+                    </Typography>
+                  )}
                 </Box>
 
                 <Divider sx={{ backgroundColor: colors.secondary + "20", my: 3 }} />

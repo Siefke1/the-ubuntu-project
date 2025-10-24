@@ -259,13 +259,13 @@ export const translations: Record<string, Translations> = {
     about: {
       title: "Hier ist der Plan...",
       paragraph1:
-        "Hast Du dich schon mal gefragt wie Tech Firmen Milliardengewinne machen, während sie ein 'kostenloses' Produkt monetarisieren? Die Antwort ist Daten und Aufmerksamkeit. Marketing-Firmen, Medienkonzerne und Data-Brokers sind bereit denen die diese Aufmerksamkeit beitzen, viel Geld zu zahlen. Wir fragen uns nur, warum wir nicht selbst davon profitieren sollten? Alles in allem sind es ja auch unsere Resourcen. Unser Fokus liegt nicht auf schnellen Gewinnen, sondern auf <strong>Beteiligung</strong>. In erster Linie an den Räumen in denen wir uns aufhalten und folgerichtig auch an den Daten die darin generiert werden.",
+        "Hast Du dich schon mal gefragt wie Tech Firmen Milliardengewinne machen, während sie ein 'kostenloses' Produkt monetarisieren? Die Antwort ist Daten und Aufmerksamkeit. Marketing-Firmen, Medienkonzerne und Data-Brokers sind bereit denen die diese Aufmerksamkeit beitzen, viel Geld zu zahlen. Wenn es also im Endeffekt unsere eigenen Resourcen sind um die es geht, warum sollten wir nicht selbst davon profitieren? Unser Fokus liegt nicht auf schnellen Gewinnen, sondern auf <strong>Beteiligung</strong>. Und damit auch Kontrolle über die Algorithmen die unsere Inhalte bestimmen.",
       paragraph2Title: "Inspirationen...",
       paragraph2:
         'Beispiele wie der <a href="https://en.wikipedia.org/wiki/GameStop_short_squeeze" style="color: inherit;" target="_blank" rel="noopener noreferrer">GameStop Short-Squeeze</a> haben eindrucksvoll demonstriert, wie viel Einfluss wir als Verbraucher wirklich haben, sobald wir unsere Anstrengungen verinen. In einer Zeit in der Tech Unternehmen beispiellose Gewinne einstreichen, während globale Ungleichheit stetig zunimmt, sind wir zu dem überfälligen Entschluss gekommen, dass wir einander brauchen werden, um langfristig erfolgreich zu sein.',
       paragraph3Title: "Stell Dir vor...",
       paragraph3:
-        "Wir wollen eine Gemeinschaft gründen. Eine ziemlich große. Wir haben mit der Erstellung eines Twitter-Like-Forums begonnen, das uns ermöglicht, Ideen auszutauschen, zusammenzuarbeiten und über wichtige Entscheidungen abzustimmen. Schau vorbei wenn du ein bisschen mehr über unsere Arbeit und Pläne erfahren möchtest. Oder viellecht hast du selbst Vorschläge?",
+        "Wir wollen eine Gemeinschaft gründen. Eine ziemlich große. Wir haben mit der Erstellung eines Twitter-Like-Forums begonnen, das uns ermöglicht, Ideen auszutauschen, zusammenzuarbeiten und über Entscheidungen abzustimmen. Schau vorbei wenn du ein bisschen mehr über unsere Arbeit und Pläne erfahren möchtest. Oder viellecht hast du selbst Vorschläge?",
     },
     about2: {
       title: "Etwas das uns wichtig ist:",
