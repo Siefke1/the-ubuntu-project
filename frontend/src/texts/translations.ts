@@ -301,7 +301,7 @@ export const translations: Record<string, Translations> = {
     stats: {
       title: "Wie läuft es bisher?",
       description:
-        "Wir haben im Oktober 2025 gestartet und unser erstes Ziel ist es, 1 Million registrierte Benutzer zu erreichen. Dies sind unsere aktuellen Zahlen.",
+        "Wir haben im Oktober 2025 gestartet und unser erstes Ziel ist es, eine Millionen registrierte Benutzer zu erreichen. Dies sind unsere aktuellen Zahlen.",
       users: "Registrierte Benutzer",
       visits: "Besuche Heute",
       contribution: "Benutzerbeitrag",

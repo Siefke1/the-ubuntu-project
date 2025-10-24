@@ -1033,7 +1033,8 @@ function HomePage() {
               sx={{
                 textAlign: "center",
                 mb: { xs: 4, md: 8 },
-                color: "#666",
+                color: "white",
+                opacity: 0.6,
                 fontSize: { xs: "1rem", sm: "1.2rem", md: "1.5rem" },
                 px: { xs: 2, md: 0 },
               }}
@@ -1204,7 +1205,8 @@ function HomePage() {
               sx={{
                 textAlign: "center",
                 mb: 4,
-                color: "#666",
+                color: "white",
+                opacity: 0.6,
                 fontSize: "1rem",
                 px: 2,
               }}
