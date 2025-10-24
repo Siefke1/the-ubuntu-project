@@ -216,7 +216,7 @@ export const translations: Record<string, Translations> = {
     imagine: {
       title: "Real talk...",
       paragraph:
-        "Now let's be honest here. Meta's 164 Billion Profit divided by its 3.5 Billion active users, equals about 47$ of revenue per user anually. So this is not about getting rich. This is about having agency and resisting an ever growing trend of monetization of our time and data, the paralysis of the paywall and the illusion of choice. <br /> <br /> We've started by creating a Twitter-Like-Forum that allows us to exchange ideas, collaborate and vote on critical decisions. We believe that together, we could build something special.",
+        "Now let's face it, if you divide the profits among everyone, no one's gonna get rich. So this is not about money. This is about having agency and resisting an ever growing trend of monetization of our time and data, the paralysis of the paywall and the illusion of choice. <br /> <br /> We've started by creating a Twitter-Like-Forum that allows us to exchange ideas, collaborate and vote on critical decisions. We believe that together, we could build something special.",
     },
     howTo: {
       title: "What can you do?",
@@ -337,7 +337,7 @@ export const translations: Record<string, Translations> = {
     about2: {
       title: "Etwas das uns wichtig ist:",
       paragraph1:
-        "Wir sind eine <strong>ökonomische</strong> Gemeinschaft, keine politische, religiöse oder sonstige. Alle sind willkommen, die in der Lage sind Andere für Ihre persönlichen Einstellungen und Überzeugungen zu respektieren, solange diese im Einklang mit eben jenen Grundsätzen stehen.",
+        "Wir betrachten uns als eine <strong>ökonomische</strong> Gemeinschaft, keine politische, religiöse oder sonstige. Alle sind willkommen, die in der Lage sind Andere für Ihre persönlichen Einstellungen und Überzeugungen zu respektieren, solange diese im Einklang mit eben jenen Grundsätzen stehen.",
       paragraph2:
         "Außerdem ist es <strong>nicht</strong> unsere Absicht, ein System zu entwerfen, das Leistung mit persönlicher finanzieller Belohnung verknüpft. Wir sind offen ein minimales Stufensystem zu diskutieren, glauben aber grundsätzlich, dass kontinuierlicher Wohlstand nur auf <strong>kollektiver Ebene</strong> erreicht werden kann — und sind entschlossen, dieses Prinzip zu bewahren.",
       paragraph3:
@@ -381,7 +381,7 @@ export const translations: Record<string, Translations> = {
     imagine: {
       title: "Butter bei die Fische...",
       paragraph:
-        "Meta's 164.5 Milliardenumsatz geteilt durch ihre 3.5 Milliarden aktiven Benutzer, ergibt etwa 47$ pro Account. Es geht uns nicht um's Geld, es geht um Selbstbestimmung und Widerstand gegen einen stetig voranschreitenden Trend von der Monetisierung unserer Zeit und Daten, der Paralyse der Paywall und der Illusion dass wir in diesen Netzwerken nicht völlig austauschbar sind. <br /> <br /> Wir haben mit der Erstellung einer Art Mischung aus Twitter und Reddit begonnen, das uns ermöglicht, Ideen auszutauschen, miteinander zu kollaborieren und über Entscheidungen abzustimmen. Wir sind fest davon überzeugt, dass wir zusammen etwas beispielloses bauen können.",
+        "Aber machen wir uns nichst vor, wenn man den Gewinn unter Allen aufteilt, wird niemand besonders reich. Es geht uns nicht um's Geld, es geht um Selbstbestimmung und Widerstand gegen einen stetig voranschreitenden Trend der Monetisierung unserer Zeit und Daten, der Paralyse der Paywall und der Illusion irgendeine Form von Mitbestimmung zu haben. <br /> <br /> Wir haben mit der Erstellung einer Art Mischung aus Twitter und Reddit begonnen, das uns ermöglicht, Ideen auszutauschen, miteinander zu kollaborieren und über Entscheidungen abzustimmen. Wir sind fest davon überzeugt, dass wir zusammen etwas beispielloses bauen können.",
     },
     howTo: {
       title: "Was kannst du tun?",
