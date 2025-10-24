@@ -158,7 +158,7 @@ export const translations: Record<string, Translations> = {
         friends: {
           title: "2. Tell your Friends",
           description:
-            "Tell people about us. There is literally no downside to signing up, there is no mandatory tasks anyone must do. But this is your company now too.",
+            "Tell people about us. There is literally no downside to signing up, there is no mandatory tasks, hidden costs or newsletter spam. But this is your company now too.",
         },
         traffic: {
           title: "3. Generate traffic",
@@ -289,7 +289,7 @@ export const translations: Record<string, Translations> = {
         friends: {
           title: "2. Erzähle es weiter",
           description:
-            "Erzähl den Leuten von uns. Schlage Freunden vor sich anzumelden. Schließlich ist es jetzt auch dein Unternehmen.",
+            "Rühr die Werbetrommel! Es gibt keine Pflichten, versteckten Kosten oder Newsletter Spam nach der Anmeldung. Und schließlich ist es jetzt auch Deine Firma.",
         },
         traffic: {
           title: "3. Traffic generieren",
