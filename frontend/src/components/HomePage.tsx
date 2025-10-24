@@ -607,7 +607,7 @@ function HomePage() {
                 px: { xs: 2, md: 0 },
               }}
             >
-              {t.imagine.paragraph}
+              <span dangerouslySetInnerHTML={{ __html: t.imagine.paragraph }} />
             </Typography>
           </motion.div>
         </Container>

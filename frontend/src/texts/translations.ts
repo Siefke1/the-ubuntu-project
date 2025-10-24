@@ -177,39 +177,46 @@ export const translations: Record<string, Translations> = {
     },
     socialMediaStats: {
       title: "The Scale of Social Media",
-      description: "Understanding the massive data generation and revenue from the biggest social media platforms",
+      description:
+        "Understanding the massive data generation and revenue from the biggest social media platforms",
       platforms: {
         meta: {
           name: "Meta (Facebook & Instagram)",
           revenue: "$164.5B",
           dataVolume: "4+ PB/day",
-          description: "Dominates social media advertising with comprehensive user profiling"
+          description:
+            "Dominates social media advertising with comprehensive user profiling",
         },
         youtube: {
           name: "YouTube (Alphabet)",
           revenue: "$36.1B",
           dataVolume: "500+ TB/day",
-          description: "Leading video platform with extensive content and user data collection"
+          description:
+            "Leading video platform with extensive content and user data collection",
         },
         tiktok: {
           name: "TikTok",
           revenue: "$18B",
           dataVolume: "1+ PB/day",
-          description: "Fastest growing platform with advanced AI-driven content analysis"
-        }
+          description:
+            "Fastest growing platform with advanced AI-driven content analysis",
+        },
       },
       totalRevenue: "$218.6B",
       totalDataVolume: "5.5+ PB/day",
-      note: "Data estimates based on 2024 research. Actual figures may vary."
+      note: "Data estimates based on 2024 research. Actual figures may vary.",
     },
     canItWork: {
       title: "Can it work?",
-      paragraph1: "In early 2021 several hedge funds heavily shorted the Stock (that means betting that its price would fall) of an old-school-gaming company, called GameStop. Originating from a Sub-Reddit, thousands of small investors coordinated to buy GameStop stock, driving up its price and saving the company, while forcing major hedge funds into massive losses. Examples like the <a href=\"https://en.wikipedia.org/wiki/GameStop_short_squeeze\" style=\"color: inherit;\" target=\"_blank\" rel=\"noopener noreferrer\">GameStop Short-Squeeze</a> demonstrated impressively, how much power we as consumers really have to change the status quo, as long as we bundle our efforts. A status quo where the many bear the cost so that the few may reap the rewards. We have come to the overdue conclusion, that in order to fundamentally succeed, we will need <strong>each other</strong>.",
-      paragraph2: "First, we need to build a community. A big one. We've started by creating a Twitter-Like-Forum that allows us to exchange ideas, collaborate and vote on critical decisions. Swing by if you want to know a little more about our thoughts and ideas, maybe even share your own?"
+      paragraph1:
+        'In early 2021 several hedge funds heavily shorted the Stock (that means betting that its price would fall) of an old-school-gaming company, called GameStop. Originating from a Sub-Reddit, thousands of small investors coordinated to buy GameStop stock, driving up its price and saving the company, while forcing major hedge funds into massive losses. Examples like the <a href="https://en.wikipedia.org/wiki/GameStop_short_squeeze" style="color: inherit;" target="_blank" rel="noopener noreferrer">GameStop Short-Squeeze</a> demonstrated impressively, how much power we as consumers really have to change the status quo, as long as we bundle our efforts. A status quo where the many bear the cost so that the few may reap the rewards. We have come to the overdue conclusion, that in order to fundamentally succeed, we will need <strong>each other</strong>.',
+      paragraph2:
+        "First, we need to build a community. A big one. We've started by creating a Twitter-Like-Forum that allows us to exchange ideas, collaborate and vote on critical decisions. Swing by if you want to know a little more about our thoughts and ideas, maybe even share your own?",
     },
     imagine: {
-      title: "Imagine...",
-      paragraph: "First, we need to build a community. A big one. We've started by creating a Twitter-Like-Forum that allows us to exchange ideas, collaborate and vote on critical decisions. Swing by if you want to know a little more about our thoughts and ideas, maybe even share your own?"
+      title: "Real talk...",
+      paragraph:
+        "Now let's be honest here. Meta's 164 Billion Profit divided by its 3.5 Billion active users, equals about 47$ of revenue per user anually. So this is not about getting rich. This is about having agency and resisting an ever growing trend of monetization of our time and data, the paralysis of the paywall and the illusion of choice. <br /> <br /> We've started by creating a Twitter-Like-Forum that allows us to exchange ideas, collaborate and vote on critical decisions. We believe that together, we could build something special.",
     },
     howTo: {
       title: "What can you do?",
@@ -338,39 +345,43 @@ export const translations: Record<string, Translations> = {
     },
     socialMediaStats: {
       title: "Das Ausmaß der Social Media",
-      description: "Verstehen der massiven Datengenerierung und Einnahmen der größten Social Media Plattformen",
+      description:
+        "Verstehen der massiven Datengenerierung und Einnahmen der größten Social Media Plattformen",
       platforms: {
         meta: {
           name: "Meta (Facebook & Instagram)",
           revenue: "164,5 Mrd. $",
           dataVolume: "4+ PB/Tag",
-          description: "Dominiert Social Media Werbung mit umfassendem Nutzer-Profiling"
+          description: "Größtes Social Media Unternehmen",
         },
         youtube: {
           name: "YouTube (Alphabet)",
           revenue: "36,1 Mrd. $",
           dataVolume: "500+ TB/Tag",
-          description: "Führende Video-Plattform mit umfangreicher Inhalts- und Nutzerdatensammlung"
+          description: "Führende Video-Plattform",
         },
         tiktok: {
           name: "TikTok",
           revenue: "18 Mrd. $",
           dataVolume: "1+ PB/Tag",
-          description: "Am schnellsten wachsende Plattform mit KI-gestützter Inhaltsanalyse"
-        }
+          description: "Führende Social Media Plattform für Menschen unter 30",
+        },
       },
       totalRevenue: "218,6 Mrd. $",
       totalDataVolume: "5,5+ PB/Tag",
-      note: "Datenschätzungen basierend auf 2024 Forschung. Tatsächliche Zahlen können variieren."
+      note: "Datenschätzungen basierend auf 2024 Forschung. Tatsächliche Zahlen können variieren.",
     },
     canItWork: {
       title: "Kann es funktionieren?",
-      paragraph1: "Im Frühjahr 2021 wetteten diverse Hedgefonds massiv gegen die Aktie eines altmodischen Videospielunternehmens namens GameStop. In einem Sub-Reddit beschloss eine kleine Community dem entgegenzuwirken, organisierten sich zu tausenden und kauften GameStock Aktien, was den Kurs in die Höhe trieb und die Firma vor dem Ruin rettete, nicht ohne besagten Hedgefonds große Verluste einzubringen. Beispiele wie der <a href=\"https://en.wikipedia.org/wiki/GameStop_short_squeeze\" style=\"color: inherit;\" target=\"_blank\" rel=\"noopener noreferrer\">GameStop Short-Squeeze</a> haben eindrucksvoll demonstriert, dass wir als Verbraucher, am Status Quo durchaus etwas verändern können. Ein Status quo, der die Arbeit vieler braucht, um den absurden Wohlstand weniger zu sichern. Wir sind zu dem überfälligen Entschluss gekommen, dass wir <strong>einander</strong> brauchen werden, um langfristig erfolgreich zu sein.",
-      paragraph2: "Wir wollen eine Gemeinschaft gründen. Eine ziemlich große. Wir haben mit der Erstellung eines Twitter-Like-Forums begonnen, das uns ermöglicht, Ideen auszutauschen, zusammenzuarbeiten und über Entscheidungen abzustimmen. Schau vorbei wenn du ein bisschen mehr über unsere Arbeit und Pläne erfahren möchtest. Oder viellecht hast du selbst Vorschläge?"
+      paragraph1:
+        'Im Frühjahr 2021 wetteten diverse Hedgefonds massiv gegen die Aktie eines altmodischen Videospielunternehmens namens GameStop. In einem Sub-Reddit beschloss eine kleine Community dem entgegenzuwirken, organisierten sich zu tausenden und kauften GameStock Aktien, was den Kurs in die Höhe trieb und die Firma vor dem Ruin rettete, nicht ohne besagten Hedgefonds große Verluste einzubringen. Beispiele wie der <a href="https://en.wikipedia.org/wiki/GameStop_short_squeeze" style="color: inherit;" target="_blank" rel="noopener noreferrer">GameStop Short-Squeeze</a> haben eindrucksvoll demonstriert, dass wir als Verbraucher, am Status Quo durchaus etwas verändern können. Ein Status quo, der die Arbeit vieler braucht, um den absurden Wohlstand weniger zu sichern. Wir sind zu dem überfälligen Entschluss gekommen, dass wir <strong>einander</strong> brauchen werden, um langfristig erfolgreich zu sein.',
+      paragraph2:
+        "Wir wollen eine Gemeinschaft gründen. Eine ziemlich große. Wir haben mit der Erstellung eines Twitter-Like-Forums begonnen, das uns ermöglicht, Ideen auszutauschen, zusammenzuarbeiten und über Entscheidungen abzustimmen. Schau vorbei wenn du ein bisschen mehr über unsere Arbeit und Pläne erfahren möchtest. Oder viellecht hast du selbst Vorschläge?",
     },
     imagine: {
-      title: "Stell Dir vor...",
-      paragraph: "Wir wollen eine Gemeinschaft gründen. Eine ziemlich große. Wir haben mit der Erstellung eines Twitter-Like-Forums begonnen, das uns ermöglicht, Ideen auszutauschen, zusammenzuarbeiten und über Entscheidungen abzustimmen. Schau vorbei wenn du ein bisschen mehr über unsere Arbeit und Pläne erfahren möchtest. Oder viellecht hast du selbst Vorschläge?"
+      title: "Butter bei die Fische...",
+      paragraph:
+        "Meta's 164.5 Milliardenumsatz geteilt durch ihre 3.5 Milliarden aktiven Benutzer, ergibt etwa 47$ pro Account. Es geht uns nicht um's Geld, es geht um Selbstbestimmung und Widerstand gegen einen stetig voranschreitenden Trend von der Monetisierung unserer Zeit und Daten, der Paralyse der Paywall und der Illusion dass wir in diesen Netzwerken nicht völlig austauschbar sind. <br /> <br /> Wir haben mit der Erstellung einer Art Mischung aus Twitter und Reddit begonnen, das uns ermöglicht, Ideen auszutauschen, miteinander zu kollaborieren und über Entscheidungen abzustimmen. Wir sind fest davon überzeugt, dass wir zusammen etwas beispielloses bauen können.",
     },
     howTo: {
       title: "Was kannst du tun?",
