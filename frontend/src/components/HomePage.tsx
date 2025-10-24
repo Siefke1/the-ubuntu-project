@@ -26,6 +26,7 @@ import { getTranslations } from "../texts/translations";
 // import ThemeSwitcher from "./components/ThemeSwitcher";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import PieChart from "../components/PieChart";
+import SocialMediaStats from "../components/SocialMediaStats";
 
 function HomePage() {
   const { currentTheme, colors } = useTheme();
@@ -335,40 +336,6 @@ function HomePage() {
             >
               <span dangerouslySetInnerHTML={{ __html: t.about.paragraph1 }} />
             </Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
-                textAlign: "center",
-                lineHeight: { xs: 1.4, md: 1 },
-                mb: { xs: 3, md: 4 },
-                color:
-                  currentTheme === "darknight"
-                    ? colors.textColorLight
-                    : colors.textColorDark,
-                opacity: 0.6,
-                px: { xs: 2, md: 0 },
-              }}
-            >
-              <span dangerouslySetInnerHTML={{ __html: t.about.paragraph2 }} />
-            </Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
-                textAlign: "center",
-                lineHeight: { xs: 1.4, md: 1 },
-                mb: { xs: 3, md: 4 },
-                color:
-                  currentTheme === "darknight"
-                    ? colors.textColorLight
-                    : colors.textColorDark,
-                opacity: 0.6,
-                px: { xs: 2, md: 0 },
-              }}
-            >
-              {t.about.paragraph3}
-            </Typography>
           </motion.div>
         </Container>
       </Box>
@@ -437,13 +404,16 @@ function HomePage() {
         </Container>
       </Box>
 
-      {/* Mobile: About Section 2 - Paragraph 2 */}
+
+      {/* Social Media Stats Section */}
+      <SocialMediaStats />
+
+      {/* Desktop: Can it work Section */}
       <Box
         sx={{
-          height: "100dvh",
-          display: { xs: "flex", md: "none" },
+          height: { xs: "100dvh", md: "100vh" },
+          display: { xs: "none", md: "flex" },
           alignItems: "center",
-          color: "white",
           scrollSnapAlign: "start",
           position: "relative",
           "&::before": {
@@ -477,7 +447,7 @@ function HomePage() {
                     : colors.textColorDark,
               }}
             >
-              {t.about.paragraph2Title}
+              {t.canItWork.title}
             </Typography>
             <Typography
               variant="h6"
@@ -494,13 +464,30 @@ function HomePage() {
                 px: { xs: 2, md: 0 },
               }}
             >
-              <span dangerouslySetInnerHTML={{ __html: t.about.paragraph2 }} />
+              <span dangerouslySetInnerHTML={{ __html: t.canItWork.paragraph1 }} />
+            </Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
+                textAlign: "center",
+                lineHeight: { xs: 1.4, md: 1 },
+                mb: { xs: 3, md: 4 },
+                color:
+                  currentTheme === "darknight"
+                    ? colors.textColorLight
+                    : colors.textColorDark,
+                opacity: 0.6,
+                px: { xs: 2, md: 0 },
+              }}
+            >
+              {t.canItWork.paragraph2}
             </Typography>
           </motion.div>
         </Container>
       </Box>
 
-      {/* Mobile: About Section 3 - Paragraph 3 */}
+      {/* Mobile: Can it work Section 1 - GameStop story */}
       <Box
         sx={{
           height: "100dvh",
@@ -540,7 +527,7 @@ function HomePage() {
                     : colors.textColorDark,
               }}
             >
-              {t.about.paragraph3Title}
+              {t.canItWork.title}
             </Typography>
             <Typography
               variant="h6"
@@ -557,7 +544,70 @@ function HomePage() {
                 px: { xs: 2, md: 0 },
               }}
             >
-              {t.about.paragraph3}
+              <span dangerouslySetInnerHTML={{ __html: t.canItWork.paragraph1 }} />
+            </Typography>
+          </motion.div>
+        </Container>
+      </Box>
+
+      {/* Mobile: Can it work Section 2 - Community building */}
+      <Box
+        sx={{
+          height: "100dvh",
+          display: { xs: "flex", md: "none" },
+          alignItems: "center",
+          color: "white",
+          scrollSnapAlign: "start",
+          position: "relative",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "3000px",
+            height: "3000px",
+            background: `radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)`,
+            pointerEvents: "none",
+          },
+        }}
+      >
+        <Container maxWidth="md">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Typography
+              variant="h2"
+              sx={{
+                textAlign: "center",
+                mb: { xs: 2, md: 3 },
+                fontWeight: "bold",
+                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
+                color:
+                  currentTheme === "darknight"
+                    ? colors.textColorLight
+                    : colors.textColorDark,
+              }}
+            >
+              {t.imagine.title}
+            </Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.5rem" },
+                textAlign: "center",
+                lineHeight: { xs: 1.4, md: 1 },
+                mb: { xs: 3, md: 4 },
+                color:
+                  currentTheme === "darknight"
+                    ? colors.textColorLight
+                    : colors.textColorDark,
+                opacity: 0.6,
+                px: { xs: 2, md: 0 },
+              }}
+            >
+              {t.imagine.paragraph}
             </Typography>
           </motion.div>
         </Container>
